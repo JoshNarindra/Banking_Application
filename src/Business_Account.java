@@ -1,2 +1,2 @@
-public class BusinessAccount extends Account {
+public class Business_Account extends Account {
 }

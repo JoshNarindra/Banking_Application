@@ -1,3 +1,3 @@
-public class PersonalAccount extends Account{
+public class Personal_Account extends Account{
 
 }

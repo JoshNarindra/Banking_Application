@@ -1,2 +1,3 @@
-package PACKAGE_NAME;public class ISA_Account {
+public class ISA_Account {
+
 }
