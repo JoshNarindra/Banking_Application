@@ -6,6 +6,12 @@ abstract class Account {
     private String sortCode;
     private float balance;
 
+    public Account(String accountNumber, String sortCode, float balance) {
+        this.accountNumber = accountNumber;
+        this.sortCode = sortCode;
+        this.balance = balance;
+    }
+
     public String getAccountNumber(){
         return accountNumber;
     }
@@ -15,11 +21,23 @@ abstract class Account {
     }
 
     public float getBalance(){
-        return getBalance();
+        return balance;
     }
 
     public void setBalance(float balance){
         this.balance = balance;
+    }
+
+    // Function deposit which calls getBalance and setBalance to increment balance
+    public void deposit(float increment) {
+        float newBalance = getBalance() + increment;
+        setBalance(newBalance);
+    }
+
+    // Function withdraw which calls getBalance and setBalance to decrement balance
+    public void withdraw(float decrement) {
+        float newBalance = getBalance() - decrement;
+        setBalance(newBalance);
     }
 
     //Abstract methods for creating accounts should use "override" in child classes for each type of account.
