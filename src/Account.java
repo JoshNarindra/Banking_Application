@@ -28,5 +28,6 @@ abstract class Account {
 
     public void generateSortCode(){}
 
+    //accidental duplicate
     public void createAccount(){}
 }

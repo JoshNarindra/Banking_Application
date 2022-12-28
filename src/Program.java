@@ -22,10 +22,9 @@ public class Program {
         //Switch-Case statement for initial menu.
         switch (menu) {
             case 1 -> customerInfo();
-            case 2 -> createAccount();
+            case 2 -> opennewAccount();
             default -> System.out.println("Invalid choice");
         }
-
     }
 
     public static void customerInfo(){
@@ -49,7 +48,7 @@ public class Program {
 
     }
 
-    public static void createAccount(){
+    public static void opennewAccount(){
         //Menu to create an account for new customer.
         System.out.println("Open an account with ACME Banking");
         System.out.println(" 1. Open a personal account. \n 2. Open a business account. \n 3. Open a ISA Account2");
