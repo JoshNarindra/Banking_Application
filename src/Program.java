@@ -23,6 +23,7 @@ public class Program {
         switch (menu) {
             case 1 -> customerInfo();
             case 2 -> createAccount();
+            default -> System.out.println("Invalid choice");
         }
 
     }
