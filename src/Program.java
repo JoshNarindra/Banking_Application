@@ -11,6 +11,7 @@ public class Program {
     }
 
     public static void accountExists(){
+
         //Initial Menu.
         System.out.println("Welcome to ACME Banking Solutions...");
         System.out.println("Does the customer currently have an account with us? \n 1. Yes. \n 2. No.");
@@ -19,19 +20,33 @@ public class Program {
         Scanner s1 = new Scanner(System.in);
         int menu = s1.nextInt();
 
+        //Re-prompting the teller for input until either 1 or 2 is inputted.
+        while (menu != 1 && menu != 2){
+            System.out.println("Invalid input. Try again.");
+            menu = s1.nextInt();
+        }
+
         //Switch-Case statement for initial menu.
         switch (menu) {
             case 1 -> customerInfo();
-            case 2 -> opennewAccount();
+            case 2 -> openNewAccount();
             default -> System.out.println("Invalid choice");
         }
     }
 
     public static void customerInfo(){
-        //Input account number.
+
+        //Input account number with same means as above.
         System.out.println("Enter account number:");
         Scanner s2 = new Scanner(System.in);
         String accountNumber = s2.nextLine();
+
+        //Re-prompting the teller for input until an account number of correct length is inputted.
+        while (accountNumber.length() != 8)
+        {
+            System.out.println("Invalid input. Try again.");
+            accountNumber = s2.nextLine();
+        }
         System.out.println(accountNumber);
 
         //Retrieve account details.
@@ -42,20 +57,28 @@ public class Program {
         System.out.println("D.O.B: ");
 
         //Display customers accounts with bank.
-        System.out.println("Customer Accounts:");
+        System.out.println("Customer Accounts: ");
 
         //Option to allow current customer to open new account.
 
     }
 
-    public static void opennewAccount(){
+    public static void openNewAccount(){
+
         //Menu to create an account for new customer.
         System.out.println("Open an account with ACME Banking");
-        System.out.println(" 1. Open a personal account. \n 2. Open a business account. \n 3. Open a ISA Account2");
+        System.out.println(" 1. Open a personal account. \n 2. Open a business account. \n 3. Open an ISA Account.");
 
         //Scanner to read bank tellers input for user menu choice.
         Scanner s3 = new Scanner(System.in);
         int menu = s3.nextInt();
+
+        //Re-prompting the teller for input until either 1, 2 or 3 is inputted.
+        while (menu != 1 && menu != 2 && menu != 3)
+        {
+            System.out.println("Invalid input. Try again.");
+            menu = s3.nextInt();
+        }
 
         //Switch-Case statement for initial menu.
         switch (menu) {
