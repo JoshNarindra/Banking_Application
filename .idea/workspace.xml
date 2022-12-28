@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Added comments. fixed minor bugs">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account.java" afterDir="false" />
-    </list>
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Minor layout changes" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,7 +58,7 @@
       <workItem from="1672104969952" duration="121000" />
       <workItem from="1672148124721" duration="7995000" />
       <workItem from="1672228202568" duration="2578000" />
-      <workItem from="1672266508408" duration="1119000" />
+      <workItem from="1672266508408" duration="1478000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Class Layout.">
       <created>1672148787123</created>
@@ -126,7 +123,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672230776747</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Minor layout changes">
+      <created>1672267689678</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1672267689678</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,6 +144,7 @@
     <MESSAGE value="Minor update." />
     <MESSAGE value="Added abstract methods for account creation." />
     <MESSAGE value="Added comments. fixed minor bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added comments. fixed minor bugs" />
+    <MESSAGE value="Minor layout changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor layout changes" />
   </component>
 </project>
