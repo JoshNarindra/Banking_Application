@@ -1,3 +1,3 @@
-public class ISA_Account {
+public class ISA_Account extends Account{
 
 }

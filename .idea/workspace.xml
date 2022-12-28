@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="">
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Initial Class Layout.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business_Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business_Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ISA_Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ISA_Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Personal_Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Personal_Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Program.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,11 +59,23 @@
       <workItem from="1672066358101" duration="5246000" />
       <workItem from="1672103908147" duration="60000" />
       <workItem from="1672104969952" duration="121000" />
-      <workItem from="1672148124721" duration="421000" />
+      <workItem from="1672148124721" duration="4690000" />
     </task>
+    <task id="LOCAL-00001" summary="Initial Class Layout.">
+      <created>1672148787123</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1672148787123</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial Class Layout." />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial Class Layout." />
   </component>
 </project>
