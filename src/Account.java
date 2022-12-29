@@ -40,11 +40,13 @@ abstract class Account {
         setBalance(newBalance);
     }
 
+    // Abstract method to display menu system for account.
+    abstract void accountMenu();
+
+
     //Abstract methods for creating accounts should use "override" in child classes for each type of account.
     // (Note Are these methods abstract as a result of class being abstract?)
-    public void generateAccountNumber(){
-
-    }
+    public void generateAccountNumber(){}
 
     public void generateSortCode(){}
 
