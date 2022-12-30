@@ -63,7 +63,7 @@ public class Program {
         System.out.println("Customer Accounts: ");
 
         //Option to allow current customer to open new account.
-        PersonalAccount x = new PersonalAccount("12312434","090109", 45.45f,true,true);
+        PersonalAccount x = new PersonalAccount("12312434","090109", 45.45f, 0.00f, true,true);
         x.accountMenu();
     }
 

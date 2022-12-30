@@ -1,0 +1,92 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"ff4c1b09-c4a5-42c9-9134-c7e38c5d977e\" name=\"Changes\" comment=\"Added an Exit option to each of the menus.\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2JSL54fu2ktI1BDk3LOo7HV2SQx\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"ff4c1b09-c4a5-42c9-9134-c7e38c5d977e\" name=\"Changes\" comment=\"\" />\r\n      <created>1672066355779</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1672066355779</updated>\r\n      <workItem from=\"1672066358101\" duration=\"5246000\" />\r\n      <workItem from=\"1672103908147\" duration=\"60000\" />\r\n      <workItem from=\"1672104969952\" duration=\"121000\" />\r\n      <workItem from=\"1672148124721\" duration=\"7995000\" />\r\n      <workItem from=\"1672228202568\" duration=\"2578000\" />\r\n      <workItem from=\"1672266508408\" duration=\"5905000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Initial Class Layout.\">\r\n      <created>1672148787123</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672148787123</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Basic Menu Framework\">\r\n      <created>1672186553273</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672186553273</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Added Menu Framework\">\r\n      <created>1672188041041</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672188041041</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"workspace update\">\r\n      <created>1672188070384</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672188070384</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Minor update.\">\r\n      <created>1672188825949</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672188825949</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Minor update.\">\r\n      <created>1672189009523</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672189009523</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Added abstract methods for account creation.\">\r\n      <created>1672229169763</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672229169763</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Added abstract methods for account creation.\">\r\n      <created>1672229245986</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672229245986</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"Added comments. fixed minor bugs\">\r\n      <created>1672230776747</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672230776747</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"Minor layout changes\">\r\n      <created>1672267689678</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672267689678</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"File name change\">\r\n      <created>1672268217286</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672268217286</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\".\">\r\n      <created>1672268239343</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672268239343</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"Added Menu System to Personal Acc.\">\r\n      <created>1672326525155</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672326525155</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"Added framework for transfer function in Account.\">\r\n      <created>1672404738971</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672404738971</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"Added an Exit option to each of the menus.\">\r\n      <created>1672404802344</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672404802344</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"16\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Initial Class Layout.\" />\r\n    <MESSAGE value=\"Basic Menu Framework\" />\r\n    <MESSAGE value=\"Added Menu Framework\" />\r\n    <MESSAGE value=\"workspace update\" />\r\n    <MESSAGE value=\"Minor update.\" />\r\n    <MESSAGE value=\"Added abstract methods for account creation.\" />\r\n    <MESSAGE value=\"Added comments. fixed minor bugs\" />\r\n    <MESSAGE value=\"Minor layout changes\" />\r\n    <MESSAGE value=\"File name change\" />\r\n    <MESSAGE value=\".\" />\r\n    <MESSAGE value=\"Added Menu System to Personal Acc.\" />\r\n    <MESSAGE value=\"Added framework for transfer function in Account.\" />\r\n    <MESSAGE value=\"Added an Exit option to each of the menus.\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Added an Exit option to each of the menus.\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 4d3839f36cf40bc1a323eb1e7b0ce3f1f16ae4a6)
++++ b/.idea/workspace.xml	(date 1672439101863)
+@@ -4,7 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Added an Exit option to each of the menus.">
++    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Added overdraft as a variable to the Account class and modified the constructors of the other classes accordingly.">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -31,22 +31,23 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
++    "WebServerToolWindowFactoryState": "false",
++    "last_opened_file_path": "C:/Users/ewanh/IdeaProjects/JFX/JavaFXSceneSwitcher",
++    "node.js.detected.package.eslint": "true",
++    "node.js.detected.package.tslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "project.structure.last.edited": "Modules",
++    "project.structure.proportion": "0.0",
++    "project.structure.side.proportion": "0.0",
++    "vue.rearranger.settings.migration": "true"
+   }
+-}</component>
++}]]></component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+@@ -167,7 +168,21 @@
+       <option name="project" value="LOCAL" />
+       <updated>1672404802344</updated>
+     </task>
+-    <option name="localTasksCounter" value="16" />
++    <task id="LOCAL-00016" summary="Tiny formatting change.">
++      <created>1672438451393</created>
++      <option name="number" value="00016" />
++      <option name="presentableId" value="LOCAL-00016" />
++      <option name="project" value="LOCAL" />
++      <updated>1672438451393</updated>
++    </task>
++    <task id="LOCAL-00017" summary="Added overdraft as a variable to the Account class and modified the constructors of the other classes accordingly.">
++      <created>1672438591659</created>
++      <option name="number" value="00017" />
++      <option name="presentableId" value="LOCAL-00017" />
++      <option name="project" value="LOCAL" />
++      <updated>1672438591659</updated>
++    </task>
++    <option name="localTasksCounter" value="18" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -198,6 +213,8 @@
+     <MESSAGE value="Added Menu System to Personal Acc." />
+     <MESSAGE value="Added framework for transfer function in Account." />
+     <MESSAGE value="Added an Exit option to each of the menus." />
+-    <option name="LAST_COMMIT_MESSAGE" value="Added an Exit option to each of the menus." />
++    <MESSAGE value="Tiny formatting change." />
++    <MESSAGE value="Added overdraft as a variable to the Account class and modified the constructors of the other classes accordingly." />
++    <option name="LAST_COMMIT_MESSAGE" value="Added overdraft as a variable to the Account class and modified the constructors of the other classes accordingly." />
+   </component>
+ </project>
+\ No newline at end of file
