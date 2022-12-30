@@ -1,0 +1,113 @@
+Index: src/Program.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/*\r\nMain Program Class.\r\n */\r\n\r\n//imports\r\nimport java.util.Scanner;\r\n\r\npublic class Program {\r\n    public static void main(String[] args) {\r\n        accountExists();\r\n    }\r\n\r\n    public static void accountExists(){\r\n\r\n        //Initial Menu.\r\n        System.out.println(\"Welcome to ACME Banking Solutions...\");\r\n        System.out.println(\"Does the customer currently have an account with us? \\n 1. Yes. \\n 2. No.\");\r\n\r\n        //Scanner to read bank tellers input for user choice.\r\n        Scanner s1 = new Scanner(System.in);\r\n        int menu = s1.nextInt();\r\n\r\n        //Re-prompting the teller for input until either 1 or 2 is inputted.\r\n        while (menu != 1 && menu != 2){\r\n            System.out.println(\"Invalid input. Try again.\");\r\n            menu = s1.nextInt();\r\n        }\r\n\r\n        //Switch-Case statement for initial menu.\r\n        switch (menu) {\r\n            case 1 -> customerInfo();\r\n            case 2 -> openNewAccount();\r\n            default -> System.out.println(\"Invalid choice\");\r\n        }\r\n    }\r\n\r\n    public static void customerInfo(){\r\n\r\n        //Input account number with same means as above.\r\n        System.out.println(\"Enter account number:\");\r\n        Scanner s2 = new Scanner(System.in);\r\n        String accountNumber = s2.nextLine();\r\n\r\n        //Re-prompting the teller for input until an account number of correct length is inputted.\r\n        while (accountNumber.length() != 8)\r\n        {\r\n            System.out.println(\"Invalid input. Try again.\");\r\n            accountNumber = s2.nextLine();\r\n        }\r\n        System.out.println(accountNumber);\r\n\r\n        //Retrieve account details.\r\n        System.out.println(\"Retrieving account details...\");\r\n\r\n        //Display customer info.\r\n        System.out.println(\"Name: \");\r\n        System.out.println(\"D.O.B: \");\r\n\r\n        //Display customers accounts with bank.\r\n        System.out.println(\"Customer Accounts: \");\r\n\r\n        //Option to allow current customer to open new account.\r\n\r\n    }\r\n\r\n    public static void openNewAccount(){\r\n\r\n        //Menu to create an account for new customer.\r\n        System.out.println(\"Open an account with ACME Banking\");\r\n        System.out.println(\" 1. Open a personal account. \\n 2. Open a business account. \\n 3. Open an ISA Account.\");\r\n\r\n        //Scanner to read bank tellers input for user menu choice.\r\n        Scanner s3 = new Scanner(System.in);\r\n        int menu = s3.nextInt();\r\n\r\n        //Re-prompting the teller for input until either 1, 2 or 3 is inputted.\r\n        while (menu != 1 && menu != 2 && menu != 3)\r\n        {\r\n            System.out.println(\"Invalid input. Try again.\");\r\n            menu = s3.nextInt();\r\n        }\r\n\r\n        //Switch-Case statement for initial menu.\r\n        switch (menu) {\r\n            case 1 -> System.out.println(\"Placeholder for personal account creation\");\r\n            case 2 -> System.out.println(\"Placeholder for business account creation\");\r\n            case 3 -> System.out.println(\"Placeholder for ISA account creation\");\r\n        }\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Program.java b/src/Program.java
+--- a/src/Program.java	(revision 801b4cd2d85cb653b19c5f25db48f50d95f2d8e1)
++++ b/src/Program.java	(date 1672329443068)
+@@ -60,7 +60,8 @@
+         System.out.println("Customer Accounts: ");
+ 
+         //Option to allow current customer to open new account.
+-
++        PersonalAccount x = new PersonalAccount("12312434","090109", 45.45f,true,true);
++        x.accountMenu();
+     }
+ 
+     public static void openNewAccount(){
+Index: src/PersonalAccount.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class PersonalAccount extends Account{\r\n    public PersonalAccount(String accountNumber, String sortCode, float balance){\r\n        super(accountNumber, sortCode, balance);\r\n    }\r\n\r\n    //Method to create a personal account.\r\n    @Override\r\n    public void createAccount(){\r\n\r\n    }\r\n\r\n    public void accountMenu() {\r\n        System.out.println(\"What would the customer like to do? \\n 1. Check Balance \\n 2. Make a Deposit \\n 3. Make a withdrawal \\n 4.Exit \");\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/PersonalAccount.java b/src/PersonalAccount.java
+--- a/src/PersonalAccount.java	(revision 801b4cd2d85cb653b19c5f25db48f50d95f2d8e1)
++++ b/src/PersonalAccount.java	(date 1672329443031)
+@@ -1,6 +1,14 @@
++import java.util.Scanner;
++
+ public class PersonalAccount extends Account{
+-    public PersonalAccount(String accountNumber, String sortCode, float balance){
++
++    private Boolean validPersonalID;
++    private Boolean validAddressID;
++
++    public PersonalAccount(String accountNumber, String sortCode, float balance, Boolean validPersonalID, Boolean validAddressID){
+         super(accountNumber, sortCode, balance);
++        this.validPersonalID = validPersonalID;
++        this.validAddressID = validAddressID;
+     }
+ 
+     //Method to create a personal account.
+@@ -10,6 +18,19 @@
+     }
+ 
+     public void accountMenu() {
+-        System.out.println("What would the customer like to do? \n 1. Check Balance \n 2. Make a Deposit \n 3. Make a withdrawal \n 4.Exit ");
++        System.out.println("What would the customer like to do? \n 1. Check Balance \n 2. Make a Deposit \n 3. Make a withdrawal \n 4.Set up Direct Debit \n 5. Set Up Standing Order \n 6. Exit");
++
++        Scanner s1 = new Scanner(System.in);
++        int menu = s1.nextInt();
++
++        switch (menu) {
++            case 1 -> System.out.println("Placeholder for get Balance");
++            case 2 -> System.out.println("Placeholder for make deposit");
++            case 3 -> System.out.println("Placeholder for Withdrawal");
++            case 4 -> System.out.println("Placeholder Direct Debit");
++            case 5 -> System.out.println("Placeholder Standing order");
++            case 6 -> System.out.println("Placeholder Exit");
++            default -> System.out.println("Invalid choice");
++        }
+     }
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"ff4c1b09-c4a5-42c9-9134-c7e38c5d977e\" name=\"Changes\" comment=\"accountMenu() method added to children of account class.\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/BusinessAccount.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/BusinessAccount.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/ISAAccount.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/ISAAccount.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2JSL54fu2ktI1BDk3LOo7HV2SQx\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"ff4c1b09-c4a5-42c9-9134-c7e38c5d977e\" name=\"Changes\" comment=\"\" />\r\n      <created>1672066355779</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1672066355779</updated>\r\n      <workItem from=\"1672066358101\" duration=\"5246000\" />\r\n      <workItem from=\"1672103908147\" duration=\"60000\" />\r\n      <workItem from=\"1672104969952\" duration=\"121000\" />\r\n      <workItem from=\"1672148124721\" duration=\"7995000\" />\r\n      <workItem from=\"1672228202568\" duration=\"2578000\" />\r\n      <workItem from=\"1672266508408\" duration=\"6787000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Initial Class Layout.\">\r\n      <created>1672148787123</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672148787123</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Basic Menu Framework\">\r\n      <created>1672186553273</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672186553273</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Added Menu Framework\">\r\n      <created>1672188041041</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672188041041</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"workspace update\">\r\n      <created>1672188070384</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672188070384</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Minor update.\">\r\n      <created>1672188825949</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672188825949</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Minor update.\">\r\n      <created>1672189009523</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672189009523</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Added abstract methods for account creation.\">\r\n      <created>1672229169763</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672229169763</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Added abstract methods for account creation.\">\r\n      <created>1672229245986</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672229245986</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"Added comments. fixed minor bugs\">\r\n      <created>1672230776747</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672230776747</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"Minor layout changes\">\r\n      <created>1672267689678</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672267689678</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"File name change\">\r\n      <created>1672268217286</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672268217286</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\".\">\r\n      <created>1672268239343</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672268239343</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"Added Menu System to Personal Acc.\">\r\n      <created>1672326525155</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672326525155</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"Updated Menu System to Personal Acc.\">\r\n      <created>1672327260299</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672327260299</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"Updated Menu System to Personal Acc.\">\r\n      <created>1672327397920</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672327397920</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00016\" summary=\"accountMenu() method added to children of account class.\">\r\n      <created>1672327998633</created>\r\n      <option name=\"number\" value=\"00016\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00016\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672327998633</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"17\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Initial Class Layout.\" />\r\n    <MESSAGE value=\"Basic Menu Framework\" />\r\n    <MESSAGE value=\"Added Menu Framework\" />\r\n    <MESSAGE value=\"workspace update\" />\r\n    <MESSAGE value=\"Minor update.\" />\r\n    <MESSAGE value=\"Added abstract methods for account creation.\" />\r\n    <MESSAGE value=\"Added comments. fixed minor bugs\" />\r\n    <MESSAGE value=\"Minor layout changes\" />\r\n    <MESSAGE value=\"File name change\" />\r\n    <MESSAGE value=\".\" />\r\n    <MESSAGE value=\"Added Menu System to Personal Acc.\" />\r\n    <MESSAGE value=\"Updated Menu System to Personal Acc.\" />\r\n    <MESSAGE value=\"accountMenu() method added to children of account class.\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"accountMenu() method added to children of account class.\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 801b4cd2d85cb653b19c5f25db48f50d95f2d8e1)
++++ b/.idea/workspace.xml	(date 1672409817421)
+@@ -6,8 +6,8 @@
+   <component name="ChangeListManager">
+     <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="accountMenu() method added to children of account class.">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/BusinessAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessAccount.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/ISAAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ISAAccount.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/PersonalAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PersonalAccount.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Program.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -62,7 +62,7 @@
+       <workItem from="1672104969952" duration="121000" />
+       <workItem from="1672148124721" duration="7995000" />
+       <workItem from="1672228202568" duration="2578000" />
+-      <workItem from="1672266508408" duration="6787000" />
++      <workItem from="1672266508408" duration="8850000" />
+     </task>
+     <task id="LOCAL-00001" summary="Initial Class Layout.">
+       <created>1672148787123</created>
+@@ -176,7 +176,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1672327998633</updated>
+     </task>
+-    <option name="localTasksCounter" value="17" />
++    <task id="LOCAL-00017" summary="accountMenu() method added to children of account class.">
++      <created>1672328355652</created>
++      <option name="number" value="00017" />
++      <option name="presentableId" value="LOCAL-00017" />
++      <option name="project" value="LOCAL" />
++      <updated>1672328355652</updated>
++    </task>
++    <option name="localTasksCounter" value="18" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
