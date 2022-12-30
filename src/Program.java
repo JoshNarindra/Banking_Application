@@ -4,6 +4,9 @@ Main Program Class.
 
 //imports
 import java.util.Scanner;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class Program {
     public static void main(String[] args) {
@@ -60,7 +63,8 @@ public class Program {
         System.out.println("Customer Accounts: ");
 
         //Option to allow current customer to open new account.
-
+        PersonalAccount x = new PersonalAccount("12312434","090109", 45.45f,true,true);
+        x.accountMenu();
     }
 
     public static void openNewAccount(){
