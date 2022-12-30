@@ -5,11 +5,13 @@ abstract class Account {
     private String accountNumber;
     private String sortCode;
     private float balance;
+    private float overdraft;
 
-    public Account(String accountNumber, String sortCode, float balance) {
+    public Account(String accountNumber, String sortCode, float balance, float overdraft) {
         this.accountNumber = accountNumber;
         this.sortCode = sortCode;
         this.balance = balance;
+        this.overdraft = overdraft;
     }
 
     public String getAccountNumber(){

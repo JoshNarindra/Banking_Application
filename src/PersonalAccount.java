@@ -1,6 +1,6 @@
 public class PersonalAccount extends Account{
-    public PersonalAccount(String accountNumber, String sortCode, float balance){
-        super(accountNumber, sortCode, balance);
+    public PersonalAccount(String accountNumber, String sortCode, float balance, float overdraft){
+        super(accountNumber, sortCode, balance, overdraft);
     }
 
     //Method to create a personal account.
