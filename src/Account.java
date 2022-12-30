@@ -40,6 +40,12 @@ abstract class Account {
         setBalance(newBalance);
     }
 
+    // Function transfer which takes two accounts and an amount as an argument and transfers money between the two
+    public void transfer(float amount, Account payee, Account recipient)
+    {
+
+    }
+
     // Abstract method to display menu system for account.
     abstract void accountMenu();
 
