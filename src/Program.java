@@ -14,14 +14,14 @@ public class Program {
 
         //Initial Menu.
         System.out.println("Welcome to ACME Banking Solutions...");
-        System.out.println("Does the customer currently have an account with us? \n 1. Yes. \n 2. No.");
+        System.out.println("Does the customer currently have an account with us? \n 1. Yes. \n 2. No. \n 9. Exit.");
 
         //Scanner to read bank tellers input for user choice.
         Scanner s1 = new Scanner(System.in);
         int menu = s1.nextInt();
 
         //Re-prompting the teller for input until either 1 or 2 is inputted.
-        while (menu != 1 && menu != 2){
+        while (menu != 1 && menu != 2 && menu != 9){
             System.out.println("Invalid input. Try again.");
             menu = s1.nextInt();
         }
@@ -30,7 +30,7 @@ public class Program {
         switch (menu) {
             case 1 -> customerInfo();
             case 2 -> openNewAccount();
-            default -> System.out.println("Invalid choice");
+            case 9 -> exitProgram();
         }
     }
 
@@ -67,14 +67,14 @@ public class Program {
 
         //Menu to create an account for new customer.
         System.out.println("Open an account with ACME Banking");
-        System.out.println(" 1. Open a personal account. \n 2. Open a business account. \n 3. Open an ISA Account.");
+        System.out.println(" 1. Open a personal account. \n 2. Open a business account. \n 3. Open an ISA Account. \n 9. Exit.");
 
         //Scanner to read bank tellers input for user menu choice.
         Scanner s3 = new Scanner(System.in);
         int menu = s3.nextInt();
 
         //Re-prompting the teller for input until either 1, 2 or 3 is inputted.
-        while (menu != 1 && menu != 2 && menu != 3)
+        while (menu != 1 && menu != 2 && menu != 3 && menu != 9)
         {
             System.out.println("Invalid input. Try again.");
             menu = s3.nextInt();
@@ -85,7 +85,13 @@ public class Program {
             case 1 -> System.out.println("Placeholder for personal account creation");
             case 2 -> System.out.println("Placeholder for business account creation");
             case 3 -> System.out.println("Placeholder for ISA account creation");
+            case 9 -> exitProgram();
         }
+    }
+
+    public static void exitProgram(){
+        System.out.println("Successfully logged out.");
+        System.exit(0);
     }
 
 
