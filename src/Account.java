@@ -6,11 +6,13 @@ abstract class Account {
     private String accountNumber;
     private String sortCode;
     private float balance;
+    private float overdraft;
 
-    public Account(String accountNumber, String sortCode, float balance) {
+    public Account(String accountNumber, String sortCode, float balance, float overdraft) {
         this.accountNumber = accountNumber;
         this.sortCode = sortCode;
         this.balance = balance;
+        this.overdraft = overdraft;
     }
 
     public String getAccountNumber(){
@@ -42,8 +44,11 @@ abstract class Account {
     }
 
     // Function transfer which takes two accounts and an amount as an argument and transfers money between the two
-    public void transfer(float amount, Account payee, Account recipient)
-    {}
+
+    public void transfer(float amount, Account payee, Account recipient) {
+
+    }
+
 
     // Abstract method to display menu system for account.
     abstract void accountMenu();
