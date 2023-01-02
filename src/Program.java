@@ -3,6 +3,7 @@ Main Program Class.
  */
 
 //imports
+import javax.xml.crypto.Data;
 import java.sql.PreparedStatement;
 import java.util.Scanner;
 import java.sql.Connection;
@@ -11,13 +12,19 @@ import java.sql.SQLException;
 
 public class Program {
 
-    static String website = "jdbc:sqlserver://SQL8002.site4now.net;database=db_a8cc79_Ewahes";
-    static String username = "db_a8cc79_Ewahes_admin";
-    static String password = "Fr43yX52kE71";
-    static String sql = "select * from Users";
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         accountExists();
+
+//        DatabaseConnection x = new DatabaseConnection();
+//        System.out.println(x);
+//
+//        String sql = "select * from Users";
+//
+//        var stmt = x.getConnection().prepareStatement(sql);
+//        var rs = stmt.executeQuery();
+//        while (rs.next()) {
+//            System.out.println(rs.getString("FirstName"));
+//        }
     }
 
     public static void accountExists(){
