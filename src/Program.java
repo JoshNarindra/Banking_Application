@@ -3,21 +3,35 @@ Main Program Class.
  */
 
 //imports
+import javax.xml.crypto.Data;
+import java.sql.PreparedStatement;
 import java.util.Scanner;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Program {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws SQLException {
         accountExists();
+
+//        DatabaseConnection x = new DatabaseConnection();
+//        System.out.println(x);
+//
+//        String sql = "select * from Users";
+//
+//        var stmt = x.getConnection().prepareStatement(sql);
+//        var rs = stmt.executeQuery();
+//        while (rs.next()) {
+//            System.out.println(rs.getString("FirstName"));
+//        }
     }
 
     public static void accountExists(){
 
         //Initial Menu.
         System.out.println("Welcome to ACME Banking Solutions...");
-        System.out.println("Does the customer currently have an account with us? \n 1. Yes. \n 2. No. \n 9. Exit.");
+        System.out.println("\n Does the customer currently have an account with us? \n 1. Yes. \n 2. No. \n 9. Exit.");
 
         //Scanner to read bank tellers input for user choice.
         Scanner s1 = new Scanner(System.in);
@@ -40,27 +54,27 @@ public class Program {
     public static void customerInfo(){
 
         //Input account number with same means as above.
-        System.out.println("Enter account number:");
+        System.out.println("\n Enter account number:");
         Scanner s2 = new Scanner(System.in);
         String accountNumber = s2.nextLine();
 
         //Re-prompting the teller for input until an account number of correct length is inputted.
         while (accountNumber.length() != 8)
         {
-            System.out.println("Invalid input. Try again.");
+            System.out.println("\n Invalid input. Try again.");
             accountNumber = s2.nextLine();
         }
         System.out.println(accountNumber);
 
         //Retrieve account details.
-        System.out.println("Retrieving account details...");
+        System.out.println("\n Retrieving account details...");
 
         //Display customer info.
-        System.out.println("Name: ");
-        System.out.println("D.O.B: ");
+        System.out.println("\n Name: ");
+        System.out.println("\n D.O.B: ");
 
         //Display customers accounts with bank.
-        System.out.println("Customer Accounts: ");
+        System.out.println("\n Customer Accounts: ");
 
         //Option to allow current customer to open new account.
         PersonalAccount x = new PersonalAccount("12312434","090109", 45.45f, 0.00f, true,true);

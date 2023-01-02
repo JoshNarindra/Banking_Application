@@ -1,6 +1,7 @@
 /*
 Abstract class Account.
  */
+
 abstract class Account {
     private String accountNumber;
     private String sortCode;
@@ -43,13 +44,14 @@ abstract class Account {
     }
 
     // Function transfer which takes two accounts and an amount as an argument and transfers money between the two
+
     public void transfer(float amount, Account payee, Account recipient) {
 
     }
 
+
     // Abstract method to display menu system for account.
     abstract void accountMenu();
-
 
     //Abstract methods for creating accounts should use "override" in child classes for each type of account.
     // (Note Are these methods abstract as a result of class being abstract?)
