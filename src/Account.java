@@ -2,6 +2,9 @@
 Abstract class Account.
  */
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 abstract class Account {
     private String accountNumber;
     private String sortCode;
@@ -13,6 +16,16 @@ abstract class Account {
         this.sortCode = sortCode;
         this.balance = balance;
         this.overdraft = overdraft;
+    }
+
+    public static void retrieveCustomerInfo(String accountNumber) throws SQLException {
+        ArrayList<String> customerInfo = new ArrayList<String>();
+        customerInfo.add("FirstName");
+        customerInfo.add("LastName");
+        customerInfo.add("DateOfBirth");
+
+        DatabaseConnection x = new DatabaseConnection(); //Should move to Program? Only one instance needed.
+        x.runQuery("SELECT FirstName, LastName, DateOfBirth from Users where ID in (SELECT UserID from Accounts where AccountNumber = " + accountNumber + " )",customerInfo);
     }
 
     public String getAccountNumber(){

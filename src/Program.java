@@ -14,18 +14,10 @@ import java.sql.SQLException;
 public class Program {
 
     public static void main(String[] args) throws SQLException {
-    //    accountExists();
-
-        ArrayList<String> customerInfo = new ArrayList<String>();
-        customerInfo.add("FirstName");
-        customerInfo.add("LastName");
-        customerInfo.add("DateOfBirth");
-
-        DatabaseConnection x = new DatabaseConnection();
-        x.runQuery("SELECT FirstName, LastName, DateOfBirth from Users where ID in (SELECT UserID from Accounts where AccountNumber = 80000001)",customerInfo);
+        accountExists();
     }
 
-    public static void accountExists(){
+    public static void accountExists() throws SQLException {
 
         //Initial Menu.
         System.out.println("Welcome to ACME Banking Solutions...");
@@ -49,7 +41,7 @@ public class Program {
         }
     }
 
-    public static void customerInfo(){
+    public static void customerInfo() throws SQLException {
 
         //Input account number with same means as above.
         System.out.println("\n Enter account number:");
@@ -66,6 +58,7 @@ public class Program {
 
         //Retrieve account details.
         System.out.println("\n Retrieving account details...");
+        Account.retrieveCustomerInfo(accountNumber);
 
         //Display customer info.
         System.out.println("\n Name: ");
