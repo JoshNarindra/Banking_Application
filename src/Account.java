@@ -4,6 +4,7 @@ Abstract class Account.
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 abstract class Account {
     private String accountNumber;
@@ -19,10 +20,7 @@ abstract class Account {
     }
 
     public static void retrieveCustomerInfo(String accountNumber) throws SQLException {
-        ArrayList<String> customerInfo = new ArrayList<String>();
-        customerInfo.add("FirstName");
-        customerInfo.add("LastName");
-        customerInfo.add("DateOfBirth");
+        ArrayList<String> customerInfo = new ArrayList<>(List.of("FirstName","LastName","DateOfBirth"));
 
         DatabaseConnection x = new DatabaseConnection(); //Should move to Program? Only one instance needed.
         x.runQuery("SELECT FirstName, LastName, DateOfBirth from Users where ID in (SELECT UserID from Accounts where AccountNumber = " + accountNumber + " )",customerInfo);
