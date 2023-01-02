@@ -5,8 +5,8 @@ public class PersonalAccount extends Account{
     private Boolean validPersonalID;
     private Boolean validAddressID;
 
-    public PersonalAccount(String accountNumber, String sortCode, float balance, Boolean validPersonalID, Boolean validAddressID){
-        super(accountNumber, sortCode, balance);
+    public PersonalAccount(String accountNumber, String sortCode, float balance, float overdraft, Boolean validPersonalID, Boolean validAddressID){
+        super(accountNumber, sortCode, balance, overdraft);
         this.validPersonalID = validPersonalID;
         this.validAddressID = validAddressID;
     }

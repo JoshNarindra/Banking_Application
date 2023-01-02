@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class BusinessAccount extends Account {
-    public BusinessAccount(String accountNumber, String sortCode, float balance) {
-        super(accountNumber, sortCode, balance);
+    public BusinessAccount(String accountNumber, String sortCode, float balance, float overdraft) {
+        super(accountNumber, sortCode, balance, overdraft);
     }
 
     //Menu function for business account.

@@ -1,9 +1,8 @@
 import java.util.Scanner;
 
-public class ISAAccount extends Account {
-    public ISAAccount(String accountNumber, String sortCode, float balance) {
-        super(accountNumber, sortCode, balance);
-    }
+public class ISAAccount extends Account{
+    public ISAAccount(String accountNumber, String sortCode, float balance, float overdraft){
+        super(accountNumber, sortCode, balance, overdraft);
 
     //Menu function for ISA account.
     @Override
