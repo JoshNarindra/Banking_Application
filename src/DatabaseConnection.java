@@ -1,6 +1,5 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class DatabaseConnection {
     static String website = "jdbc:sqlserver://SQL8002.site4now.net;database=db_a8cc79_Ewahes";
@@ -9,14 +8,26 @@ public class DatabaseConnection {
     public static Connection connection;
 
     //Method returns variable of type connection, which is SQL connection to server.
-    public static Connection getConnection() throws SQLException {
+    public static void getConnection(String query, ArrayList columnNames) throws SQLException {
         try {
             connection = DriverManager.getConnection(website, username, password);
+
+            var stmt = connection.prepareStatement(query);
+            var rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                //System.out.println(rs.getString(1));
+                //System.out.println(rs.getString("LastName"));
+                //System.out.println(rs.getString("DateOfBirth"));
+
+                for (Object name:columnNames) {
+                    System.out.println(rs.getString(name.toString()));
+
+                }
+            }
         }
         catch (Exception e) {
             e.printStackTrace();
         }
-        return connection;
+        }
     }
-
-}

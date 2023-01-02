@@ -5,6 +5,7 @@ Main Program Class.
 //imports
 import javax.xml.crypto.Data;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,7 +14,7 @@ import java.sql.SQLException;
 public class Program {
 
     public static void main(String[] args) throws SQLException {
-        accountExists();
+    //    accountExists();
 
 //        DatabaseConnection x = new DatabaseConnection();
 //        System.out.println(x);
@@ -26,6 +27,13 @@ public class Program {
 //            System.out.println(rs.getString("FirstName"));
 //        }
 
+        ArrayList<String> customerInfo = new ArrayList<String>();
+        customerInfo.add("FirstName");
+        customerInfo.add("LastName");
+        customerInfo.add("DateOfBirth");
+
+        DatabaseConnection x = new DatabaseConnection();
+        x.getConnection("SELECT FirstName, LastName, DateOfBirth from Users where ID in (SELECT UserID from Accounts where AccountNumber = 80000001)",customerInfo);
     }
 
     public static void accountExists(){

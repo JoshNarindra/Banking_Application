@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Added constructor for user class.">
-      <change afterPath="$PROJECT_DIR$/src/RunQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2023_16_30__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2023_16_30__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_12_2022_15_23__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_12_2022_15_23__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_12_2022_15_33__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_12_2022_15_33__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_12_2022_22_31__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_12_2022_22_31__Changes_.xml" afterDir="false" />
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Database Connection update.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ISAAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ISAAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PersonalAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PersonalAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Program.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RunQuery.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -258,7 +252,21 @@
       <option name="project" value="LOCAL" />
       <updated>1672674813823</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Database Connection update.">
+      <created>1672680270871</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1672680270871</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Database Connection update.">
+      <created>1672680291715</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1672680291715</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -282,6 +290,20 @@
     <MESSAGE value="Updated accounts menus." />
     <MESSAGE value="Added name and DOB variables." />
     <MESSAGE value="Added constructor for user class." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added constructor for user class." />
+    <MESSAGE value="Fixed connection bug." />
+    <MESSAGE value="Database Connection update." />
+    <option name="LAST_COMMIT_MESSAGE" value="Database Connection update." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/DatabaseConnection.java</url>
+          <line>5</line>
+          <properties field="username" class="DatabaseConnection" />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
