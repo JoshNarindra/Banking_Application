@@ -1,6 +1,7 @@
 /*
 Abstract class Account.
  */
+
 abstract class Account {
     private String accountNumber;
     private String sortCode;
