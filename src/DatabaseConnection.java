@@ -8,7 +8,7 @@ public class DatabaseConnection {
     public static Connection connection;
 
     //Method returns variable of type connection, which is SQL connection to server.
-    public static void getConnection(String query, ArrayList columnNames) throws SQLException {
+    public static void runQuery(String query, ArrayList columnNames) throws SQLException {
         try {
             connection = DriverManager.getConnection(website, username, password);
 
@@ -16,18 +16,13 @@ public class DatabaseConnection {
             var rs = stmt.executeQuery();
 
             while (rs.next()) {
-                //System.out.println(rs.getString(1));
-                //System.out.println(rs.getString("LastName"));
-                //System.out.println(rs.getString("DateOfBirth"));
-
                 for (Object name:columnNames) {
                     System.out.println(rs.getString(name.toString()));
-
                 }
             }
         }
         catch (Exception e) {
             e.printStackTrace();
         }
-        }
     }
+}

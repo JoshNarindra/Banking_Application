@@ -16,24 +16,13 @@ public class Program {
     public static void main(String[] args) throws SQLException {
     //    accountExists();
 
-//        DatabaseConnection x = new DatabaseConnection();
-//        System.out.println(x);
-//
-//        String sql = "select * from Users";
-//
-//        var stmt = x.getConnection().prepareStatement(sql);
-//        var rs = stmt.executeQuery();
-//        while (rs.next()) {
-//            System.out.println(rs.getString("FirstName"));
-//        }
-
         ArrayList<String> customerInfo = new ArrayList<String>();
         customerInfo.add("FirstName");
         customerInfo.add("LastName");
         customerInfo.add("DateOfBirth");
 
         DatabaseConnection x = new DatabaseConnection();
-        x.getConnection("SELECT FirstName, LastName, DateOfBirth from Users where ID in (SELECT UserID from Accounts where AccountNumber = 80000001)",customerInfo);
+        x.runQuery("SELECT FirstName, LastName, DateOfBirth from Users where ID in (SELECT UserID from Accounts where AccountNumber = 80000001)",customerInfo);
     }
 
     public static void accountExists(){
