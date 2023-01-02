@@ -24,6 +24,8 @@ abstract class Account {
 
         DatabaseConnection x = new DatabaseConnection(); //Should move to Program? Only one instance needed.
         x.runQuery("SELECT FirstName, LastName, DateOfBirth from Users where ID in (SELECT UserID from Accounts where AccountNumber = " + accountNumber + " )",customerInfo);
+
+
     }
 
     public String getAccountNumber(){

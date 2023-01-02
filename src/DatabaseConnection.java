@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class DatabaseConnection {
     static String website = "jdbc:sqlserver://SQL8002.site4now.net;database=db_a8cc79_Ewahes";
-    static String username =  "db_a8cc79_Ewahes_admin";
+    static String username = "db_a8cc79_Ewahes_admin";
     static String password = "Fr43yX52kE71";
     public static Connection connection;
 
