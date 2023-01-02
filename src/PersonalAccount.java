@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class PersonalAccount extends Account{
-
     private Boolean validPersonalID;
     private Boolean validAddressID;
 
