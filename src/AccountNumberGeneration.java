@@ -11,11 +11,15 @@ import java.util.Random;
 
 public class AccountNumberGeneration
 {
-
+    //Generate Account number.
     public String generateAccountNumber(){
-        return "placeholder";
+        String newAccountNumber = generateEightDigitString();
+        Queries q = new Queries();
+        while (q.checkAccountExists(newAccountNumber)){
+            newAccountNumber = generateEightDigitString();
+        }
+        return newAccountNumber;
     }
-
 
     //Method generate a string consisting of a concatenation of 8 random digits.
     public String generateEightDigitString(){
@@ -36,7 +40,4 @@ public class AccountNumberGeneration
 
         return generatedAccountNumber;
     }
-
-
-
 }

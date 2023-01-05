@@ -34,10 +34,9 @@ public class Queries
     //If connection fails null is returned
     public static ArrayList<String> readQuery(String query, ArrayList columnNames) throws SQLException
     {
+        ArrayList<String> results = new ArrayList<>();
         try
         {
-            ArrayList<String> results = new ArrayList<>(columnNames.size());
-
             DatabaseConnection connection = new DatabaseConnection();
 
             var stmt = connection.getConnection().prepareStatement(query);
@@ -47,17 +46,14 @@ public class Queries
             {
                 for (int i = 0; i < columnNames.size(); i++)
                 {
-                    results.set(i, rs.getString(columnNames.get(i).toString()));
+                    results.add(rs.getString(columnNames.get(i).toString()));
                 }
             }
-
-            return results;
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return results;
     }
 
     // Method queries database to check if an account number exists in database. Returns true if account exists and false otherwise. -CHECK IF CAN USE PREEXISTING METHOD.

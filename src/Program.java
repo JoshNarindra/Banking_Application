@@ -17,14 +17,10 @@ public class Program
     public static void main(String[] args) throws SQLException
     {
         accountExists();
-
-//        AccountNumberGeneration x = new AccountNumberGeneration();
-//        x.generateAccountNumber();
     }
 
     public static void accountExists() throws SQLException
     {
-
         //Initial Menu.
         System.out.println("Welcome to ACME Banking Solutions...");
         System.out.println("\n Does the customer currently have an account with us? \n 1. Yes. \n 2. No. \n 9. Exit.");
@@ -49,7 +45,6 @@ public class Program
 
     public static void customerInfo() throws SQLException
     {
-
         //Input account number with same means as above.
         System.out.println("\n Enter account number:");
         Scanner s2 = new Scanner(System.in);
@@ -64,11 +59,11 @@ public class Program
 
         //Retrieve account details.
         System.out.println("\n Retrieving account details...");
-        Account.retrieveCustomerInfo(accountNumber);
+        ArrayList<String> customerInfo = Account.retrieveCustomerInfo(accountNumber);
 
-        //Display customer info - NEEDS FIXING TO DISPLAY INDIVIDUAL RESULTS.
-        System.out.println("\n Name: ");
-        System.out.println("\n D.O.B: ");
+        //Display customer info - NEEDS FIXING TO DISPLAY INDIVIDUAL RESULTS - TEMPORARILY FIXED
+        System.out.println("\n Name: " + customerInfo.get(0) + " " + customerInfo.get(1));
+        System.out.println("\n D.O.B: " + customerInfo.get(2));
 
         //Display customers accounts with bank - NEEDS FIXING.
         System.out.println("\n Customer Accounts: ");

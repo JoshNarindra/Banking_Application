@@ -23,14 +23,14 @@ abstract class Account
         this.overdraft = overdraft;
     }
 
-    public static void retrieveCustomerInfo(String accountNumber) throws SQLException
+    public static ArrayList retrieveCustomerInfo(String accountNumber) throws SQLException
     {
         ArrayList<String> customerInfo = new ArrayList<>(List.of("FirstName","LastName","DateOfBirth"));
 
         Queries newQuery = new Queries(); //Should move to Program? Only one instance needed.
         ArrayList<String> customerInfoResults = newQuery.readQuery("SELECT FirstName, LastName, DateOfBirth from Users where ID in (SELECT UserID from Accounts where AccountNumber = " + accountNumber + " )",customerInfo);
 
-
+        return customerInfoResults;
     }
 
     public String getAccountNumber()
