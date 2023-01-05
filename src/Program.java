@@ -11,13 +11,16 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Program {
+public class Program
+{
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException
+    {
         accountExists();
     }
 
-    public static void accountExists() throws SQLException {
+    public static void accountExists() throws SQLException
+    {
 
         //Initial Menu.
         System.out.println("Welcome to ACME Banking Solutions...");
@@ -41,7 +44,8 @@ public class Program {
         }
     }
 
-    public static void customerInfo() throws SQLException {
+    public static void customerInfo() throws SQLException
+    {
 
         //Input account number with same means as above.
         System.out.println("\n Enter account number:");
@@ -72,7 +76,8 @@ public class Program {
         x.accountMenu();
     }
 
-    public static void openNewAccount(){
+    public static void openNewAccount()
+    {
 
         //Menu to create an account for new customer.
         System.out.println("Open an account with ACME Banking");
@@ -98,7 +103,8 @@ public class Program {
         }
     }
 
-    public static void exitProgram(){
+    public static void exitProgram()
+    {
         System.out.println("Successfully logged out.");
         System.exit(0);
     }

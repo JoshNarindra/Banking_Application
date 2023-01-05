@@ -97,5 +97,20 @@ public class Queries
         return businessAccount;
     }
 
+    public void deleteAccount(String accountNumber)
+    {
+
+    }
+
+    public void deleteUser(int userID)
+    {
+
+    }
+
+    public void deleteBusiness(int businessID)
+    {
+
+    }
+
 
 }
