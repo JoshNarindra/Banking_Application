@@ -43,7 +43,7 @@ public class DatabaseConnection
     {
         try
         {
-            ArrayList<String> results = new ArrayList<String>(columnNames.size());
+            ArrayList<String> results = new ArrayList<>(columnNames.size());
             connection = DriverManager.getConnection(website, username, password);
 
             var stmt = connection.prepareStatement(query);
