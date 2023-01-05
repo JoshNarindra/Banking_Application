@@ -9,6 +9,17 @@ public class DatabaseConnection
     static String password = "Fr43yX52kE71";
     public static Connection connection;
 
+    //Method returns variable of type connection, which is SQL connection to server.
+    public static Connection getConnection(){
+        try {
+            connection = DriverManager.getConnection(website, username, password);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return connection;
+    }
+
     //Method which runs update queries on the database
     public static void updateQuery(String query) throws SQLException
     {
