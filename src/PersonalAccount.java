@@ -1,10 +1,12 @@
 import java.util.Scanner;
 
-public class PersonalAccount extends Account{
+public class PersonalAccount extends Account
+{
     private Boolean validPersonalID;
     private Boolean validAddressID;
 
-    public PersonalAccount(String accountNumber, String sortCode, float balance, float overdraft, Boolean validPersonalID, Boolean validAddressID){
+    public PersonalAccount(String accountNumber, String sortCode, float balance, float overdraft, Boolean validPersonalID, Boolean validAddressID)
+    {
         super(accountNumber, sortCode, balance, overdraft);
         this.validPersonalID = validPersonalID;
         this.validAddressID = validAddressID;
@@ -12,13 +14,15 @@ public class PersonalAccount extends Account{
 
     //Method to create a personal account.
     @Override
-    public void createAccount(){
+    public void createAccount()
+    {
 
     }
 
     //Menu function for Personal Account.
     @Override
-    public void accountMenu() {
+    public void accountMenu()
+    {
         System.out.println("\n What would the customer like to do? \n 1. Check Balance \n 2. Make a Deposit \n 3. Make a withdrawal \n 4. Set up Direct Debit \n 5. Set Up Standing Order \n 9. Exit");
 
         Scanner s1 = new Scanner(System.in);

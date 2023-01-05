@@ -1,0 +1,322 @@
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_28_12_2022_22_47_[Changes]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_28_12_2022_22_47_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_28_12_2022_22_47_[Changes]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_28_12_2022_22_47_[Changes]/shelved.patch	(revision 71136e294f92db2fed528c8295caadff42206a27)
++++ /dev/null	(revision 71136e294f92db2fed528c8295caadff42206a27)
+@@ -1,79 +0,0 @@
+-Index: src/Account.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>/*\r\nAbstract class Account.\r\n */\r\nabstract class Account {\r\n    private String accountNumber;\r\n    private String sortCode;\r\n    private float balance;\r\n\r\n    public String getAccountNumber(){\r\n        return accountNumber;\r\n    }\r\n\r\n    public String getSortCode(){\r\n        return sortCode;\r\n    }\r\n\r\n    public float getBalance(){\r\n        return getBalance();\r\n    }\r\n\r\n    public void setBalance(float balance){\r\n        this.balance = balance;\r\n    }\r\n\r\n    //Abstract methods for creating accounts should use \"override\" in child classes for each type of account.\r\n    // (Note Are these methods abstract as a result of class being abstract?)\r\n    public void generateAccountNumber(){}\r\n\r\n    public void generateSortCode(){}\r\n\r\n    //accidental duplicate\r\n    public void createAccount(){}\r\n}\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/src/Account.java b/src/Account.java
+---- a/src/Account.java	(revision 17f9566806acd1c2d82ebeda59150c9bf0328f88)
+-+++ b/src/Account.java	(date 1672266752666)
+-@@ -24,7 +24,9 @@
+- 
+-     //Abstract methods for creating accounts should use "override" in child classes for each type of account.
+-     // (Note Are these methods abstract as a result of class being abstract?)
+--    public void generateAccountNumber(){}
+-+    public void generateAccountNumber(){
+-+
+-+    }
+- 
+-     public void generateSortCode(){}
+- 
+-Index: .idea/workspace.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"ff4c1b09-c4a5-42c9-9134-c7e38c5d977e\" name=\"Changes\" comment=\"Added abstract methods for account creation.\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Account.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Account.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Program.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Program.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2JSL54fu2ktI1BDk3LOo7HV2SQx\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"ff4c1b09-c4a5-42c9-9134-c7e38c5d977e\" name=\"Changes\" comment=\"\" />\r\n      <created>1672066355779</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1672066355779</updated>\r\n      <workItem from=\"1672066358101\" duration=\"5246000\" />\r\n      <workItem from=\"1672103908147\" duration=\"60000\" />\r\n      <workItem from=\"1672104969952\" duration=\"121000\" />\r\n      <workItem from=\"1672148124721\" duration=\"7995000\" />\r\n      <workItem from=\"1672228202568\" duration=\"2524000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Initial Class Layout.\">\r\n      <created>1672148787123</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672148787123</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Basic Menu Framework\">\r\n      <created>1672186553273</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672186553273</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Added Menu Framework\">\r\n      <created>1672188041041</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672188041041</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"workspace update\">\r\n      <created>1672188070384</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672188070384</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Minor update.\">\r\n      <created>1672188825949</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672188825949</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Minor update.\">\r\n      <created>1672189009523</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672189009523</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Added abstract methods for account creation.\">\r\n      <created>1672229169763</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672229169763</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Added abstract methods for account creation.\">\r\n      <created>1672229245986</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672229245986</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"9\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Initial Class Layout.\" />\r\n    <MESSAGE value=\"Basic Menu Framework\" />\r\n    <MESSAGE value=\"Added Menu Framework\" />\r\n    <MESSAGE value=\"workspace update\" />\r\n    <MESSAGE value=\"Minor update.\" />\r\n    <MESSAGE value=\"Added abstract methods for account creation.\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Added abstract methods for account creation.\" />\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+---- a/.idea/workspace.xml	(revision 17f9566806acd1c2d82ebeda59150c9bf0328f88)
+-+++ b/.idea/workspace.xml	(date 1672267638383)
+-@@ -4,10 +4,9 @@
+-     <option name="autoReloadType" value="SELECTIVE" />
+-   </component>
+-   <component name="ChangeListManager">
+--    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Added abstract methods for account creation.">
+-+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Added comments. fixed minor bugs">
+-       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-       <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Program.java" afterDir="false" />
+-     </list>
+-     <option name="SHOW_DIALOG" value="false" />
+-     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+-@@ -61,7 +60,8 @@
+-       <workItem from="1672103908147" duration="60000" />
+-       <workItem from="1672104969952" duration="121000" />
+-       <workItem from="1672148124721" duration="7995000" />
+--      <workItem from="1672228202568" duration="2524000" />
+-+      <workItem from="1672228202568" duration="2578000" />
+-+      <workItem from="1672266508408" duration="1119000" />
+-     </task>
+-     <task id="LOCAL-00001" summary="Initial Class Layout.">
+-       <created>1672148787123</created>
+-@@ -119,7 +119,14 @@
+-       <option name="project" value="LOCAL" />
+-       <updated>1672229245986</updated>
+-     </task>
+--    <option name="localTasksCounter" value="9" />
+-+    <task id="LOCAL-00009" summary="Added comments. fixed minor bugs">
+-+      <created>1672230776747</created>
+-+      <option name="number" value="00009" />
+-+      <option name="presentableId" value="LOCAL-00009" />
+-+      <option name="project" value="LOCAL" />
+-+      <updated>1672230776747</updated>
+-+    </task>
+-+    <option name="localTasksCounter" value="10" />
+-     <servers />
+-   </component>
+-   <component name="TypeScriptGeneratedFilesManager">
+-@@ -132,6 +139,7 @@
+-     <MESSAGE value="workspace update" />
+-     <MESSAGE value="Minor update." />
+-     <MESSAGE value="Added abstract methods for account creation." />
+--    <option name="LAST_COMMIT_MESSAGE" value="Added abstract methods for account creation." />
+-+    <MESSAGE value="Added comments. fixed minor bugs" />
+-+    <option name="LAST_COMMIT_MESSAGE" value="Added comments. fixed minor bugs" />
+-   </component>
+- </project>
+-\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_28_12_2022_22_47__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_28_12_2022_22_47__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_28_12_2022_22_47__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_28_12_2022_22_47__Changes_.xml	(revision 71136e294f92db2fed528c8295caadff42206a27)
++++ /dev/null	(revision 71136e294f92db2fed528c8295caadff42206a27)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_28_12_2022_22_47_[Changes]" date="1672267645214" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_12_2022_22_47_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 28/12/2022 22:47 [Changes]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"ff4c1b09-c4a5-42c9-9134-c7e38c5d977e\" name=\"Changes\" comment=\"Database Connection Class update.\">\r\n      <change beforePath=\"$PROJECT_DIR$/src/Account.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Account.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Program.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Program.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">\r\n    <option name=\"selectedUrlAndAccountId\">\r\n      <UrlAndAccount>\r\n        <option name=\"accountId\" value=\"e56f4684-27dc-4235-a5c5-dd35980a8d2e\" />\r\n        <option name=\"url\" value=\"https://github.com/JoshNarindra/Banking_Application.git\" />\r\n      </UrlAndAccount>\r\n    </option>\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2JSL54fu2ktI1BDk3LOo7HV2SQx\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,\r\n    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,\r\n    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,\r\n    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/joshu/IdeaProjects/Banking_Application&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"ff4c1b09-c4a5-42c9-9134-c7e38c5d977e\" name=\"Changes\" comment=\"\" />\r\n      <created>1672066355779</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1672066355779</updated>\r\n      <workItem from=\"1672066358101\" duration=\"5246000\" />\r\n      <workItem from=\"1672103908147\" duration=\"60000\" />\r\n      <workItem from=\"1672104969952\" duration=\"121000\" />\r\n      <workItem from=\"1672148124721\" duration=\"7995000\" />\r\n      <workItem from=\"1672228202568\" duration=\"2578000\" />\r\n      <workItem from=\"1672266508408\" duration=\"6787000\" />\r\n      <workItem from=\"1672583152802\" duration=\"8536000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Initial Class Layout.\">\r\n      <created>1672148787123</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672148787123</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Basic Menu Framework\">\r\n      <created>1672186553273</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672186553273</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Added Menu Framework\">\r\n      <created>1672188041041</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672188041041</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"workspace update\">\r\n      <created>1672188070384</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672188070384</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Minor update.\">\r\n      <created>1672188825949</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672188825949</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Minor update.\">\r\n      <created>1672189009523</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672189009523</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Added abstract methods for account creation.\">\r\n      <created>1672229169763</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672229169763</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Added abstract methods for account creation.\">\r\n      <created>1672229245986</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672229245986</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"Added comments. fixed minor bugs\">\r\n      <created>1672230776747</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672230776747</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"Minor layout changes\">\r\n      <created>1672267689678</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672267689678</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"File name change\">\r\n      <created>1672268217286</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672268217286</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\".\">\r\n      <created>1672268239343</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672268239343</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"Added Menu System to Personal Acc.\">\r\n      <created>1672326525155</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672326525155</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"Updated Menu System to Personal Acc.\">\r\n      <created>1672327260299</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672327260299</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"Updated Menu System to Personal Acc.\">\r\n      <created>1672327397920</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672327397920</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00016\" summary=\"accountMenu() method added to children of account class.\">\r\n      <created>1672327998633</created>\r\n      <option name=\"number\" value=\"00016\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00016\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672327998633</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00017\" summary=\"Added DatabaseConnection Class.\">\r\n      <created>1672420460300</created>\r\n      <option name=\"number\" value=\"00017\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00017\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672420460300</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00018\" summary=\"Added DatabaseConnection Class.\">\r\n      <created>1672420487889</created>\r\n      <option name=\"number\" value=\"00018\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00018\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672420487889</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00019\" summary=\"Updated accounts menus.\">\r\n      <created>1672605561203</created>\r\n      <option name=\"number\" value=\"00019\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00019\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672605561204</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00020\" summary=\"Updated accounts menus.\">\r\n      <created>1672606443775</created>\r\n      <option name=\"number\" value=\"00020\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00020\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672606443775</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00021\" summary=\"Updated accounts menus.\">\r\n      <created>1672606774637</created>\r\n      <option name=\"number\" value=\"00021\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00021\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672606774637</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00022\" summary=\"Added name and DOB variables.\">\r\n      <created>1672606831283</created>\r\n      <option name=\"number\" value=\"00022\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00022\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672606831283</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00023\" summary=\"Added constructor for user class.\">\r\n      <created>1672606965811</created>\r\n      <option name=\"number\" value=\"00023\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00023\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672606965811</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00024\" summary=\"Added constructor for user class.\">\r\n      <created>1672674813823</created>\r\n      <option name=\"number\" value=\"00024\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00024\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672674813823</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00025\" summary=\"Database Connection update.\">\r\n      <created>1672680270871</created>\r\n      <option name=\"number\" value=\"00025\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00025\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672680270871</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00026\" summary=\"Database Connection update.\">\r\n      <created>1672680291715</created>\r\n      <option name=\"number\" value=\"00026\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00026\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672680291715</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00027\" summary=\"getConnection can now run queries\">\r\n      <created>1672684223142</created>\r\n      <option name=\"number\" value=\"00027\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00027\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672684223142</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00028\" summary=\"Database Connection Class update.\">\r\n      <created>1672685227562</created>\r\n      <option name=\"number\" value=\"00028\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00028\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672685227562</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"29\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Initial Class Layout.\" />\r\n    <MESSAGE value=\"Basic Menu Framework\" />\r\n    <MESSAGE value=\"Added Menu Framework\" />\r\n    <MESSAGE value=\"workspace update\" />\r\n    <MESSAGE value=\"Minor update.\" />\r\n    <MESSAGE value=\"Added abstract methods for account creation.\" />\r\n    <MESSAGE value=\"Added comments. fixed minor bugs\" />\r\n    <MESSAGE value=\"Minor layout changes\" />\r\n    <MESSAGE value=\"File name change\" />\r\n    <MESSAGE value=\".\" />\r\n    <MESSAGE value=\"Added Menu System to Personal Acc.\" />\r\n    <MESSAGE value=\"Updated Menu System to Personal Acc.\" />\r\n    <MESSAGE value=\"accountMenu() method added to children of account class.\" />\r\n    <MESSAGE value=\"Added DatabaseConnection Class.\" />\r\n    <MESSAGE value=\"Updated accounts menus.\" />\r\n    <MESSAGE value=\"Added name and DOB variables.\" />\r\n    <MESSAGE value=\"Added constructor for user class.\" />\r\n    <MESSAGE value=\"Fixed connection bug.\" />\r\n    <MESSAGE value=\"Database Connection update.\" />\r\n    <MESSAGE value=\"getConnection can now run queries\" />\r\n    <MESSAGE value=\"Database Connection Class update.\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Database Connection Class update.\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 71136e294f92db2fed528c8295caadff42206a27)
++++ b/.idea/workspace.xml	(date 1672752650786)
+@@ -4,9 +4,11 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Database Connection Class update.">
+-      <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Program.java" afterDir="false" />
++    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Added the crypto module to module options?">
++      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2023_16_34__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2023_16_34__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_12_2022_14_21__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_12_2022_14_21__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -22,19 +24,6 @@
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+-  </component>
+-  <component name="GitHubPullRequestSearchHistory">{
+-  &quot;lastFilter&quot;: {
+-    &quot;state&quot;: &quot;OPEN&quot;
+-  }
+-}</component>
+-  <component name="GithubPullRequestsUISettings">
+-    <option name="selectedUrlAndAccountId">
+-      <UrlAndAccount>
+-        <option name="accountId" value="e56f4684-27dc-4235-a5c5-dd35980a8d2e" />
+-        <option name="url" value="https://github.com/JoshNarindra/Banking_Application.git" />
+-      </UrlAndAccount>
+-    </option>
+   </component>
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
+@@ -47,22 +36,17 @@
+   </component>
+   <component name="PropertiesComponent">{
+   &quot;keyToString&quot;: {
+-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/Users/joshu/IdeaProjects/Banking_Application&quot;,
+     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+ }</component>
+@@ -80,7 +64,6 @@
+       <workItem from="1672148124721" duration="7995000" />
+       <workItem from="1672228202568" duration="2578000" />
+       <workItem from="1672266508408" duration="6787000" />
+-      <workItem from="1672583152802" duration="8536000" />
+     </task>
+     <task id="LOCAL-00001" summary="Initial Class Layout.">
+       <created>1672148787123</created>
+@@ -194,96 +177,23 @@
+       <option name="project" value="LOCAL" />
+       <updated>1672327998633</updated>
+     </task>
+-    <task id="LOCAL-00017" summary="Added DatabaseConnection Class.">
+-      <created>1672420460300</created>
+-      <option name="number" value="00017" />
+-      <option name="presentableId" value="LOCAL-00017" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1672420460300</updated>
+-    </task>
+-    <task id="LOCAL-00018" summary="Added DatabaseConnection Class.">
+-      <created>1672420487889</created>
+-      <option name="number" value="00018" />
+-      <option name="presentableId" value="LOCAL-00018" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1672420487889</updated>
+-    </task>
+-    <task id="LOCAL-00019" summary="Updated accounts menus.">
+-      <created>1672605561203</created>
+-      <option name="number" value="00019" />
+-      <option name="presentableId" value="LOCAL-00019" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1672605561204</updated>
+-    </task>
+-    <task id="LOCAL-00020" summary="Updated accounts menus.">
+-      <created>1672606443775</created>
+-      <option name="number" value="00020" />
+-      <option name="presentableId" value="LOCAL-00020" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1672606443775</updated>
+-    </task>
+-    <task id="LOCAL-00021" summary="Updated accounts menus.">
+-      <created>1672606774637</created>
+-      <option name="number" value="00021" />
+-      <option name="presentableId" value="LOCAL-00021" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1672606774637</updated>
+-    </task>
+-    <task id="LOCAL-00022" summary="Added name and DOB variables.">
+-      <created>1672606831283</created>
+-      <option name="number" value="00022" />
+-      <option name="presentableId" value="LOCAL-00022" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1672606831283</updated>
+-    </task>
+-    <task id="LOCAL-00023" summary="Added constructor for user class.">
+-      <created>1672606965811</created>
+-      <option name="number" value="00023" />
+-      <option name="presentableId" value="LOCAL-00023" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1672606965811</updated>
+-    </task>
+-    <task id="LOCAL-00024" summary="Added constructor for user class.">
+-      <created>1672674813823</created>
+-      <option name="number" value="00024" />
+-      <option name="presentableId" value="LOCAL-00024" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1672674813823</updated>
+-    </task>
+-    <task id="LOCAL-00025" summary="Database Connection update.">
+-      <created>1672680270871</created>
+-      <option name="number" value="00025" />
+-      <option name="presentableId" value="LOCAL-00025" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1672680270871</updated>
+-    </task>
+-    <task id="LOCAL-00026" summary="Database Connection update.">
+-      <created>1672680291715</created>
+-      <option name="number" value="00026" />
+-      <option name="presentableId" value="LOCAL-00026" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1672680291715</updated>
+-    </task>
+-    <task id="LOCAL-00027" summary="getConnection can now run queries">
+-      <created>1672684223142</created>
+-      <option name="number" value="00027" />
+-      <option name="presentableId" value="LOCAL-00027" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1672684223142</updated>
+-    </task>
+-    <task id="LOCAL-00028" summary="Database Connection Class update.">
+-      <created>1672685227562</created>
+-      <option name="number" value="00028" />
+-      <option name="presentableId" value="LOCAL-00028" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1672685227562</updated>
+-    </task>
+-    <option name="localTasksCounter" value="29" />
++    <option name="localTasksCounter" value="17" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+     <option name="version" value="3" />
+   </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
++  </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="Initial Class Layout." />
+     <MESSAGE value="Basic Menu Framework" />
+@@ -298,14 +208,6 @@
+     <MESSAGE value="Added Menu System to Personal Acc." />
+     <MESSAGE value="Updated Menu System to Personal Acc." />
+     <MESSAGE value="accountMenu() method added to children of account class." />
+-    <MESSAGE value="Added DatabaseConnection Class." />
+-    <MESSAGE value="Updated accounts menus." />
+-    <MESSAGE value="Added name and DOB variables." />
+-    <MESSAGE value="Added constructor for user class." />
+-    <MESSAGE value="Fixed connection bug." />
+-    <MESSAGE value="Database Connection update." />
+-    <MESSAGE value="getConnection can now run queries" />
+-    <MESSAGE value="Database Connection Class update." />
+-    <option name="LAST_COMMIT_MESSAGE" value="Database Connection Class update." />
++    <option name="LAST_COMMIT_MESSAGE" value="accountMenu() method added to children of account class." />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"JavacSettings\">\r\n    <option name=\"ADDITIONAL_OPTIONS_OVERRIDE\">\r\n      <module name=\"Banking_Application\" options=\"--add-modules java.sql\" />\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+--- a/.idea/compiler.xml	(revision 71136e294f92db2fed528c8295caadff42206a27)
++++ b/.idea/compiler.xml	(date 1672685975502)
+@@ -2,7 +2,7 @@
+ <project version="4">
+   <component name="JavacSettings">
+     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+-      <module name="Banking_Application" options="--add-modules java.sql" />
++      <module name="Banking_Application" options="--add-modules java.sql,java.xml.crypto" />
+     </option>
+   </component>
+ </project>
+\ No newline at end of file

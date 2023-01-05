@@ -1,13 +1,24 @@
 import java.util.Scanner;
 
-public class BusinessAccount extends Account {
-    public BusinessAccount(String accountNumber, String sortCode, float balance, float overdraft) {
+public class BusinessAccount extends Account
+{
+    private String name;
+
+    public BusinessAccount(String accountNumber, String sortCode, float balance, float overdraft, String name)
+    {
         super(accountNumber, sortCode, balance, overdraft);
+        this.name = name;
+    }
+
+    public String getName()
+    {
+        return name;
     }
 
     //Menu function for business account.
     @Override
-    public void accountMenu() {
+    public void accountMenu()
+    {
         System.out.println("\n What would the customer like to do? \n 1. Check Balance \n 2. Make a Deposit \n 3. Make a withdrawal \n 4. Issue a check \n 9. Exit");
 
         Scanner s1 = new Scanner(System.in);
