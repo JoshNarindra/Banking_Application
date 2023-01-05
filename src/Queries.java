@@ -2,25 +2,44 @@
 //For example cannot call functions inside of Account, BusinessAccount etc. until a query made is made to create an instance
 //Also separates the queries from the connection itself which looks more tidy I think
 
-public class Queries {
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Queries
+{
+    public ArrayList<String> accountsColumns = new ArrayList<String>(List.of("AccountNumber", "SortCode", "UserID", "AccountType", "Balance", "Overdraft"));
+    public ArrayList<String> usersColumns = new ArrayList<String>(List.of("ID", "FirstName", "LastName", "DateOfBirth"));
+    public ArrayList<String> businessesColumns = new ArrayList<String>(List.of("ID", "Name", "AccountNumber"));
 
     //Method takes the account number provided and creates a PersonalAccount object using information from the database
-    public static PersonalAccount retrievePersonalAccount(String accountNumber)
+    public PersonalAccount retrievePersonalAccount(String accountNumber) throws SQLException
     {
         DatabaseConnection connection = new DatabaseConnection();
-        connection.runQuery("SELECT * from Accounts where AccountNumber = " + accountNumber + ");", accountInfo);
+        ArrayList<String> accountInformation = new ArrayList<>(accountsColumns.size());
+        accountInformation = connection.readQuery("SELECT * from Accounts where AccountNumber = " + accountNumber + ");", accountsColumns);
+        PersonalAccount personalAccount = new PersonalAccount(accountInformation.get(0), accountInformation.get(1), Float.parseFloat(accountInformation.get(2)), Float.parseFloat(accountInformation.get(3)), true, true);
+        return personalAccount;
     }
 
     //Method takes the account number provided and creates an ISAAccount object using information from the database
-    public static ISAAccount retrieveISAAccount(String accountNumber)
+    public ISAAccount retrieveISAAccount(String accountNumber) throws SQLException
     {
-
+        DatabaseConnection connection = new DatabaseConnection();
+        ArrayList<String> accountInformation = new ArrayList<>(accountsColumns.size());
+        accountInformation = connection.readQuery("SELECT * from Accounts where AccountNumber = " + accountNumber + ");", accountsColumns);
+        ISAAccount isaAccount = new ISAAccount(accountInformation.get(0), accountInformation.get(1), Float.parseFloat(accountInformation.get(2)), Float.parseFloat(accountInformation.get(3)), true, true);
+        return isaAccount;
     }
 
     //Method takes the account number provided and creates a BusinessAccount object using information from the database
-    public static BusinessAccount retrievePersonalAccount(String accountNumber)
+    public BusinessAccount retrieveBusinessAccount(String accountNumber) throws SQLException
     {
-
+        DatabaseConnection connection = new DatabaseConnection();
+        ArrayList<String> accountInformation = new ArrayList<>(accountsColumns.size());
+        accountInformation = connection.readQuery("SELECT * from Accounts where AccountNumber = " + accountNumber + ");", accountsColumns);
+        BusinessAccount businessAccount = new BusinessAccount(accountInformation.get(0), accountInformation.get(1), Float.parseFloat(accountInformation.get(2)), Float.parseFloat(accountInformation.get(3)), true, true);
+        return businessAccount;
     }
 
     //Method takes the name and date of birth of a person, creates a user in the Users table, and returns the UserID of that user

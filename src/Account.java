@@ -23,7 +23,7 @@ abstract class Account {
         ArrayList<String> customerInfo = new ArrayList<>(List.of("FirstName","LastName","DateOfBirth"));
 
         DatabaseConnection x = new DatabaseConnection(); //Should move to Program? Only one instance needed.
-        x.runQuery("SELECT FirstName, LastName, DateOfBirth from Users where ID in (SELECT UserID from Accounts where AccountNumber = " + accountNumber + " )",customerInfo);
+        ArrayList<String> customerInfoResults = x.readQuery("SELECT FirstName, LastName, DateOfBirth from Users where ID in (SELECT UserID from Accounts where AccountNumber = " + accountNumber + " )",customerInfo);
 
 
     }
