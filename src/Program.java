@@ -91,25 +91,24 @@ public class Program {
 
         //Switch-Case statement for initial menu. - IMPLEMENT FUNCTIONALITY
         switch (menu) {
-            case 1 -> openPersonalAccount();
-            case 2 -> openBusinessAccount();
-            case 3 -> openISAAccount();
+            case 1 -> openPersonalAccount(createUser());
+            case 2 -> openBusinessAccount(createUser());
+            case 3 -> openISAAccount(createUser());
             case 9 -> exitProgram();
         }
     }
 
-    public static void openPersonalAccount() throws SQLException
+    public static void openPersonalAccount(int userID) throws SQLException
     {
         Scanner scanner = new Scanner(System.in);
         Queries newQuery = new Queries();
         AccountNumberGeneration generator = new AccountNumberGeneration();
 
-        int userID = createUser();
         float openingBalance;
 
         if (!(checkTwoOptions("Does the customer have a valid personal ID? \n 1. Yes \n 2. No") && checkTwoOptions("Does the customer have a valid address? \n 1. Yes \n 2. No")))
         {
-            System.out.println("Customer must have valid ID and address to open an account.");
+            System.out.println("Customer must have valid ID and address to open a personal account.");
             accountExists();
         }
 
@@ -134,13 +133,12 @@ public class Program {
         }
     }
 
-    public static void openBusinessAccount() throws SQLException
+    public static void openBusinessAccount(int userID) throws SQLException
     {
         Scanner scanner = new Scanner(System.in);
         Queries newQuery = new Queries();
         AccountNumberGeneration generator = new AccountNumberGeneration();
 
-        int userID = createUser();
         float openingBalance;
         float overdraftAmount;
         String businessName = "-";
@@ -153,7 +151,7 @@ public class Program {
 
         if (!(checkTwoOptions("Does the customer have valid business credentials? \n 1. Yes \n 2. No") && checkTwoOptions("Does the customer have a valid business type? \n 1. Yes \n 2. No")))
         {
-            System.out.println("Customer must have valid business credentials of a valid business type to open an account.");
+            System.out.println("Customer must have valid business credentials of a valid business type to open a business account.");
             accountExists();
         }
 
@@ -177,7 +175,7 @@ public class Program {
 
         if (checkTwoOptions("Confirm account opening? \n 1. Yes \n 2. No"))
         {
-            BusinessAccount businessAccount = newQuery.createBusinessAccount(generator.generateAccountNumber(), "12-20-02", userID, openingBalance, 0.00f, businessName);
+            BusinessAccount businessAccount = newQuery.createBusinessAccount(generator.generateAccountNumber(), "12-20-02", userID, openingBalance, overdraftAmount, businessName);
             System.out.println("Account creation successful.");
             createBusiness(businessAccount);
             businessAccount.accountMenu();
@@ -188,10 +186,39 @@ public class Program {
         }
     }
 
-
-    public static void openISAAccount()
+    public static void openISAAccount(int userID) throws SQLException
     {
+        Scanner scanner = new Scanner(System.in);
+        Queries newQuery = new Queries();
+        AccountNumberGeneration generator = new AccountNumberGeneration();
 
+        float openingBalance;
+
+        if (!(checkTwoOptions("Does the customer have a valid personal ID? \n 1. Yes \n 2. No") && checkTwoOptions("Does the customer meet the age requirements for an ISA account? \n 1. Yes \n 2. No")))
+        {
+            System.out.println("Customer must have valid ID and meet the age requirements to open an ISA account.");
+            accountExists();
+        }
+
+        System.out.println("Enter opening balance: ");
+        openingBalance = scanner.nextFloat();
+
+        while (openingBalance < 0.00f)
+        {
+            System.out.println("Invalid input. Try again.");
+            accountExists();
+        }
+
+        if (checkTwoOptions("Confirm account opening? \n 1. Yes \n 2. No"))
+        {
+            ISAAccount isaAccount = newQuery.createISAAccount(generator.generateAccountNumber(), "12-20-02", userID, openingBalance, 0.00f);
+            System.out.println("Account creation successful.");
+            isaAccount.accountMenu();
+        }
+        else
+        {
+            accountExists();
+        }
     }
 
     public static int createUser() throws SQLException
