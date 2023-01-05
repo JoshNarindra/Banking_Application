@@ -2,14 +2,15 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DatabaseConnection {
+public class DatabaseConnection
+{
     static String website = "jdbc:sqlserver://SQL8002.site4now.net;database=db_a8cc79_Ewahes";
     static String username = "db_a8cc79_Ewahes_admin";
     static String password = "Fr43yX52kE71";
     public static Connection connection;
 
     //Method which runs update queries on the database
-    public static void updateQuery(String query, ArrayList columnNames) throws SQLException
+    public static void updateQuery(String query) throws SQLException
     {
         try
         {
@@ -17,14 +18,6 @@ public class DatabaseConnection {
 
             var stmt = connection.prepareStatement(query);
             var rs = stmt.executeQuery();
-
-            while (rs.next())
-            {
-                for (Object name:columnNames)
-                {
-                    System.out.println(rs.getString(name.toString()));
-                }
-            }
         }
         catch (Exception e)
         {
@@ -61,6 +54,4 @@ public class DatabaseConnection {
         }
         return null;
     }
-
-
 }

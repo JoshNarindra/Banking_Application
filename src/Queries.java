@@ -16,8 +16,8 @@ public class Queries
     public PersonalAccount retrievePersonalAccount(String accountNumber) throws SQLException
     {
         DatabaseConnection connection = new DatabaseConnection();
-        ArrayList<String> accountInformation = new ArrayList<>(accountsColumns.size());
-        accountInformation = connection.readQuery("SELECT * from Accounts where AccountNumber = " + accountNumber + ");", accountsColumns);
+        ArrayList<String> accountInformation;
+        accountInformation = connection.readQuery("SELECT * FROM Accounts where AccountNumber = " + accountNumber + ");", accountsColumns);
         PersonalAccount personalAccount = new PersonalAccount(accountInformation.get(0), accountInformation.get(1), Float.parseFloat(accountInformation.get(2)), Float.parseFloat(accountInformation.get(3)), true, true);
         return personalAccount;
     }
@@ -26,9 +26,9 @@ public class Queries
     public ISAAccount retrieveISAAccount(String accountNumber) throws SQLException
     {
         DatabaseConnection connection = new DatabaseConnection();
-        ArrayList<String> accountInformation = new ArrayList<>(accountsColumns.size());
-        accountInformation = connection.readQuery("SELECT * from Accounts where AccountNumber = " + accountNumber + ");", accountsColumns);
-        ISAAccount isaAccount = new ISAAccount(accountInformation.get(0), accountInformation.get(1), Float.parseFloat(accountInformation.get(2)), Float.parseFloat(accountInformation.get(3)), true, true);
+        ArrayList<String> accountInformation;
+        accountInformation = connection.readQuery("SELECT * FROM Accounts where AccountNumber = " + accountNumber + ");", accountsColumns);
+        ISAAccount isaAccount = new ISAAccount(accountInformation.get(0), accountInformation.get(1), Float.parseFloat(accountInformation.get(2)), Float.parseFloat(accountInformation.get(3)));
         return isaAccount;
     }
 
@@ -36,40 +36,66 @@ public class Queries
     public BusinessAccount retrieveBusinessAccount(String accountNumber) throws SQLException
     {
         DatabaseConnection connection = new DatabaseConnection();
-        ArrayList<String> accountInformation = new ArrayList<>(accountsColumns.size());
-        accountInformation = connection.readQuery("SELECT * from Accounts where AccountNumber = " + accountNumber + ");", accountsColumns);
-        BusinessAccount businessAccount = new BusinessAccount(accountInformation.get(0), accountInformation.get(1), Float.parseFloat(accountInformation.get(2)), Float.parseFloat(accountInformation.get(3)), true, true);
+        ArrayList<String> accountInformation;
+        accountInformation = connection.readQuery("SELECT * FROM Accounts where AccountNumber = " + accountNumber + ");", accountsColumns);
+        BusinessAccount businessAccount = new BusinessAccount(accountInformation.get(0), accountInformation.get(1), Float.parseFloat(accountInformation.get(2)), Float.parseFloat(accountInformation.get(3)), retrieveBusinessName(accountNumber));
         return businessAccount;
+    }
+
+    public String retrieveBusinessName(String accountNumber) throws SQLException
+    {
+        DatabaseConnection connection = new DatabaseConnection();
+        ArrayList<String> businessInformation;
+        businessInformation = connection.readQuery("SELECT * FROM Businesses where AccountNumber = " + accountNumber + ");", businessesColumns);
+        String businessName = businessInformation.get(1);
+        return businessName;
     }
 
     //Method takes the name and date of birth of a person, creates a user in the Users table, and returns the UserID of that user
     //This UserID can then be used as an argument for the createAccount method
-    public static int createUser(String firstName, String lastName, int birthDay, int birthMonth, int birthYear)
+    public int createUser(String firstName, String lastName, String dateOfBirth) throws SQLException
     {
-
-    }
-
-    //Method takes the relevant information and creates a personal account, before returning the account itself as an object
-    public static PersonalAccount createPersonalAccount(int userID, float balance, float overdraft)
-    {
-
-    }
-
-    //Method takes the relevant information and creates an ISA account, before returning the account itself as an object
-    public static ISAAccount createISAAccount(int userID, float balance, float overdraft)
-    {
-
-    }
-
-    //Method takes the relevant information and creates a business account, before returning the account itself as an object
-    public static BusinessAccount createBusinessAccount(int userID, float balance, float overdraft, String businessName)
-    {
-
+        DatabaseConnection connection = new DatabaseConnection();
+        ArrayList<String> userInformation = null;
+        connection.updateQuery("INSERT INTO Users (FirstName, LastName, DateOfBirth) VALUES (" + firstName + ", " + lastName + ", " + dateOfBirth + ");");
+        connection.readQuery("SELECT * FROM Accounts WHERE FirstName = " + firstName + ", LastName = " + lastName + ", DateOfBirth = " + dateOfBirth + ");", accountsColumns);
+        int userID = Integer.parseInt(userInformation.get(0));
+        return userID;
     }
 
     //Method takes a created BusinessAccount and uses it to create a new business in the Businesses table
-    public static void createBusiness(BusinessAccount account)
+    public static void createBusiness(BusinessAccount account) throws SQLException
     {
-
+        DatabaseConnection connection = new DatabaseConnection();
+        connection.updateQuery("INSERT INTO Businesses (Name, AccountNumber) VALUES (" + account.getName() + ", " + account.getAccountNumber() + ");");
     }
+
+    //Method takes the relevant information and creates a personal account, before returning the account itself as an object
+    public PersonalAccount createPersonalAccount(String accountNumber, String sortCode, int userID, float balance, float overdraft) throws SQLException
+    {
+        DatabaseConnection connection = new DatabaseConnection();
+        connection.updateQuery("INSERT INTO Accounts VALUES (" + accountNumber + ", " + sortCode + ", " + userID + ", " + "Personal" + ", " + balance + ", " + overdraft + ");");
+        PersonalAccount personalAccount = retrievePersonalAccount(accountNumber);
+        return personalAccount;
+    }
+
+    //Method takes the relevant information and creates an ISA account, before returning the account itself as an object
+    public ISAAccount createISAAccount(String accountNumber, String sortCode, int userID, float balance, float overdraft) throws SQLException
+    {
+        DatabaseConnection connection = new DatabaseConnection();
+        connection.updateQuery("INSERT INTO Accounts VALUES (" + accountNumber + ", " + sortCode + ", " + userID + ", " + "ISA" + ", " + balance + ", " + overdraft + ");");
+        ISAAccount isaAccount = retrieveISAAccount(accountNumber);
+        return isaAccount;
+    }
+
+    //Method takes the relevant information and creates a business account, before returning the account itself as an object
+    public BusinessAccount createBusinessAccount(String accountNumber, String sortCode, int userID, float balance, float overdraft, String businessName) throws SQLException
+    {
+        DatabaseConnection connection = new DatabaseConnection();
+        connection.updateQuery("INSERT INTO Accounts VALUES (" + accountNumber + ", " + sortCode + ", " + userID + ", " + "Business" + ", " + balance + ", " + overdraft + ");");
+        BusinessAccount businessAccount = retrieveBusinessAccount(accountNumber);
+        return businessAccount;
+    }
+
+
 }

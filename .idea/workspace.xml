@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Added framework for methods which need to query the database before there are any instances of an account (for example queries to create users, create accounts etc.). These are contained in a separate Queries class for tidiness.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account.java" afterDir="false" />
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Wrote methods which return objects of type PersonalAccount, ISAAccount and BusinessAccount based on database queries.">
+      <change beforePath="$PROJECT_DIR$/src/BusinessAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DatabaseConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Queries.java" afterDir="false" />
     </list>
@@ -287,7 +286,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672876821396</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Wrote methods which return objects of type PersonalAccount, ISAAccount and BusinessAccount based on database queries.">
+      <created>1672879311823</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1672879311823</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -327,6 +333,7 @@
     <MESSAGE value="getConnection can now run queries" />
     <MESSAGE value="Database Connection Class update." />
     <MESSAGE value="Added framework for methods which need to query the database before there are any instances of an account (for example queries to create users, create accounts etc.). These are contained in a separate Queries class for tidiness." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added framework for methods which need to query the database before there are any instances of an account (for example queries to create users, create accounts etc.). These are contained in a separate Queries class for tidiness." />
+    <MESSAGE value="Wrote methods which return objects of type PersonalAccount, ISAAccount and BusinessAccount based on database queries." />
+    <option name="LAST_COMMIT_MESSAGE" value="Wrote methods which return objects of type PersonalAccount, ISAAccount and BusinessAccount based on database queries." />
   </component>
 </project>
