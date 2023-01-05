@@ -11,16 +11,19 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Program {
+public class Program
+{
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException
+    {
         accountExists();
 
 //        AccountNumberGeneration x = new AccountNumberGeneration();
 //        x.generateAccountNumber();
     }
 
-    public static void accountExists() throws SQLException {
+    public static void accountExists() throws SQLException
+    {
 
         //Initial Menu.
         System.out.println("Welcome to ACME Banking Solutions...");
@@ -44,7 +47,8 @@ public class Program {
         }
     }
 
-    public static void customerInfo() throws SQLException {
+    public static void customerInfo() throws SQLException
+    {
 
         //Input account number with same means as above.
         System.out.println("\n Enter account number:");
