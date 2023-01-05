@@ -1,0 +1,259 @@
+Index: src/AccountNumberGeneration.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class AccountNumberGeneration\r\n{\r\n    public String generateAccountNumber()\r\n    {\r\n        // First generate random 8-digit number\r\n        // Then query the database for an account of that number\r\n        // If no such account exists then it's cool\r\n        // If the account exists then generate another random 8-digit (could be done using while loop)\r\n        return \"placeholder\";\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/AccountNumberGeneration.java b/src/AccountNumberGeneration.java
+--- a/src/AccountNumberGeneration.java	(revision c564f1c9d5592facf083fa093e4b2dc2c9fe3737)
++++ b/src/AccountNumberGeneration.java	(date 1672939606342)
+@@ -1,11 +1,65 @@
++/*
++Class AccountNumberGenerator generates an 8 digit UK Format Account Number.
++
++The
++
++ */
++
++//Imports
++import java.util.ArrayList;
++import java.util.Random;
++
+ public class AccountNumberGeneration
+ {
++    //Method creates a string consisting of a concatenation of 8 random digits.
+     public String generateAccountNumber()
+     {
+         // First generate random 8-digit number
++
++        Random rand = new Random();
++        ArrayList<String> accountNumberArray = new ArrayList<String>();
++        String generatedAccountNumber = "";
++
++        for (int i=0; i<8; i++){
++            //Generate random digit.
++            int randomDigit = rand.nextInt(10);
++
++            //Add each digit to Arraylist
++            accountNumberArray.add(Integer.toString(randomDigit));
++        }
++
++        for (String digit: accountNumberArray) {
++            generatedAccountNumber = generatedAccountNumber+digit;
++        }
++
++        System.out.println(generatedAccountNumber);
++
+         // Then query the database for an account of that number
++        DatabaseConnection x = new DatabaseConnection();
++
++        //String query = "select COUNT(1) from Accounts where AccountNumber = '" + generatedAccountNumber + "';";
++        String query = "select COUNT(1) from Accounts where AccountNumber = '80000001';";
++
++        try {
++            var stmt = x.getConnection().prepareStatement(query);
++            var rs = stmt.executeQuery();
++
++            while (rs.next()) {
++                if (rs.getInt(1) == 1) {
++                    System.out.println("Account Number already exists in database");
++                } else {
++                    System.out.println("Account Number does not exist in database.");
++                }
++            }
++        }
++        catch (Exception e ){
++            e.printStackTrace();
++        }
++
+         // If no such account exists then it's cool
+         // If the account exists then generate another random 8-digit (could be done using while loop)
++
++
+         return "placeholder";
+     }
+ }
+Index: src/Program.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/*\r\nMain Program Class.\r\n */\r\n\r\n//imports\r\nimport javax.xml.crypto.Data;\r\nimport java.sql.PreparedStatement;\r\nimport java.util.ArrayList;\r\nimport java.util.Scanner;\r\nimport java.sql.Connection;\r\nimport java.sql.DriverManager;\r\nimport java.sql.SQLException;\r\n\r\npublic class Program\r\n{\r\n\r\n    public static void main(String[] args) throws SQLException\r\n    {\r\n        accountExists();\r\n    }\r\n\r\n    public static void accountExists() throws SQLException\r\n    {\r\n\r\n        //Initial Menu.\r\n        System.out.println(\"Welcome to ACME Banking Solutions...\");\r\n        System.out.println(\"\\n Does the customer currently have an account with us? \\n 1. Yes. \\n 2. No. \\n 9. Exit.\");\r\n\r\n        //Scanner to read bank tellers input for user choice.\r\n        Scanner s1 = new Scanner(System.in);\r\n        int menu = s1.nextInt();\r\n\r\n        //Re-prompting the teller for input until either 1 or 2 is inputted.\r\n        while (menu != 1 && menu != 2 && menu != 9){\r\n            System.out.println(\"Invalid input. Try again.\");\r\n            menu = s1.nextInt();\r\n        }\r\n\r\n        //Switch-Case statement for initial menu.\r\n        switch (menu) {\r\n            case 1 -> customerInfo();\r\n            case 2 -> openNewAccount();\r\n            case 9 -> exitProgram();\r\n        }\r\n    }\r\n\r\n    public static void customerInfo() throws SQLException\r\n    {\r\n\r\n        //Input account number with same means as above.\r\n        System.out.println(\"\\n Enter account number:\");\r\n        Scanner s2 = new Scanner(System.in);\r\n        String accountNumber = s2.nextLine();\r\n\r\n        //Re-prompting the teller for input until an account number of correct length is inputted.\r\n        while (accountNumber.length() != 8)\r\n        {\r\n            System.out.println(\"\\n Invalid input. Try again.\");\r\n            accountNumber = s2.nextLine();\r\n        }\r\n        System.out.println(accountNumber);\r\n\r\n        //Retrieve account details.\r\n        System.out.println(\"\\n Retrieving account details...\");\r\n        Account.retrieveCustomerInfo(accountNumber);\r\n\r\n        //Display customer info.\r\n        System.out.println(\"\\n Name: \");\r\n        System.out.println(\"\\n D.O.B: \");\r\n\r\n        //Display customers accounts with bank.\r\n        System.out.println(\"\\n Customer Accounts: \");\r\n\r\n        //Option to allow current customer to open new account.\r\n        PersonalAccount x = new PersonalAccount(\"12312434\",\"090109\", 45.45f, 0.00f, true,true);\r\n        x.accountMenu();\r\n    }\r\n\r\n    public static void openNewAccount()\r\n    {\r\n\r\n        //Menu to create an account for new customer.\r\n        System.out.println(\"Open an account with ACME Banking\");\r\n        System.out.println(\" 1. Open a personal account. \\n 2. Open a business account. \\n 3. Open an ISA Account. \\n 9. Exit.\");\r\n\r\n        //Scanner to read bank tellers input for user menu choice.\r\n        Scanner s3 = new Scanner(System.in);\r\n        int menu = s3.nextInt();\r\n\r\n        //Re-prompting the teller for input until either 1, 2 or 3 is inputted.\r\n        while (menu != 1 && menu != 2 && menu != 3 && menu != 9)\r\n        {\r\n            System.out.println(\"Invalid input. Try again.\");\r\n            menu = s3.nextInt();\r\n        }\r\n\r\n        //Switch-Case statement for initial menu.\r\n        switch (menu) {\r\n            case 1 -> System.out.println(\"Placeholder for personal account creation\");\r\n            case 2 -> System.out.println(\"Placeholder for business account creation\");\r\n            case 3 -> System.out.println(\"Placeholder for ISA account creation\");\r\n            case 9 -> exitProgram();\r\n        }\r\n    }\r\n\r\n    public static void exitProgram()\r\n    {\r\n        System.out.println(\"Successfully logged out.\");\r\n        System.exit(0);\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Program.java b/src/Program.java
+--- a/src/Program.java	(revision c564f1c9d5592facf083fa093e4b2dc2c9fe3737)
++++ b/src/Program.java	(date 1672938278961)
+@@ -16,7 +16,10 @@
+ 
+     public static void main(String[] args) throws SQLException
+     {
+-        accountExists();
++        //accountExists();
++
++        AccountNumberGeneration x = new AccountNumberGeneration();
++        x.generateAccountNumber();
+     }
+ 
+     public static void accountExists() throws SQLException
+Index: src/Account.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/*\r\nAbstract class Account.\r\n */\r\n\r\nimport java.sql.SQLException;\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\nabstract class Account\r\n{\r\n    private String accountNumber;\r\n    private String sortCode;\r\n    private float balance;\r\n    private float overdraft;\r\n\r\n    public Account(String accountNumber, String sortCode, float balance, float overdraft)\r\n    {\r\n        this.accountNumber = accountNumber;\r\n        this.sortCode = sortCode;\r\n        this.balance = balance;\r\n        this.overdraft = overdraft;\r\n    }\r\n\r\n    public static void retrieveCustomerInfo(String accountNumber) throws SQLException\r\n    {\r\n        ArrayList<String> customerInfo = new ArrayList<>(List.of(\"FirstName\",\"LastName\",\"DateOfBirth\"));\r\n\r\n        DatabaseConnection x = new DatabaseConnection(); //Should move to Program? Only one instance needed.\r\n        ArrayList<String> customerInfoResults = x.readQuery(\"SELECT FirstName, LastName, DateOfBirth from Users where ID in (SELECT UserID from Accounts where AccountNumber = \" + accountNumber + \" )\",customerInfo);\r\n\r\n\r\n    }\r\n\r\n    public String getAccountNumber()\r\n    {\r\n        return accountNumber;\r\n    }\r\n\r\n    public String getSortCode()\r\n    {\r\n        return sortCode;\r\n    }\r\n\r\n    public float getBalance()\r\n    {\r\n        return balance;\r\n    }\r\n\r\n    public void setBalance(float balance)\r\n    {\r\n        this.balance = balance;\r\n    }\r\n\r\n    // Function deposit which calls getBalance and setBalance to increment balance\r\n    public void deposit(float increment) throws SQLException\r\n    {\r\n        float newBalance = getBalance() + increment;\r\n        setBalance(newBalance);\r\n        this.updateDatabaseInformation();\r\n    }\r\n\r\n    // Function withdraw which calls getBalance and setBalance to decrement balance\r\n    public void withdraw(float decrement) throws SQLException\r\n    {\r\n        float newBalance = getBalance() - decrement;\r\n        setBalance(newBalance);\r\n        this.updateDatabaseInformation();\r\n    }\r\n\r\n    // Function transfer which takes two accounts and an amount as an argument and transfers money between the two\r\n\r\n    public void transfer(float amount, Account payee, Account recipient)\r\n    {\r\n\r\n    }\r\n\r\n\r\n    // Abstract method to display menu system for account.\r\n    abstract void accountMenu();\r\n\r\n    //Abstract methods for creating accounts should use \"override\" in child classes for each type of account.\r\n    // (Note Are these methods abstract as a result of class being abstract?)\r\n\r\n    public void generateSortCode(){}\r\n\r\n    //accidental duplicate\r\n    public void createAccount(){}\r\n\r\n    //Method which updates the database so that changes made to the Account object are reflected in the relevant table\r\n    //In other words the method synchronizes the program with the database\r\n    public void updateDatabaseInformation() throws SQLException\r\n    {\r\n        DatabaseConnection connection = new DatabaseConnection();\r\n        connection.updateQuery(\"UPDATE Accounts SET Balance = \" + balance + \", Overdraft = \" + overdraft + \"WHERE AccountNumber = \" + accountNumber + \";\");\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Account.java b/src/Account.java
+--- a/src/Account.java	(revision c564f1c9d5592facf083fa093e4b2dc2c9fe3737)
++++ b/src/Account.java	(date 1672936627695)
+@@ -2,6 +2,7 @@
+ Abstract class Account.
+  */
+ 
++
+ import java.sql.SQLException;
+ import java.util.ArrayList;
+ import java.util.List;
+Index: src/DatabaseConnection.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.sql.*;\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic class DatabaseConnection\r\n{\r\n    static String website = \"jdbc:sqlserver://SQL8002.site4now.net;database=db_a8cc79_Ewahes\";\r\n    static String username = \"db_a8cc79_Ewahes_admin\";\r\n    static String password = \"Fr43yX52kE71\";\r\n    public static Connection connection;\r\n\r\n    //Method returns variable of type connection, which is SQL connection to server.\r\n    public static Connection getConnection(){\r\n        try {\r\n            connection = DriverManager.getConnection(website, username, password);\r\n        }\r\n        catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n        return connection;\r\n    }\r\n\r\n    //Method which runs update queries on the database\r\n    public static void updateQuery(String query) throws SQLException\r\n    {\r\n        try\r\n        {\r\n            connection = DriverManager.getConnection(website, username, password);\r\n\r\n            var stmt = connection.prepareStatement(query);\r\n            var rs = stmt.executeQuery();\r\n        }\r\n        catch (Exception e)\r\n        {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    //Method which runs read queries on the database\r\n    //Returns results an ArrayList of strings which contain the results from the table\r\n    //If connection fails null is returned\r\n    public static ArrayList<String> readQuery(String query, ArrayList columnNames) throws SQLException\r\n    {\r\n        try\r\n        {\r\n            ArrayList<String> results = new ArrayList<String>(columnNames.size());\r\n            connection = DriverManager.getConnection(website, username, password);\r\n\r\n            var stmt = connection.prepareStatement(query);\r\n            var rs = stmt.executeQuery();\r\n\r\n            while (rs.next())\r\n            {\r\n                for (int i = 0; i < columnNames.size(); i++)\r\n                {\r\n                    results.set(i, rs.getString(columnNames.get(i).toString()));\r\n                }\r\n            }\r\n\r\n            return results;\r\n        }\r\n        catch (Exception e)\r\n        {\r\n            e.printStackTrace();\r\n        }\r\n        return null;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/DatabaseConnection.java b/src/DatabaseConnection.java
+--- a/src/DatabaseConnection.java	(revision c564f1c9d5592facf083fa093e4b2dc2c9fe3737)
++++ b/src/DatabaseConnection.java	(date 1672940850742)
+@@ -9,16 +9,16 @@
+     static String password = "Fr43yX52kE71";
+     public static Connection connection;
+ 
+-    //Method returns variable of type connection, which is SQL connection to server.
+-    public static Connection getConnection(){
+-        try {
+-            connection = DriverManager.getConnection(website, username, password);
+-        }
+-        catch (Exception e) {
+-            e.printStackTrace();
+-        }
+-        return connection;
+-    }
++//    //Method returns variable of type connection, which is SQL connection to server.
++//    public static Connection getConnection(){
++//        try {
++//            connection = DriverManager.getConnection(website, username, password);
++//        }
++//        catch (Exception e) {
++//            e.printStackTrace();
++//        }
++//        return connection;
++//    }
+ 
+     //Method which runs update queries on the database
+     public static void updateQuery(String query) throws SQLException
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"ff4c1b09-c4a5-42c9-9134-c7e38c5d977e\" name=\"Changes\" comment=\"Database Connection Class update.\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Account.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Account.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/DatabaseConnection.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/DatabaseConnection.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">\r\n    <option name=\"selectedUrlAndAccountId\">\r\n      <UrlAndAccount>\r\n        <option name=\"accountId\" value=\"e56f4684-27dc-4235-a5c5-dd35980a8d2e\" />\r\n        <option name=\"url\" value=\"https://github.com/JoshNarindra/Banking_Application.git\" />\r\n      </UrlAndAccount>\r\n    </option>\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2JSL54fu2ktI1BDk3LOo7HV2SQx\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Downloaded.Files.Path.Enabled\": \"false\",\r\n    \"Repository.Attach.Annotations\": \"false\",\r\n    \"Repository.Attach.JavaDocs\": \"false\",\r\n    \"Repository.Attach.Sources\": \"false\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"last_opened_file_path\": \"C:/Users/joshu/IdeaProjects/JavaFXLogin\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"project.structure.last.edited\": \"Libraries\",\r\n    \"project.structure.proportion\": \"0.0\",\r\n    \"project.structure.side.proportion\": \"0.2\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"ff4c1b09-c4a5-42c9-9134-c7e38c5d977e\" name=\"Changes\" comment=\"\" />\r\n      <created>1672066355779</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1672066355779</updated>\r\n      <workItem from=\"1672066358101\" duration=\"5246000\" />\r\n      <workItem from=\"1672103908147\" duration=\"60000\" />\r\n      <workItem from=\"1672104969952\" duration=\"121000\" />\r\n      <workItem from=\"1672148124721\" duration=\"7995000\" />\r\n      <workItem from=\"1672228202568\" duration=\"2578000\" />\r\n      <workItem from=\"1672266508408\" duration=\"6787000\" />\r\n      <workItem from=\"1672583152802\" duration=\"8536000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Initial Class Layout.\">\r\n      <created>1672148787123</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672148787123</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Basic Menu Framework\">\r\n      <created>1672186553273</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672186553273</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Added Menu Framework\">\r\n      <created>1672188041041</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672188041041</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"workspace update\">\r\n      <created>1672188070384</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672188070384</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Minor update.\">\r\n      <created>1672188825949</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672188825949</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Minor update.\">\r\n      <created>1672189009523</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672189009523</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Added abstract methods for account creation.\">\r\n      <created>1672229169763</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672229169763</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Added abstract methods for account creation.\">\r\n      <created>1672229245986</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672229245986</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"Added comments. fixed minor bugs\">\r\n      <created>1672230776747</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672230776747</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"Minor layout changes\">\r\n      <created>1672267689678</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672267689678</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"File name change\">\r\n      <created>1672268217286</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672268217286</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\".\">\r\n      <created>1672268239343</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672268239343</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"Added Menu System to Personal Acc.\">\r\n      <created>1672326525155</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672326525155</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"Updated Menu System to Personal Acc.\">\r\n      <created>1672327260299</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672327260299</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"Updated Menu System to Personal Acc.\">\r\n      <created>1672327397920</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672327397920</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00016\" summary=\"accountMenu() method added to children of account class.\">\r\n      <created>1672327998633</created>\r\n      <option name=\"number\" value=\"00016\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00016\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672327998633</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00017\" summary=\"Added DatabaseConnection Class.\">\r\n      <created>1672420460300</created>\r\n      <option name=\"number\" value=\"00017\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00017\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672420460300</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00018\" summary=\"Added DatabaseConnection Class.\">\r\n      <created>1672420487889</created>\r\n      <option name=\"number\" value=\"00018\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00018\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672420487889</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00019\" summary=\"Updated accounts menus.\">\r\n      <created>1672605561203</created>\r\n      <option name=\"number\" value=\"00019\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00019\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672605561204</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00020\" summary=\"Updated accounts menus.\">\r\n      <created>1672606443775</created>\r\n      <option name=\"number\" value=\"00020\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00020\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672606443775</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00021\" summary=\"Updated accounts menus.\">\r\n      <created>1672606774637</created>\r\n      <option name=\"number\" value=\"00021\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00021\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672606774637</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00022\" summary=\"Added name and DOB variables.\">\r\n      <created>1672606831283</created>\r\n      <option name=\"number\" value=\"00022\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00022\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672606831283</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00023\" summary=\"Added constructor for user class.\">\r\n      <created>1672606965811</created>\r\n      <option name=\"number\" value=\"00023\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00023\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672606965811</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00024\" summary=\"Added constructor for user class.\">\r\n      <created>1672674813823</created>\r\n      <option name=\"number\" value=\"00024\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00024\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672674813823</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00025\" summary=\"Database Connection update.\">\r\n      <created>1672680270871</created>\r\n      <option name=\"number\" value=\"00025\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00025\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672680270871</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00026\" summary=\"Database Connection update.\">\r\n      <created>1672680291715</created>\r\n      <option name=\"number\" value=\"00026\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00026\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672680291715</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00027\" summary=\"getConnection can now run queries\">\r\n      <created>1672684223142</created>\r\n      <option name=\"number\" value=\"00027\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00027\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672684223142</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00028\" summary=\"Database Connection Class update.\">\r\n      <created>1672685227562</created>\r\n      <option name=\"number\" value=\"00028\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00028\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672685227562</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00029\" summary=\"Database Connection Class update.\">\r\n      <created>1672685934261</created>\r\n      <option name=\"number\" value=\"00029\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00029\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672685934261</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00030\" summary=\"Database Connection Class update.\">\r\n      <created>1672687214597</created>\r\n      <option name=\"number\" value=\"00030\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00030\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672687214597</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"31\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Initial Class Layout.\" />\r\n    <MESSAGE value=\"Basic Menu Framework\" />\r\n    <MESSAGE value=\"Added Menu Framework\" />\r\n    <MESSAGE value=\"workspace update\" />\r\n    <MESSAGE value=\"Minor update.\" />\r\n    <MESSAGE value=\"Added abstract methods for account creation.\" />\r\n    <MESSAGE value=\"Added comments. fixed minor bugs\" />\r\n    <MESSAGE value=\"Minor layout changes\" />\r\n    <MESSAGE value=\"File name change\" />\r\n    <MESSAGE value=\".\" />\r\n    <MESSAGE value=\"Added Menu System to Personal Acc.\" />\r\n    <MESSAGE value=\"Updated Menu System to Personal Acc.\" />\r\n    <MESSAGE value=\"accountMenu() method added to children of account class.\" />\r\n    <MESSAGE value=\"Added DatabaseConnection Class.\" />\r\n    <MESSAGE value=\"Updated accounts menus.\" />\r\n    <MESSAGE value=\"Added name and DOB variables.\" />\r\n    <MESSAGE value=\"Added constructor for user class.\" />\r\n    <MESSAGE value=\"Fixed connection bug.\" />\r\n    <MESSAGE value=\"Database Connection update.\" />\r\n    <MESSAGE value=\"getConnection can now run queries\" />\r\n    <MESSAGE value=\"Database Connection Class update.\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Database Connection Class update.\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision c564f1c9d5592facf083fa093e4b2dc2c9fe3737)
++++ b/.idea/workspace.xml	(date 1672940851343)
+@@ -4,10 +4,12 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Database Connection Class update.">
++    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Added getConnection method to Database connection class.">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/AccountNumberGeneration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AccountNumberGeneration.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DatabaseConnection.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Program.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -46,27 +48,27 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "Downloaded.Files.Path.Enabled": "false",
+-    "Repository.Attach.Annotations": "false",
+-    "Repository.Attach.JavaDocs": "false",
+-    "Repository.Attach.Sources": "false",
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "last_opened_file_path": "C:/Users/joshu/IdeaProjects/JavaFXLogin",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "project.structure.last.edited": "Libraries",
+-    "project.structure.proportion": "0.0",
+-    "project.structure.side.proportion": "0.2",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
++    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
++    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
++    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/joshu/IdeaProjects/JavaFXLogin&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+@@ -293,7 +295,21 @@
+       <option name="project" value="LOCAL" />
+       <updated>1672687214597</updated>
+     </task>
+-    <option name="localTasksCounter" value="31" />
++    <task id="LOCAL-00031" summary="removed user class.">
++      <created>1672935643057</created>
++      <option name="number" value="00031" />
++      <option name="presentableId" value="LOCAL-00031" />
++      <option name="project" value="LOCAL" />
++      <updated>1672935643057</updated>
++    </task>
++    <task id="LOCAL-00032" summary="Added getConnection method to Database connection class.">
++      <created>1672940320939</created>
++      <option name="number" value="00032" />
++      <option name="presentableId" value="LOCAL-00032" />
++      <option name="project" value="LOCAL" />
++      <updated>1672940320939</updated>
++    </task>
++    <option name="localTasksCounter" value="33" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -321,6 +337,8 @@
+     <MESSAGE value="Database Connection update." />
+     <MESSAGE value="getConnection can now run queries" />
+     <MESSAGE value="Database Connection Class update." />
+-    <option name="LAST_COMMIT_MESSAGE" value="Database Connection Class update." />
++    <MESSAGE value="removed user class." />
++    <MESSAGE value="Added getConnection method to Database connection class." />
++    <option name="LAST_COMMIT_MESSAGE" value="Added getConnection method to Database connection class." />
+   </component>
+ </project>
+\ No newline at end of file

@@ -14,10 +14,7 @@ public class PersonalAccount extends Account
 
     //Method to create a personal account.
     @Override
-    public void createAccount()
-    {
-
-    }
+    public void createAccount() {}
 
     //Menu function for Personal Account.
     @Override

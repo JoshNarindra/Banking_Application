@@ -2,6 +2,7 @@
 //For example cannot call functions inside of Account, BusinessAccount etc. until a query made is made to create an instance
 //Also separates the queries from the connection itself which looks more tidy I think
 
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,12 +13,58 @@ public class Queries
     public ArrayList<String> usersColumns = new ArrayList<>(List.of("ID", "FirstName", "LastName", "DateOfBirth"));
     public ArrayList<String> businessesColumns = new ArrayList<>(List.of("ID", "Name", "AccountNumber"));
 
+    //Method which runs update queries on the database
+    public static void updateQuery(String query) throws SQLException
+    {
+        try
+        {
+            DatabaseConnection connection = new DatabaseConnection();
+
+            var stmt = connection.getConnection().prepareStatement(query);
+            stmt.executeQuery();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    //Method which runs read queries on the database
+    //Returns results an ArrayList of strings which contain the results from the table
+    //If connection fails null is returned
+    public static ArrayList<String> readQuery(String query, ArrayList columnNames) throws SQLException
+    {
+        try
+        {
+            ArrayList<String> results = new ArrayList<>(columnNames.size());
+
+            DatabaseConnection connection = new DatabaseConnection();
+
+            var stmt = connection.getConnection().prepareStatement(query);
+            var rs = stmt.executeQuery();
+
+            while (rs.next())
+            {
+                for (int i = 0; i < columnNames.size(); i++)
+                {
+                    results.set(i, rs.getString(columnNames.get(i).toString()));
+                }
+            }
+
+            return results;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     //Method takes the account number provided and creates a PersonalAccount object using information from the database
     public PersonalAccount retrievePersonalAccount(String accountNumber) throws SQLException
     {
-        DatabaseConnection connection = new DatabaseConnection();
         ArrayList<String> accountInformation;
-        accountInformation = connection.readQuery("SELECT * FROM Accounts where AccountNumber = " + accountNumber + ");", accountsColumns);
+        accountInformation = this.readQuery("SELECT * FROM Accounts where AccountNumber = " + accountNumber + ");", accountsColumns);
         PersonalAccount personalAccount = new PersonalAccount(accountInformation.get(0), accountInformation.get(1), Float.parseFloat(accountInformation.get(2)), Float.parseFloat(accountInformation.get(3)), true, true);
         return personalAccount;
     }
@@ -25,9 +72,8 @@ public class Queries
     //Method takes the account number provided and creates an ISAAccount object using information from the database
     public ISAAccount retrieveISAAccount(String accountNumber) throws SQLException
     {
-        DatabaseConnection connection = new DatabaseConnection();
         ArrayList<String> accountInformation;
-        accountInformation = connection.readQuery("SELECT * FROM Accounts where AccountNumber = " + accountNumber + ");", accountsColumns);
+        accountInformation = this.readQuery("SELECT * FROM Accounts where AccountNumber = " + accountNumber + ");", accountsColumns);
         ISAAccount isaAccount = new ISAAccount(accountInformation.get(0), accountInformation.get(1), Float.parseFloat(accountInformation.get(2)), Float.parseFloat(accountInformation.get(3)));
         return isaAccount;
     }
@@ -35,18 +81,16 @@ public class Queries
     //Method takes the account number provided and creates a BusinessAccount object using information from the database
     public BusinessAccount retrieveBusinessAccount(String accountNumber) throws SQLException
     {
-        DatabaseConnection connection = new DatabaseConnection();
         ArrayList<String> accountInformation;
-        accountInformation = connection.readQuery("SELECT * FROM Accounts where AccountNumber = " + accountNumber + ");", accountsColumns);
+        accountInformation = this.readQuery("SELECT * FROM Accounts where AccountNumber = " + accountNumber + ");", accountsColumns);
         BusinessAccount businessAccount = new BusinessAccount(accountInformation.get(0), accountInformation.get(1), Float.parseFloat(accountInformation.get(2)), Float.parseFloat(accountInformation.get(3)), retrieveBusinessName(accountNumber));
         return businessAccount;
     }
 
     public String retrieveBusinessName(String accountNumber) throws SQLException
     {
-        DatabaseConnection connection = new DatabaseConnection();
         ArrayList<String> businessInformation;
-        businessInformation = connection.readQuery("SELECT * FROM Businesses where AccountNumber = " + accountNumber + ");", businessesColumns);
+        businessInformation = this.readQuery("SELECT * FROM Businesses where AccountNumber = " + accountNumber + ");", businessesColumns);
         String businessName = businessInformation.get(1);
         return businessName;
     }
@@ -55,26 +99,23 @@ public class Queries
     //This UserID can then be used as an argument for the createAccount method
     public int createUser(String firstName, String lastName, String dateOfBirth) throws SQLException
     {
-        DatabaseConnection connection = new DatabaseConnection();
         ArrayList<String> userInformation = null;
-        connection.updateQuery("INSERT INTO Users (FirstName, LastName, DateOfBirth) VALUES (" + firstName + ", " + lastName + ", " + dateOfBirth + ");");
-        connection.readQuery("SELECT * FROM Accounts WHERE FirstName = " + firstName + ", LastName = " + lastName + ", DateOfBirth = " + dateOfBirth + ");", accountsColumns);
+        this.updateQuery("INSERT INTO Users (FirstName, LastName, DateOfBirth) VALUES (" + firstName + ", " + lastName + ", " + dateOfBirth + ");");
+        this.readQuery("SELECT * FROM Accounts WHERE FirstName = " + firstName + ", LastName = " + lastName + ", DateOfBirth = " + dateOfBirth + ");", accountsColumns);
         int userID = Integer.parseInt(userInformation.get(0));
         return userID;
     }
 
     //Method takes a created BusinessAccount and uses it to create a new business in the Businesses table
-    public static void createBusiness(BusinessAccount account) throws SQLException
+    public void createBusiness(BusinessAccount account) throws SQLException
     {
-        DatabaseConnection connection = new DatabaseConnection();
-        connection.updateQuery("INSERT INTO Businesses (Name, AccountNumber) VALUES (" + account.getName() + ", " + account.getAccountNumber() + ");");
+        this.updateQuery("INSERT INTO Businesses (Name, AccountNumber) VALUES (" + account.getName() + ", " + account.getAccountNumber() + ");");
     }
 
     //Method takes the relevant information and creates a personal account, before returning the account itself as an object
     public PersonalAccount createPersonalAccount(String accountNumber, String sortCode, int userID, float balance, float overdraft) throws SQLException
     {
-        DatabaseConnection connection = new DatabaseConnection();
-        connection.updateQuery("INSERT INTO Accounts VALUES (" + accountNumber + ", " + sortCode + ", " + userID + ", " + "Personal" + ", " + balance + ", " + overdraft + ");");
+        this.updateQuery("INSERT INTO Accounts VALUES (" + accountNumber + ", " + sortCode + ", " + userID + ", " + "Personal" + ", " + balance + ", " + overdraft + ");");
         PersonalAccount personalAccount = retrievePersonalAccount(accountNumber);
         return personalAccount;
     }
@@ -82,8 +123,7 @@ public class Queries
     //Method takes the relevant information and creates an ISA account, before returning the account itself as an object
     public ISAAccount createISAAccount(String accountNumber, String sortCode, int userID, float balance, float overdraft) throws SQLException
     {
-        DatabaseConnection connection = new DatabaseConnection();
-        connection.updateQuery("INSERT INTO Accounts VALUES (" + accountNumber + ", " + sortCode + ", " + userID + ", " + "ISA" + ", " + balance + ", " + overdraft + ");");
+        this.updateQuery("INSERT INTO Accounts VALUES (" + accountNumber + ", " + sortCode + ", " + userID + ", " + "ISA" + ", " + balance + ", " + overdraft + ");");
         ISAAccount isaAccount = retrieveISAAccount(accountNumber);
         return isaAccount;
     }
@@ -91,8 +131,7 @@ public class Queries
     //Method takes the relevant information and creates a business account, before returning the account itself as an object
     public BusinessAccount createBusinessAccount(String accountNumber, String sortCode, int userID, float balance, float overdraft, String businessName) throws SQLException
     {
-        DatabaseConnection connection = new DatabaseConnection();
-        connection.updateQuery("INSERT INTO Accounts VALUES (" + accountNumber + ", " + sortCode + ", " + userID + ", " + "Business" + ", " + balance + ", " + overdraft + ");");
+        this.updateQuery("INSERT INTO Accounts VALUES (" + accountNumber + ", " + sortCode + ", " + userID + ", " + "Business" + ", " + balance + ", " + overdraft + ");");
         BusinessAccount businessAccount = retrieveBusinessAccount(accountNumber);
         return businessAccount;
     }
@@ -100,22 +139,19 @@ public class Queries
     //Method takes an accountNumber String, and deletes the relevant entry from the Accounts table
     public void deleteAccount(String accountNumber) throws SQLException
     {
-        DatabaseConnection connection = new DatabaseConnection();
-        connection.updateQuery("DELETE FROM Accounts WHERE AccountNumber = " + accountNumber + ";");
+        this.updateQuery("DELETE FROM Accounts WHERE AccountNumber = " + accountNumber + ";");
     }
 
     //Method takes a userID integer and deletes the relevant entry from the Users table
     public void deleteUser(int userID) throws SQLException
     {
-        DatabaseConnection connection = new DatabaseConnection();
-        connection.updateQuery("DELETE FROM Users WHERE UserID = " + userID + ";");
+        this.updateQuery("DELETE FROM Users WHERE UserID = " + userID + ";");
     }
 
     //Method takes a businessID integer and deletes the relevant entry from the Businesses table
     public void deleteBusiness(int businessID) throws SQLException
     {
-        DatabaseConnection connection = new DatabaseConnection();
-        connection.updateQuery("DELETE FROM Businesses WHERE ID = " + businessID + ";");
+        this.updateQuery("DELETE FROM Businesses WHERE ID = " + businessID + ";");
     }
 
 

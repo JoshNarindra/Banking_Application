@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Tiny formatting change.">
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Database Connection Class update.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AccountNumberGeneration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AccountNumberGeneration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DatabaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PersonalAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PersonalAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Program.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Queries.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +60,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/joshu/IdeaProjects/Banking_Application&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/joshu/IdeaProjects/JavaFXLogin&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -278,50 +283,25 @@
       <option name="project" value="LOCAL" />
       <updated>1672685227562</updated>
     </task>
-    <task id="LOCAL-00029" summary="Added framework for methods which need to query the database before there are any instances of an account (for example queries to create users, create accounts etc.). These are contained in a separate Queries class for tidiness.">
-      <created>1672876821396</created>
+    <task id="LOCAL-00029" summary="Database Connection Class update.">
+      <created>1672685934261</created>
       <option name="number" value="00029" />
       <option name="presentableId" value="LOCAL-00029" />
       <option name="project" value="LOCAL" />
-      <updated>1672876821396</updated>
+      <updated>1672685934261</updated>
     </task>
-    <task id="LOCAL-00030" summary="Wrote methods which return objects of type PersonalAccount, ISAAccount and BusinessAccount based on database queries.">
-      <created>1672879311823</created>
+    <task id="LOCAL-00030" summary="Database Connection Class update.">
+      <created>1672687214597</created>
       <option name="number" value="00030" />
       <option name="presentableId" value="LOCAL-00030" />
       <option name="project" value="LOCAL" />
-      <updated>1672879311823</updated>
+      <updated>1672687214597</updated>
     </task>
-    <task id="LOCAL-00031" summary="Wrote various query methods which will needed in the application (on paper should work but haven't yet had chance to test).">
-      <created>1672881601671</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1672881601671</updated>
-    </task>
-    <task id="LOCAL-00032" summary="Tiny formatting change.">
-      <created>1672936337771</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1672936337771</updated>
-    </task>
-    <option name="localTasksCounter" value="33" />
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Class Layout." />
@@ -345,10 +325,6 @@
     <MESSAGE value="Database Connection update." />
     <MESSAGE value="getConnection can now run queries" />
     <MESSAGE value="Database Connection Class update." />
-    <MESSAGE value="Added framework for methods which need to query the database before there are any instances of an account (for example queries to create users, create accounts etc.). These are contained in a separate Queries class for tidiness." />
-    <MESSAGE value="Wrote methods which return objects of type PersonalAccount, ISAAccount and BusinessAccount based on database queries." />
-    <MESSAGE value="Wrote various query methods which will needed in the application (on paper should work but haven't yet had chance to test)." />
-    <MESSAGE value="Tiny formatting change." />
-    <option name="LAST_COMMIT_MESSAGE" value="Tiny formatting change." />
+    <option name="LAST_COMMIT_MESSAGE" value="Database Connection Class update." />
   </component>
 </project>

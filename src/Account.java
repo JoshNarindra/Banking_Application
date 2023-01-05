@@ -2,6 +2,7 @@
 Abstract class Account.
  */
 
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ abstract class Account
     private String sortCode;
     private float balance;
     private float overdraft;
+
 
     public Account(String accountNumber, String sortCode, float balance, float overdraft)
     {
@@ -25,8 +27,8 @@ abstract class Account
     {
         ArrayList<String> customerInfo = new ArrayList<>(List.of("FirstName","LastName","DateOfBirth"));
 
-        DatabaseConnection x = new DatabaseConnection(); //Should move to Program? Only one instance needed.
-        ArrayList<String> customerInfoResults = x.readQuery("SELECT FirstName, LastName, DateOfBirth from Users where ID in (SELECT UserID from Accounts where AccountNumber = " + accountNumber + " )",customerInfo);
+        Queries newQuery = new Queries(); //Should move to Program? Only one instance needed.
+        ArrayList<String> customerInfoResults = newQuery.readQuery("SELECT FirstName, LastName, DateOfBirth from Users where ID in (SELECT UserID from Accounts where AccountNumber = " + accountNumber + " )",customerInfo);
 
 
     }
@@ -90,7 +92,7 @@ abstract class Account
     //In other words the method synchronizes the program with the database
     public void updateDatabaseInformation() throws SQLException
     {
-        DatabaseConnection connection = new DatabaseConnection();
-        connection.updateQuery("UPDATE Accounts SET Balance = " + balance + ", Overdraft = " + overdraft + "WHERE AccountNumber = " + accountNumber + ";");
+        Queries newQuery = new Queries();
+        newQuery.updateQuery("UPDATE Accounts SET Balance = " + balance + ", Overdraft = " + overdraft + "WHERE AccountNumber = " + accountNumber + ";");
     }
 }
