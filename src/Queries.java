@@ -8,9 +8,9 @@ import java.util.List;
 
 public class Queries
 {
-    public ArrayList<String> accountsColumns = new ArrayList<String>(List.of("AccountNumber", "SortCode", "UserID", "AccountType", "Balance", "Overdraft"));
-    public ArrayList<String> usersColumns = new ArrayList<String>(List.of("ID", "FirstName", "LastName", "DateOfBirth"));
-    public ArrayList<String> businessesColumns = new ArrayList<String>(List.of("ID", "Name", "AccountNumber"));
+    public ArrayList<String> accountsColumns = new ArrayList<>(List.of("AccountNumber", "SortCode", "UserID", "AccountType", "Balance", "Overdraft"));
+    public ArrayList<String> usersColumns = new ArrayList<>(List.of("ID", "FirstName", "LastName", "DateOfBirth"));
+    public ArrayList<String> businessesColumns = new ArrayList<>(List.of("ID", "Name", "AccountNumber"));
 
     //Method takes the account number provided and creates a PersonalAccount object using information from the database
     public PersonalAccount retrievePersonalAccount(String accountNumber) throws SQLException
@@ -97,19 +97,25 @@ public class Queries
         return businessAccount;
     }
 
-    public void deleteAccount(String accountNumber)
+    //Method takes an accountNumber String, and deletes the relevant entry from the Accounts table
+    public void deleteAccount(String accountNumber) throws SQLException
     {
-
+        DatabaseConnection connection = new DatabaseConnection();
+        connection.updateQuery("DELETE FROM Accounts WHERE AccountNumber = " + accountNumber + ";");
     }
 
-    public void deleteUser(int userID)
+    //Method takes a userID integer and deletes the relevant entry from the Users table
+    public void deleteUser(int userID) throws SQLException
     {
-
+        DatabaseConnection connection = new DatabaseConnection();
+        connection.updateQuery("DELETE FROM Users WHERE UserID = " + userID + ";");
     }
 
-    public void deleteBusiness(int businessID)
+    //Method takes a businessID integer and deletes the relevant entry from the Businesses table
+    public void deleteBusiness(int businessID) throws SQLException
     {
-
+        DatabaseConnection connection = new DatabaseConnection();
+        connection.updateQuery("DELETE FROM Businesses WHERE ID = " + businessID + ";");
     }
 
 
