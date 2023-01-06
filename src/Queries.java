@@ -60,26 +60,34 @@ public class Queries
     }
 
     // Method queries database to check if an account number exists in database. Returns true if account exists and false otherwise. -CHECK IF CAN USE PREEXISTING METHOD.
-    public Boolean checkAccountExists(String AccountNumber) {
+    public Boolean checkAccountExists(String AccountNumber)
+    {
         DatabaseConnection connection = new DatabaseConnection();
         Boolean accountExists=null;
         String query = "select COUNT(1) from Accounts0 where AccountNumber = '" + AccountNumber + "';";
 
-        try {
+        try
+        {
             var stmt = connection.getConnection().prepareStatement(query);
             var rs = stmt.executeQuery();
 
-            while (rs.next()) {
-                if (rs.getInt(1) == 1) {
+            while (rs.next())
+            {
+                if (rs.getInt(1) == 1)
+                {
                     //System.out.println("Account Number already exists in database");
                     accountExists = true;
 
-                } else {
+                }
+                else
+                {
                     //System.out.println("Account Number does not exist in database.");
                     accountExists = false;
                 }
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
         }
         return accountExists;
@@ -133,7 +141,7 @@ public class Queries
     //Method takes a created BusinessAccount and uses it to create a new business in the Businesses table
     public void createBusiness(BusinessAccount account) throws SQLException
     {
-        this.updateQuery("INSERT INTO Businesses0 (Name, AccountNumber) VALUES (" + account.getName() + ", " + account.getAccountNumber() + ");");
+        this.updateQuery("INSERT INTO Businesses0 (Name, AccountNumber) VALUES ('" + account.getName() + "', '" + account.getAccountNumber() + "');");
     }
 
     //Method takes the relevant information and creates a personal account, before returning the account itself as an object
@@ -147,7 +155,7 @@ public class Queries
     //Method takes the relevant information and creates an ISA account, before returning the account itself as an object
     public ISAAccount createISAAccount(String accountNumber, String sortCode, int userID, float balance, float overdraft) throws SQLException
     {
-        this.updateQuery("INSERT INTO Accounts0 VALUES (" + accountNumber + ", " + sortCode + ", " + userID + ", " + "ISA" + ", " + balance + ", " + overdraft + ");");
+        this.updateQuery("INSERT INTO Accounts0 VALUES ('" + accountNumber + "', '" + sortCode + "', " + userID + ", '" + "ISA" + "', " + balance + ", " + overdraft + ");");
         ISAAccount isaAccount = retrieveISAAccount(accountNumber);
         return isaAccount;
     }
@@ -163,7 +171,7 @@ public class Queries
     //Method takes an accountNumber String, and deletes the relevant entry from the Accounts table
     public void deleteAccount(String accountNumber) throws SQLException
     {
-        this.updateQuery("DELETE FROM Accounts0 WHERE AccountNumber = " + accountNumber + ";");
+        this.updateQuery("DELETE FROM Accounts0 WHERE AccountNumber = '" + accountNumber + "';");
     }
 
     //Method takes a userID integer and deletes the relevant entry from the Users table
