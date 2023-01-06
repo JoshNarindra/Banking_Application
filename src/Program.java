@@ -17,10 +17,19 @@ public class Program
     public static void main(String[] args) throws SQLException
     {
         accountExists();
+
+        Queries queries = new Queries();
+        String firstName = "Ewan";
+        String lastName = "Hughes";
+        String dateOfBirth = "1999-12-02";
+
+        System.out.println("INSERT INTO Users0 (FirstName, LastName, DateOfBirth) VALUES ('" + firstName + "', '" + lastName + "', '" + dateOfBirth + "');");
+        System.out.println("SELECT * FROM Users WHERE (FirstName = '" + firstName + "' AND LastName = '" + lastName + "' AND DateOfBirth = '" + dateOfBirth + "');");
     }
 
     public static void accountExists() throws SQLException
     {
+
         //Initial Menu.
         System.out.println("Welcome to ACME Banking Solutions...");
         System.out.println("\n Does the customer currently have an account with us? \n 1. Yes. \n 2. No. \n 9. Exit.");
@@ -45,13 +54,15 @@ public class Program
 
     public static void customerInfo() throws SQLException
     {
+
         //Input account number with same means as above.
         System.out.println("\n Enter account number:");
         Scanner s2 = new Scanner(System.in);
         String accountNumber = s2.nextLine();
 
         //Re-prompting the teller for input until an account number of correct length is inputted.
-        while (accountNumber.length() != 8) {
+        while (accountNumber.length() != 8)
+        {
             System.out.println("\n Invalid input. Try again.");
             accountNumber = s2.nextLine();
         }
@@ -59,11 +70,11 @@ public class Program
 
         //Retrieve account details.
         System.out.println("\n Retrieving account details...");
-        ArrayList<String> customerInfo = Account.retrieveCustomerInfo(accountNumber);
+        Account.retrieveCustomerInfo(accountNumber);
 
-        //Display customer info - NEEDS FIXING TO DISPLAY INDIVIDUAL RESULTS - TEMPORARILY FIXED
-        System.out.println("\n Name: " + customerInfo.get(0) + " " + customerInfo.get(1));
-        System.out.println("\n D.O.B: " + customerInfo.get(2));
+        //Display customer info - NEEDS FIXING TO DISPLAY INDIVIDUAL RESULTS.
+        System.out.println("\n Name: ");
+        System.out.println("\n D.O.B: ");
 
         //Display customers accounts with bank - NEEDS FIXING.
         System.out.println("\n Customer Accounts: ");
@@ -73,7 +84,8 @@ public class Program
         x.accountMenu();
     }
 
-    public static void openNewAccount() throws SQLException {
+    public static void openNewAccount() throws SQLException
+    {
         //Menu to create an account for new customer.
         System.out.println("Open an account with ACME Banking");
         System.out.println(" 1. Open a personal account. \n 2. Open a business account. \n 3. Open an ISA Account. \n 9. Exit.");
@@ -83,13 +95,15 @@ public class Program
         int menu = s1.nextInt();
 
         //Re-prompting the teller for input until either 1, 2 or 3 is inputted.
-        while (menu != 1 && menu != 2 && menu != 3 && menu != 9) {
+        while (menu != 1 && menu != 2 && menu != 3 && menu != 9)
+        {
             System.out.println("Invalid input. Try again.");
             menu = s1.nextInt();
         }
 
         //Switch-Case statement for initial menu. - IMPLEMENT FUNCTIONALITY
-        switch (menu) {
+        switch (menu)
+        {
             case 1 -> openPersonalAccount(createUser());
             case 2 -> openBusinessAccount(createUser());
             case 3 -> openISAAccount(createUser());
@@ -230,7 +244,6 @@ public class Program
         int birthYear = 0;
         int birthMonth = 0;
         int birthDay = 0;
-        String dateOfBirth = (birthYear + "-" + String.format("%02d", birthMonth) + "-" + String.format("%02d", birthDay));
 
         while (!firstName.matches("[a-z, A-Z]+"))
         {
@@ -261,6 +274,9 @@ public class Program
             System.out.println("Enter birth year: ");
             birthYear = scanner.nextInt();
         }
+
+        String dateOfBirth = (birthYear + "-" + String.format("%02d", birthMonth) + "-" + String.format("%02d", birthDay));
+        System.out.println(dateOfBirth);
 
         return newQuery.createUser(firstName, lastName, dateOfBirth);
     }

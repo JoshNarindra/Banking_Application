@@ -33,6 +33,13 @@ abstract class Account
         return customerInfoResults;
     }
 
+    public static ArrayList retrieveCustomerAccounts(String accountNumber)
+    {
+        Queries newQuery = new Queries();
+        String query = ("SELECT AccountNumber, AccountType FROM Accounts WHERE UserID in (SELECT UserID FROM Accounts WHERE AccountNumber = " + accountNumber + ");");
+        return null;
+    }
+
     public String getAccountNumber()
     {
         return accountNumber;
