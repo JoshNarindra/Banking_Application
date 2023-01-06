@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Removed some test code.">
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Fixed createBusinessAccount so that it now properly creates a business account and adds it to the database.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Program.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Queries.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -334,7 +334,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672977936910</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Fixed createBusinessAccount so that it now properly creates a business account and adds it to the database.">
+      <created>1673022546494</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1673022546494</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -352,7 +359,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Minor update." />
     <MESSAGE value="Added abstract methods for account creation." />
     <MESSAGE value="Added comments. fixed minor bugs" />
     <MESSAGE value="Minor layout changes" />
@@ -377,7 +383,8 @@
     <MESSAGE value="Implemented method to create an ISA account and generalised the methods to create business and personal accounts." />
     <MESSAGE value="Fixed the program so that new users and new PersonalAccounts can be created and added to the database. Switched to new tables in the database. Edited many of the queries which had syntax errors." />
     <MESSAGE value="Removed some test code." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed some test code." />
+    <MESSAGE value="Fixed createBusinessAccount so that it now properly creates a business account and adds it to the database." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed createBusinessAccount so that it now properly creates a business account and adds it to the database." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

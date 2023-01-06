@@ -155,7 +155,7 @@ public class Queries
     //Method takes the relevant information and creates a business account, before returning the account itself as an object
     public BusinessAccount createBusinessAccount(String accountNumber, String sortCode, int userID, float balance, float overdraft, String businessName) throws SQLException
     {
-        this.updateQuery("INSERT INTO Accounts0 VALUES (" + accountNumber + ", " + sortCode + ", " + userID + ", " + "Business" + ", " + balance + ", " + overdraft + ");");
+        this.updateQuery("INSERT INTO Accounts0 VALUES ('" + accountNumber + "', '" + sortCode + "', " + userID + ", '" + "Business" + "', " + balance + ", " + overdraft + ");");
         BusinessAccount businessAccount = retrieveBusinessAccount(accountNumber);
         return businessAccount;
     }
