@@ -17,14 +17,6 @@ public class Program
     public static void main(String[] args) throws SQLException
     {
         accountExists();
-
-        Queries queries = new Queries();
-        String firstName = "Ewan";
-        String lastName = "Hughes";
-        String dateOfBirth = "1999-12-02";
-
-        System.out.println("INSERT INTO Users0 (FirstName, LastName, DateOfBirth) VALUES ('" + firstName + "', '" + lastName + "', '" + dateOfBirth + "');");
-        System.out.println("SELECT * FROM Users WHERE (FirstName = '" + firstName + "' AND LastName = '" + lastName + "' AND DateOfBirth = '" + dateOfBirth + "');");
     }
 
     public static void accountExists() throws SQLException
