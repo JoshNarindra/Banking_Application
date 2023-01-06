@@ -141,6 +141,7 @@ public class Program
     public static void openBusinessAccount(int userID) throws SQLException
     {
         Scanner scanner = new Scanner(System.in);
+        Scanner scanner1 = new Scanner(System.in);
         Queries newQuery = new Queries();
         AccountNumberGeneration generator = new AccountNumberGeneration();
 
@@ -161,7 +162,7 @@ public class Program
         }
 
         System.out.println("Enter opening balance: ");
-        openingBalance = scanner.nextFloat();
+        openingBalance = scanner1.nextInt();
 
         while (openingBalance < 1.00f)
         {
@@ -170,12 +171,12 @@ public class Program
         }
 
         System.out.println("Enter agreed overdraft amount: ");
-        overdraftAmount = scanner.nextFloat();
+        overdraftAmount = scanner1.nextInt();
 
         while (overdraftAmount < 0.00f || overdraftAmount > 10000.00f)
         {
             System.out.println("Please enter a valid overdraft amount.");
-            overdraftAmount = scanner.nextFloat();
+            overdraftAmount = scanner1.nextInt();
         }
 
         if (checkTwoOptions("Confirm account opening? \n 1. Yes \n 2. No"))

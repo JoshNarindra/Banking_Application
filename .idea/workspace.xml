@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Fixed the program so that new users and new PersonalAccounts can be created and added to the database. Switched to new tables in the database. Edited many of the queries which had syntax errors.">
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Removed some test code.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Program.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -326,7 +327,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672976979140</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Removed some test code.">
+      <created>1672977936910</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1672977936910</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -344,7 +352,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="workspace update" />
     <MESSAGE value="Minor update." />
     <MESSAGE value="Added abstract methods for account creation." />
     <MESSAGE value="Added comments. fixed minor bugs" />
@@ -369,7 +376,8 @@
     <MESSAGE value="Implemented methods to create a personal account and a business account for customers who do not have an account for acme banking." />
     <MESSAGE value="Implemented method to create an ISA account and generalised the methods to create business and personal accounts." />
     <MESSAGE value="Fixed the program so that new users and new PersonalAccounts can be created and added to the database. Switched to new tables in the database. Edited many of the queries which had syntax errors." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed the program so that new users and new PersonalAccounts can be created and added to the database. Switched to new tables in the database. Edited many of the queries which had syntax errors." />
+    <MESSAGE value="Removed some test code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed some test code." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
