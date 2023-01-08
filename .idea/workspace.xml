@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Fixed createBusinessAccount so that it now properly creates a business account and adds it to the database.">
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Fixed (I think) all of the SQL syntax in Queries.">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_12_2022_14_21_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_12_2022_22_31_[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Queries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Program.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -341,7 +343,21 @@
       <option name="project" value="LOCAL" />
       <updated>1673022546494</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Fixed the createBusinessAccount method in Queries.">
+      <created>1673023367771</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1673023367771</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Fixed (I think) all of the SQL syntax in Queries.">
+      <created>1673023794293</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1673023794293</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -359,8 +375,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added abstract methods for account creation." />
-    <MESSAGE value="Added comments. fixed minor bugs" />
     <MESSAGE value="Minor layout changes" />
     <MESSAGE value="File name change" />
     <MESSAGE value="." />
@@ -384,7 +398,9 @@
     <MESSAGE value="Fixed the program so that new users and new PersonalAccounts can be created and added to the database. Switched to new tables in the database. Edited many of the queries which had syntax errors." />
     <MESSAGE value="Removed some test code." />
     <MESSAGE value="Fixed createBusinessAccount so that it now properly creates a business account and adds it to the database." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed createBusinessAccount so that it now properly creates a business account and adds it to the database." />
+    <MESSAGE value="Fixed the createBusinessAccount method in Queries." />
+    <MESSAGE value="Fixed (I think) all of the SQL syntax in Queries." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed (I think) all of the SQL syntax in Queries." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
