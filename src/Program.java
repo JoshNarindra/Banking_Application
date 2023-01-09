@@ -51,6 +51,7 @@ public class Program
         //Display customers accounts with bank - NEEDS FIXING.
         System.out.println("\n Customer Accounts: ");
 
+
         //Option to allow current customer to open new account. - NEEDS REMOVING
         PersonalAccount x = new PersonalAccount("12312434", "090109", 45.45f, 0.00f, true, true);
         x.accountMenu();
