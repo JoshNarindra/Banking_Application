@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="bug fixes.">
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Prints customer account list in main menu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Queries.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -329,7 +327,21 @@
       <option name="project" value="LOCAL" />
       <updated>1673283047652</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Prints customer account list in main menu">
+      <created>1673291980281</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1673291980281</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Prints customer account list in main menu">
+      <created>1673291992601</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1673291992601</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -369,6 +381,7 @@
     <MESSAGE value="getConnection can now run queries" />
     <MESSAGE value="Database Connection Class update." />
     <MESSAGE value="bug fixes." />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fixes." />
+    <MESSAGE value="Prints customer account list in main menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Prints customer account list in main menu" />
   </component>
 </project>
