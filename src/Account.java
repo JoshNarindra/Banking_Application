@@ -83,7 +83,7 @@ abstract class Account
 
     // Function transfer which takes two accounts and an amount as an argument and transfers money between the two
 
-    public void transfer(float amount, Account payee, Account recipient)
+    public static void transfer(float amount, Account payee, Account recipient)
     {
 
     }
@@ -95,10 +95,10 @@ abstract class Account
     //Abstract methods for creating accounts should use "override" in child classes for each type of account.
     // (Note Are these methods abstract as a result of class being abstract?)
 
-    public void generateSortCode(){}
+    public static void generateSortCode()
+    {
 
-    //accidental duplicate
-    public void createAccount(){}
+    }
 
     //Method which updates the database so that changes made to the Account object are reflected in the relevant table
     //In other words the method synchronizes the program with the database

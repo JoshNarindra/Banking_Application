@@ -13,10 +13,6 @@ public class PersonalAccount extends Account
         this.validAddressID = validAddressID;
     }
 
-    //Method to create a personal account.
-    @Override
-    public void createAccount() {}
-
     //Menu function for Personal Account.
     @Override
     public void accountMenu() throws SQLException
