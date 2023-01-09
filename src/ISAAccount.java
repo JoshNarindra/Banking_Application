@@ -26,4 +26,9 @@ public class ISAAccount extends Account
             case 9 -> Program.exitProgram();
         }
     }
+
+    public void interestPayment(float aprAmount)
+    {
+        setBalance(getBalance() * aprAmount);
+    }
 }
