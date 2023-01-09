@@ -108,10 +108,8 @@ public class Program
     // The information entered into the table is dependent on the user's input and is linked to the userID passed to the method.
     public static void openPersonalAccount(int userID) throws SQLException
     {
-        Scanner scanner = new Scanner(System.in);
         Queries newQuery = new Queries();
         AccountNumberGeneration generator = new AccountNumberGeneration();
-
         checkCredential("Does the customer have a valid personal ID? (Only driving licence or passport permitted.) \n1. Yes. \n2. No.", "Customer must have valid ID to open a personal account.");
         checkCredential("Does the customer have a valid proof of address? (Utility bill, council letter, etc. permitted.) \n1. Yes. \n2. No.", "Customer must have a valid proof of address to open a personal account.");
         float openingBalance = checkFloatRange("Enter opening balance: ", 1.00f, 20000.00f);
@@ -134,7 +132,6 @@ public class Program
     {
         Queries newQuery = new Queries();
         AccountNumberGeneration generator = new AccountNumberGeneration();
-
         String businessName = checkAlphabet("Enter business name: ");
         checkCredential("Does the customer have valid business credentials? \n1. Yes. \n2. No.", "Customer must have valid business credentials to open a business account");
         checkCredential("Does the customer have a valid business type? (No enterprises, public limited companies or charities are permitted.) \n1. Yes. \n2. No.", "Customer must have a valid business type to open a business account.");
@@ -158,10 +155,8 @@ public class Program
     // The information entered into the table is dependent on the user's input and is linked to the userID passed to the method.
     public static void openISAAccount(int userID) throws SQLException
     {
-        Scanner scanner = new Scanner(System.in);
         Queries newQuery = new Queries();
         AccountNumberGeneration generator = new AccountNumberGeneration();
-
         checkCredential("Does the customer have valid personal ID? (Only driving licence or passport permitted.) \n1. Yes. \n2. No.", "Customer must have valid ID to open an ISA account.");
         checkCredential("Does the customer meet the age requirements for an ISA account? (16+) \n1. Yes. \n2. No.", "Customer must meet the age requirements to open an ISA account.");
         float openingBalance = checkFloatRange("Enter opening balance: ", 0.00f, 20000.00f);
