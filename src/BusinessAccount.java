@@ -49,7 +49,7 @@ public class BusinessAccount extends Account
         }
     }
 
-    public void paymentsMenu()
+    public void paymentsMenu() throws SQLException
     {
         int menu = Program.checkMultipleOptions("\nWhat would the customer like to do? \n1. Set up a direct debit. \n2. Set up a standing order. \n8. Back. \n9. Exit", new int[] {1, 2, 8, 9});
 
