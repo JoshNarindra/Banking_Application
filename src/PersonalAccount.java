@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class PersonalAccount extends Account
@@ -18,21 +19,20 @@ public class PersonalAccount extends Account
 
     //Menu function for Personal Account.
     @Override
-    public void accountMenu()
+    public void accountMenu() throws SQLException
     {
-        System.out.println("\n What would the customer like to do? \n 1. Check Balance \n 2. Make a Deposit \n 3. Make a withdrawal \n 4. Set up Direct Debit \n 5. Set Up Standing Order \n 9. Exit");
+        int menu = Program.checkMultipleOptions("\nWhat would the customer like to do? \n1. Check balance. \n2. Make a deposit. \n3. Make a withdrawal. \n4. Make a transfer. \n5. Set up a direct debit. \n6. Set up standing order.\n9. Exit", new int[] {1, 2, 3, 4, 5, 6, 9});
 
-        Scanner s1 = new Scanner(System.in);
-        int menu = s1.nextInt();
-
-        switch (menu) {
-            case 1 -> System.out.println("Placeholder for get Balance");
-            case 2 -> System.out.println("Placeholder for make deposit");
-            case 3 -> System.out.println("Placeholder for Withdrawal");
+        switch (menu)
+        {
+            case 1 -> displayBalance();
+            case 2 -> deposit(Program.checkFloatRange("Enter deposit amount: ", 0.01f, 20000.00f));
+            case 3 -> withdraw(Program.checkFloatRange("Enter withdrawal amount: ", 0.01f, 20000.00f));
             case 4 -> System.out.println("Placeholder Direct Debit");
             case 5 -> System.out.println("Placeholder Standing order");
-            case 9 -> System.out.println("Placeholder Exit");
-            default -> System.out.println("Invalid choice");
+            case 9 -> Program.exitProgram();
         }
+
+        //Placeholder to return to the menu maybe?
     }
 }

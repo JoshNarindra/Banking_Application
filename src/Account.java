@@ -60,6 +60,11 @@ abstract class Account
         this.balance = balance;
     }
 
+    public void displayBalance()
+    {
+        System.out.println("Current balance: £" + String.format("%.2f", getBalance()));
+    }
+
     // Function deposit which calls getBalance and setBalance to increment balance
     public void deposit(float increment) throws SQLException
     {
@@ -85,7 +90,7 @@ abstract class Account
 
 
     // Abstract method to display menu system for account.
-    abstract void accountMenu();
+    abstract void accountMenu() throws SQLException;
 
     //Abstract methods for creating accounts should use "override" in child classes for each type of account.
     // (Note Are these methods abstract as a result of class being abstract?)
