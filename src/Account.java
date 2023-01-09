@@ -2,7 +2,7 @@
 Abstract class Account.
  */
 
-
+//Imports
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,11 +33,23 @@ abstract class Account
         return customerInfoResults;
     }
 
-    public static ArrayList retrieveCustomerAccounts(String accountNumber)
-    {
+    public static ArrayList retrieveCustomerAccounts(String accountNumber) throws SQLException {
         Queries newQuery = new Queries();
         String query = ("SELECT AccountNumber, AccountType FROM Accounts WHERE UserID in (SELECT UserID FROM Accounts WHERE AccountNumber = " + accountNumber + ");");
-        return null;
+
+        DatabaseConnection connection = new DatabaseConnection();
+
+        var stmt = connection.getConnection().prepareStatement(query);
+        var rs = stmt.executeQuery();
+
+        ArrayList<String> accountList = new ArrayList<>();
+        int count = 0;
+
+        while(rs.next()){
+            count = count+1;
+            accountList.add(count + ". " + rs.getString(1).toString() + " " + rs.getString(2).toString());
+        }
+        return accountList;
     }
 
     public String getAccountNumber()

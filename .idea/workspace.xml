@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Tidied the account objects and removed redundant or legacy methods">
-      <change beforePath="$PROJECT_DIR$/src/ISAAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ISAAccount.java" afterDir="false" />
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Formatting and comments.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Program.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -368,49 +369,7 @@
       <option name="project" value="LOCAL" />
       <updated>1673222515833</updated>
     </task>
-    <task id="LOCAL-00042" summary="Further formatting and DRYing code.">
-      <created>1673225524106</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1673225524106</updated>
-    </task>
-    <task id="LOCAL-00043" summary="More comments to explain methods.">
-      <created>1673270363593</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1673270363594</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Added some of the functionality into PersonalAccount.accountMenu">
-      <created>1673288808739</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1673288808739</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Added some of the functionality into ISAAccount.accountMenu">
-      <created>1673289122816</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1673289122816</updated>
-    </task>
-    <task id="LOCAL-00046" summary="Added some of the functionality into BusinessAccount.accountMenu">
-      <created>1673289955753</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1673289955753</updated>
-    </task>
-    <task id="LOCAL-00047" summary="Tidied the account objects and removed redundant or legacy methods">
-      <created>1673290465904</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1673290465904</updated>
-    </task>
-    <option name="localTasksCounter" value="48" />
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -428,6 +387,12 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="." />
+    <MESSAGE value="Added Menu System to Personal Acc." />
+    <MESSAGE value="Updated Menu System to Personal Acc." />
+    <MESSAGE value="accountMenu() method added to children of account class." />
+    <MESSAGE value="Added DatabaseConnection Class." />
+    <MESSAGE value="Updated accounts menus." />
     <MESSAGE value="Added name and DOB variables." />
     <MESSAGE value="Added constructor for user class." />
     <MESSAGE value="Fixed connection bug." />
@@ -447,13 +412,7 @@
     <MESSAGE value="Fixed (I think) all of the SQL syntax in Queries." />
     <MESSAGE value="Abstracted much of the functionality of methods in Program class into their own methods, for more DRY code." />
     <MESSAGE value="Formatting and comments." />
-    <MESSAGE value="Further formatting and DRYing code." />
-    <MESSAGE value="More comments to explain methods." />
-    <MESSAGE value="Added some of the functionality into PersonalAccount.accountMenu" />
-    <MESSAGE value="Added some of the functionality into ISAAccount.accountMenu" />
-    <MESSAGE value="Added some of the functionality into BusinessAccount.accountMenu" />
-    <MESSAGE value="Tidied the account objects and removed redundant or legacy methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tidied the account objects and removed redundant or legacy methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="Formatting and comments." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
