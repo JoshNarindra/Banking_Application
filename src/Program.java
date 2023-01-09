@@ -3,12 +3,8 @@ Main Program Class.
  */
 
 //imports
-import javax.xml.crypto.Data;
-import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Program
@@ -17,7 +13,7 @@ public class Program
     // The method either calls the existingCustomersMenu() or newCustomersMenu() methods depending on user input.
     public static void main(String[] args) throws SQLException
     {
-        System.out.println("Welcome to ACME Banking Solutions...\n");
+        System.out.println("\nWelcome to ACME Banking Solutions...\n");
         int menu = checkMultipleOptions("Does the customer currently have an account with us? \n1. Yes. \n2. No. \n9. Exit.", new int[]{1, 2, 9});
 
         switch (menu)
@@ -41,20 +37,25 @@ public class Program
         }
 
         //Retrieve account details.
-        System.out.println("\n Retrieving account details...");
-        Account.retrieveCustomerInfo(accountNumber);
+        System.out.println("\nRetrieving account details...");
+        ArrayList<String> customerInfo = Account.retrieveCustomerInfo(accountNumber);
 
         //Display customer info - NEEDS FIXING TO DISPLAY INDIVIDUAL RESULTS.
-        System.out.println("\n Name: ");
-        System.out.println("\n D.O.B: ");
+        System.out.println("\nName: "+customerInfo.get(0)+" "+customerInfo.get(1));
+        System.out.println("D.O.B: "+customerInfo.get(2));
 
         //Display customers accounts with bank - NEEDS FIXING.
-        System.out.println("\n Customer Accounts: ");
+        System.out.println("\nCustomer Accounts: ");
+
+        ArrayList<String> accountList = Account.retrieveCustomerAccounts(accountNumber);
+        for (String s: accountList)
+        {
+            System.out.println(s);
+        }
+
+        System.out.println("\nEnter the account number of the account that would you like to access:");
 
 
-        //Option to allow current customer to open new account. - NEEDS REMOVING
-        PersonalAccount x = new PersonalAccount("12312434", "090109", 45.45f, 0.00f, true, true);
-        x.accountMenu();
     }
 
     // Method newCustomersMenu() which displays a menu to new customers.
@@ -219,7 +220,7 @@ public class Program
     public static String checkAccountNumber()
     {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter account number: ");
+        System.out.println("\nEnter account number: ");
         String accountNumber = scanner.next();
 
         while (accountNumber.length() != 8 && !accountNumber.matches("[0-9]+"))

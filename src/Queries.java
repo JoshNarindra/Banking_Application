@@ -65,19 +65,16 @@ public class Queries
         DatabaseConnection connection = new DatabaseConnection();
         Boolean accountExists=null;
         String query = "select COUNT(1) from Accounts0 where AccountNumber = '" + AccountNumber + "';";
-
         try
         {
             var stmt = connection.getConnection().prepareStatement(query);
             var rs = stmt.executeQuery();
-
             while (rs.next())
             {
                 if (rs.getInt(1) == 1)
                 {
                     //System.out.println("Account Number already exists in database");
                     accountExists = true;
-
                 }
                 else
                 {
