@@ -96,7 +96,17 @@ abstract class Account
 
     // Function transfer which takes two accounts and an amount as an argument and transfers money between the two
 
-    public static void transfer(float amount, Account payee, Account recipient)
+    public static void transfer(float amount, String recipientAccountNumber, String recipientSortCode)
+    {
+
+    }
+
+    public static void directDebit(float amount, String recipientAccountNumber, String recipientSortCode)
+    {
+
+    }
+
+    public static void standingOrder(float amount, String recipientAccountNumber, String recipientSortCode)
     {
 
     }

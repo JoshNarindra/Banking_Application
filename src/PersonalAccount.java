@@ -24,8 +24,9 @@ public class PersonalAccount extends Account
             case 1 -> displayBalance();
             case 2 -> deposit(Program.checkFloatRange("Enter deposit amount: ", 0.01f, 20000.00f));
             case 3 -> withdraw(Program.checkFloatRange("Enter withdrawal amount: ", 0.01f, 20000.00f));
-            case 4 -> System.out.println("Placeholder Direct Debit");
-            case 5 -> System.out.println("Placeholder Standing order");
+            case 4 -> transfer(0, "placeholder", "placeholder");
+            case 5 -> directDebit(0, "placeholder", "placeholder");
+            case 6 -> standingOrder(0, "placeholder", "placeholder");
             case 9 -> Program.exitProgram();
         }
 

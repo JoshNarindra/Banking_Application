@@ -19,10 +19,10 @@ public class ISAAccount extends Account
             case 1 -> displayBalance();
             case 2 -> deposit(Program.checkFloatRange("Enter deposit amount: ", 0.01f, 20000.00f));
             case 3 -> withdraw(Program.checkFloatRange("Enter withdrawal amount: ", 0.01f, 20000.00f));
-            case 4 -> System.out.println("Placeholder for Transfer");
-            case 5 -> System.out.println("Placeholder for Receive Interest Payment");
-            case 6 -> System.out.println("Placeholder for Direct Debit");
-            case 7 -> System.out.println("Placeholder for Standing Order");
+            case 4 -> transfer(0, "placeholder", "placeholder");
+            case 5 -> interestPayment(0);
+            case 6 -> directDebit(0, "placeholder", "placeholder");
+            case 7 -> standingOrder(0, "placeholder", "placeholder");
             case 9 -> Program.exitProgram();
         }
     }

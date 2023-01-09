@@ -27,7 +27,7 @@ public class BusinessAccount extends Account
             case 1 -> displayBalance();
             case 2 -> deposit(Program.checkFloatRange("Enter deposit amount: ", 0.01f, 20000.00f));
             case 3 -> withdraw(Program.checkFloatRange("Enter withdrawal amount: ", 0.01f, 20000.00f));
-            case 4 -> System.out.println("Placeholder make a transfer");
+            case 4 -> transfer(0, "placeholder", "placeholder");
             case 5 -> requestsMenu();
             case 6 -> paymentsMenu();
             case 7 -> System.out.println("Placeholder bill annual payment");
@@ -55,8 +55,8 @@ public class BusinessAccount extends Account
 
         switch(menu)
         {
-            case 1 -> System.out.println("Placeholder direct debit");
-            case 2 -> System.out.println("Placeholder standing order");
+            case 1 -> directDebit(0, "placeholder", "placeholder");
+            case 2 -> standingOrder(0, "placeholder", "placeholder");
             case 9 -> Program.exitProgram();
         }
     }
