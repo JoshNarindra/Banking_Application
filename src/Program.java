@@ -13,53 +13,29 @@ import java.sql.SQLException;
 
 public class Program
 {
-
     public static void main(String[] args) throws SQLException
     {
-        accountExists();
-    }
+        System.out.println("Welcome to ACME Banking Solutions...\n");
+        int menu = checkMultipleOptions("Does the customer currently have an account with us? \n1. Yes. \n2. No. \n9. Exit.", new int[]{1, 2, 9});
 
-    public static void accountExists() throws SQLException
-    {
-
-        //Initial Menu.
-        System.out.println(" Welcome to ACME Banking Solutions...");
-        System.out.println("\n Does the customer currently have an account with us? \n1. Yes. \n2. No. \n9. Exit.");
-
-        //Scanner to read bank tellers input for user choice.
-        Scanner s1 = new Scanner(System.in);
-        int menu = s1.nextInt();
-
-        //Re-prompting the teller for input until either 1 or 2 is inputted.
-        while (menu != 1 && menu != 2 && menu != 9) {
-            System.out.println(" Invalid input. Try again.");
-            menu = s1.nextInt();
-        }
-
-        //Switch-Case statement for initial menu.
         switch (menu)
         {
-            case 1 -> customerInfo();
-            case 2 -> openNewAccount();
+            case 1 -> existingCustomersMenu();
+            case 2 -> newCustomersMenu();
             case 9 -> exitProgram();
         }
     }
 
-    public static void customerInfo() throws SQLException
+    public static void existingCustomersMenu() throws SQLException
     {
+        Queries queries = new Queries();
+        String accountNumber = checkAccountNumber();
 
-        //Input account number with same means as above.
-        System.out.println("\n Enter account number:");
-        Scanner s2 = new Scanner(System.in);
-        String accountNumber = s2.nextLine();
-
-        //Re-prompting the teller for input until an account number of correct length is inputted.
-        while (accountNumber.length() != 8)
+        while(!queries.checkAccountExists(accountNumber))
         {
-            System.out.println(" Invalid input. Try again.");
-            accountNumber = s2.nextLine();
+            System.out.println("No record of account. Try again.");
+            accountNumber = checkAccountNumber();
         }
-        System.out.println(accountNumber);
 
         //Retrieve account details.
         System.out.println("\n Retrieving account details...");
@@ -77,24 +53,11 @@ public class Program
         x.accountMenu();
     }
 
-    public static void openNewAccount() throws SQLException
+    public static void newCustomersMenu() throws SQLException
     {
-        //Menu to create an account for new customer.
-        System.out.println("Open an account with ACME Banking");
-        System.out.println("1. Open a personal account. \n2. Open a business account. \n3. Open an ISA Account. \n9. Exit.");
+        System.out.println("Open an account with ACME Banking Solutions...\n");
+        int menu = checkMultipleOptions("1. Open a personal account. \n2. Open a business account. \n3. Open an ISA Account. \n9. Exit.", new int[] {1, 2, 3, 9});
 
-        //Scanner to read bank tellers input for user menu choice.
-        Scanner s1 = new Scanner(System.in);
-        int menu = s1.nextInt();
-
-        //Re-prompting the teller for input until either 1, 2 or 3 is inputted.
-        while (menu != 1 && menu != 2 && menu != 3 && menu != 9)
-        {
-            System.out.println(" Invalid input. Try again.");
-            menu = s1.nextInt();
-        }
-
-        //Switch-Case statement for initial menu. - IMPLEMENT FUNCTIONALITY
         switch (menu)
         {
             case 1 -> openPersonalAccount(createUser());
@@ -122,7 +85,7 @@ public class Program
         }
         else
         {
-            accountExists();
+            exitProgram();
         }
     }
 
@@ -207,11 +170,48 @@ public class Program
 
         while (input != 1 && input != 2)
         {
-            System.out.println(" Invalid input. Try again.");
+            System.out.println("Invalid input. Try again.");
             input = scanner.nextInt();
         }
 
         return (input == 1);
+    }
+
+    public static int checkMultipleOptions(String menuString, int[] options)
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(menuString);
+        int input = 0;
+
+        while (true)
+        {
+            input = scanner.nextInt();
+
+            for (int option : options)
+            {
+                if (input == option)
+                {
+                    return input;
+                }
+            }
+
+            System.out.println("Invalid input. Try again.");
+        }
+    }
+
+    public static String checkAccountNumber()
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter account number: ");
+        String accountNumber = scanner.next();
+
+        while (accountNumber.length() != 8 && !accountNumber.matches("[0-9]+"))
+        {
+            System.out.println("Invalid input. Try again.");
+            accountNumber = scanner.next();
+        }
+
+        return accountNumber;
     }
 
     // Method checkCredential() takes a String menuString and a String exitString as arguments.
