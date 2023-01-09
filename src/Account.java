@@ -33,9 +33,10 @@ abstract class Account
         return customerInfoResults;
     }
 
-    public static ArrayList retrieveCustomerAccounts(String accountNumber) throws SQLException {
+    public static ArrayList retrieveCustomerAccounts(String accountNumber) throws SQLException
+    {
         Queries newQuery = new Queries();
-        String query = ("SELECT AccountNumber, AccountType FROM Accounts WHERE UserID in (SELECT UserID FROM Accounts WHERE AccountNumber = " + accountNumber + ");");
+        String query = ("SELECT AccountNumber, AccountType FROM Accounts0 WHERE UserID in (SELECT UserID FROM Accounts0 WHERE AccountNumber = " + accountNumber + ");");
 
         DatabaseConnection connection = new DatabaseConnection();
 

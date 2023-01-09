@@ -110,7 +110,7 @@ public class Program
         float openingBalance = checkFloatRange("Enter opening balance: ", 1.00f, 20000.00f);
         float overdraftAmount = checkFloatRange("Enter agreed overdraft amount: ", 0.00f, 10000.00f);
 
-        if (checkTwoOptions("Confirm account opening? \n1. Yes. \n2.No"))
+        if (checkTwoOptions("Confirm account opening? \n1. Yes. \n2. No"))
         {
             BusinessAccount businessAccount = newQuery.createBusinessAccount(generator.generateAccountNumber(), "12-20-02", userID, openingBalance, overdraftAmount, businessName);
             System.out.println("Account creation successful.");
@@ -308,7 +308,7 @@ public class Program
     // Method exitProgram() terminates the program running to end the session when called.
     public static void exitProgram()
     {
-        System.out.println(" Successfully logged out.");
+        System.out.println("Successfully logged out.");
         System.exit(0);
     }
 
