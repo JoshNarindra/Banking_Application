@@ -13,6 +13,8 @@ import java.sql.SQLException;
 
 public class Program
 {
+    // Method main() which displays the opening menu to the user.
+    // The method either calls the existingCustomersMenu() or newCustomersMenu() methods depending on user input.
     public static void main(String[] args) throws SQLException
     {
         System.out.println("Welcome to ACME Banking Solutions...\n");
@@ -26,6 +28,7 @@ public class Program
         }
     }
 
+    // Method existingCustomersMenu() which displays a menu to customers who already have an account registered.
     public static void existingCustomersMenu() throws SQLException
     {
         Queries queries = new Queries();
@@ -53,6 +56,8 @@ public class Program
         x.accountMenu();
     }
 
+    // Method newCustomersMenu() which displays a menu to new customers.
+    // The method calls the createUser() method and passes its return value to one of the methods which creates a new account, depending on user input.
     public static void newCustomersMenu() throws SQLException
     {
         System.out.println("Open an account with ACME Banking Solutions...\n");
@@ -69,6 +74,7 @@ public class Program
 
     // Method openPersonalAccount() takes an int userID as an argument and inserts a row into the Accounts0 table in the database.
     // The information entered into the table is dependent on the user's input and is linked to the userID passed to the method.
+    // Finally, the PersonalAccount object's accountMenu() method is called.
     public static void openPersonalAccount(int userID) throws SQLException
     {
         Queries newQuery = new Queries();
@@ -91,6 +97,7 @@ public class Program
 
     // Method openBusinessAccount() takes an int userID as an argument and inserts a row into the Accounts0 table in the database.
     // The information entered into the table is dependent on the user's input and is linked to the userID passed to the method.
+    // Finally, the BusinessAccount object's accountMenu() method is called.
     public static void openBusinessAccount(int userID) throws SQLException
     {
         Queries newQuery = new Queries();
@@ -116,6 +123,7 @@ public class Program
 
     // Method openISAAccount() takes an int userID as an argument and inserts a row into the Accounts0 table in the database.
     // The information entered into the table is dependent on the user's input and is linked to the userID passed to the method.
+    // Finally, the ISAAccount object's accountMenu() method is called.
     public static void openISAAccount(int userID) throws SQLException
     {
         Queries newQuery = new Queries();
@@ -177,6 +185,11 @@ public class Program
         return (input == 1);
     }
 
+    // Method checkMultipleOptions() takes a String menuString and an array of integers options as arguments.
+    // The options array contains all the numbers which can be selected by the user as options.
+    // The user is prompted repeatedly until they enter an integer which is contained in the options array.
+    // This integer inputted is finally returned.
+    // This method can be used as a template for any situation in which the user is prompted to choose between multiple options.
     public static int checkMultipleOptions(String menuString, int[] options)
     {
         Scanner scanner = new Scanner(System.in);
@@ -199,6 +212,9 @@ public class Program
         }
     }
 
+    // Method checkAccountNumber() prompts the user to enter an account number and checks that the number is valid.
+    // The account number entered must be the correct length and contain only numbers, or the user is re-prompted.
+    // The account number is returned as a String once the user has entered a valid number.
     public static String checkAccountNumber()
     {
         Scanner scanner = new Scanner(System.in);
