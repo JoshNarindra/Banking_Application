@@ -14,7 +14,6 @@ abstract class Account
     private float balance;
     private float overdraft;
 
-
     public Account(String accountNumber, String sortCode, float balance, float overdraft)
     {
         this.accountNumber = accountNumber;

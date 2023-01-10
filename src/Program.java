@@ -105,6 +105,7 @@ public class Program
         Queries newQuery = new Queries();
         AccountNumberGeneration generator = new AccountNumberGeneration();
         String businessName = checkAlphabet("Enter business name: ");
+        System.out.println(businessName);
         checkCredential("Does the customer have valid business credentials? \n1. Yes. \n2. No.", "Customer must have valid business credentials to open a business account");
         checkCredential("Does the customer have a valid business type? (No enterprises, public limited companies or charities are permitted.) \n1. Yes. \n2. No.", "Customer must have a valid business type to open a business account.");
         float openingBalance = checkFloatRange("Enter opening balance: ", 1.00f, 20000.00f);
@@ -112,9 +113,10 @@ public class Program
 
         if (checkTwoOptions("Confirm account opening? \n1. Yes. \n2. No"))
         {
-            BusinessAccount businessAccount = newQuery.createBusinessAccount(generator.generateAccountNumber(), "12-20-02", userID, openingBalance, overdraftAmount, businessName);
+            String accountNumber = generator.generateAccountNumber();
+            BusinessAccount businessAccount = newQuery.createBusinessAccount(accountNumber, "12-20-02", userID, openingBalance, overdraftAmount, businessName);
+            //createBusiness(businessName, accountNumber);
             System.out.println("Account creation successful.");
-            createBusiness(businessAccount);
             businessAccount.accountMenu();
         }
         else
@@ -163,10 +165,10 @@ public class Program
 
     // Method createBusiness() takes a BusinessAccount object as its argument and calls the method createBusiness() from the Queries class.
     // The result is that a new row is inserted into the Businesses0 table based on the newly created business account.
-    public static void createBusiness(BusinessAccount businessAccount) throws SQLException
+    public static void createBusiness(String businessName, String accountNumber) throws SQLException
     {
         Queries newQuery = new Queries();
-        newQuery.createBusiness(businessAccount);
+        newQuery.createBusiness(businessName, accountNumber);
     }
 
     // Method checkTwoOptions() takes a String menuString (the sentence to be printed to the console) as an argument and returns a boolean.
@@ -265,7 +267,7 @@ public class Program
         while (!input.matches("[a-z, A-Z]+"))
         {
             System.out.println(menuString);
-            input = scanner.next();
+            input = scanner.nextLine();
         }
 
         return input;

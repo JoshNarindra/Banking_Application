@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Tidied the account objects and removed redundant or legacy methods">
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Implemented balance check for any methods where the customer tries to take money out of the account.">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2023_18_59__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BusinessAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ISAAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ISAAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Program.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Queries.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +43,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2JSL54fu2ktI1BDk3LOo7HV2SQx" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -370,7 +377,28 @@
       <option name="project" value="LOCAL" />
       <updated>1673222515833</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Formatting bits and bobs">
+      <created>1673295784196</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1673295784197</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Minor changes to placeholders in Account objects">
+      <created>1673297130091</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1673297130091</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Implemented balance check for any methods where the customer tries to take money out of the account.">
+      <created>1673305014517</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1673305014517</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -388,9 +416,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="." />
-    <MESSAGE value="Added Menu System to Personal Acc." />
-    <MESSAGE value="Updated Menu System to Personal Acc." />
     <MESSAGE value="accountMenu() method added to children of account class." />
     <MESSAGE value="Added DatabaseConnection Class." />
     <MESSAGE value="Updated accounts menus." />
@@ -413,7 +438,10 @@
     <MESSAGE value="Fixed (I think) all of the SQL syntax in Queries." />
     <MESSAGE value="Abstracted much of the functionality of methods in Program class into their own methods, for more DRY code." />
     <MESSAGE value="Formatting and comments." />
-    <option name="LAST_COMMIT_MESSAGE" value="Formatting and comments." />
+    <MESSAGE value="Formatting bits and bobs" />
+    <MESSAGE value="Minor changes to placeholders in Account objects" />
+    <MESSAGE value="Implemented balance check for any methods where the customer tries to take money out of the account." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented balance check for any methods where the customer tries to take money out of the account." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

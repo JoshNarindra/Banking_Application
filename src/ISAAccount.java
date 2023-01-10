@@ -20,15 +20,16 @@ public class ISAAccount extends Account
             case 2 -> deposit(Program.checkFloatRange("Enter deposit amount: ", 0.01f, 20000.00f));
             case 3 -> withdraw(Program.checkFloatRange("Enter withdrawal amount: ", 0.01f, 20000.00f));
             case 4 -> transfer(0, "placeholder", "placeholder");
-            case 5 -> interestPayment(0);
+            case 5 -> interestPayment(1.025f);
             case 6 -> directDebit(0, "placeholder", "placeholder");
             case 7 -> standingOrder(0, "placeholder", "placeholder");
             case 9 -> Program.exitProgram();
         }
     }
 
-    public void interestPayment(float aprAmount)
+    public void interestPayment(float monthlyInterestMultiplier) throws SQLException
     {
-        setBalance(getBalance() * aprAmount);
+        setBalance(getBalance() * monthlyInterestMultiplier);
+        updateDatabaseInformation();
     }
 }

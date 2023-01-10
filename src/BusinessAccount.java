@@ -30,7 +30,7 @@ public class BusinessAccount extends Account
             case 4 -> transfer(0, "placeholder", "placeholder");
             case 5 -> requestsMenu();
             case 6 -> paymentsMenu();
-            case 7 -> System.out.println("Placeholder bill annual payment");
+            case 7 -> makeAnnualPayment();
             case 9 -> Program.exitProgram();
         }
     }
@@ -43,8 +43,8 @@ public class BusinessAccount extends Account
         {
             case 1 -> System.out.println("Placeholder request chequebook");
             case 2 -> System.out.println("Placeholder request credit card");
-            case 3 -> System.out.println("Request change to overdraft");
-            case 4 -> System.out.println("Request a loan");
+            case 3 -> System.out.println("Placeholder request change to overdraft");
+            case 4 -> System.out.println("Placeholder request a loan");
             case 9 -> Program.exitProgram();
         }
     }
@@ -59,5 +59,12 @@ public class BusinessAccount extends Account
             case 2 -> standingOrder(0, "placeholder", "placeholder");
             case 9 -> Program.exitProgram();
         }
+    }
+
+    public void makeAnnualPayment() throws SQLException
+    {
+        float newBalance = getBalance() - 120f;
+        setBalance(newBalance);
+        updateDatabaseInformation();
     }
 }
