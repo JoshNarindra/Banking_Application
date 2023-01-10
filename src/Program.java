@@ -49,14 +49,25 @@ public class Program
 
 
         ArrayList<String> accountList = Account.retrieveCustomerAccounts(accountNumber);
+
+        int count = 0; //TEMP counts how many accounts user has
+
         for (String s: accountList)
         {
             System.out.println(s);
+            count=count+1; //TEMP
         }
 
-        System.out.println("\nEnter the account number of the account that would you like to access:");
+        Scanner scanner = new Scanner(System.in);  // Create a Scanner object
+        int userInput = Integer.parseInt(scanner.nextLine());  // Read user input
 
-
+        //FIX- breaks if wrong input
+        if(userInput < count){
+            System.out.println(accountList.get(userInput-1));
+        }
+        else{
+            System.out.println("Invalid input");
+        }
     }
 
     // Method newCustomersMenu() which displays a menu to new customers.
