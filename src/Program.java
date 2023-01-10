@@ -47,6 +47,7 @@ public class Program
         //Display customers accounts with bank - NEEDS FIXING.
         System.out.println("\nCustomer Accounts: ");
 
+
         ArrayList<String> accountList = Account.retrieveCustomerAccounts(accountNumber);
         for (String s: accountList)
         {
