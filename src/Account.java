@@ -51,6 +51,24 @@ abstract class Account
         }
         return accountList;
     }
+    
+    public String getAccountType(String accountNumber) throws SQLException {
+        Queries newQuery = new Queries();
+        String query = ("SELECT AccountType FROM Accounts WHERE UserID in (SELECT UserID FROM Accounts WHERE AccountNumber = " + accountNumber + ");");
+
+        DatabaseConnection connection = new DatabaseConnection();
+
+        var stmt = connection.getConnection().prepareStatement(query);
+        var rs = stmt.executeQuery();
+        
+        String type = null;
+
+        while(rs.next()) {
+            type = rs.getString(1).toString();
+        }
+        
+        return type;
+    }
 
     public String getAccountNumber()
     {
