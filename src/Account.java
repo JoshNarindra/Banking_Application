@@ -14,7 +14,6 @@ abstract class Account
     private float balance;
     private float overdraft;
 
-
     public Account(String accountNumber, String sortCode, float balance, float overdraft)
     {
         this.accountNumber = accountNumber;
@@ -33,9 +32,10 @@ abstract class Account
         return customerInfoResults;
     }
 
-    public static ArrayList retrieveCustomerAccounts(String accountNumber) throws SQLException {
+    public static ArrayList retrieveCustomerAccounts(String accountNumber) throws SQLException
+    {
         Queries newQuery = new Queries();
-        String query = ("SELECT AccountNumber, AccountType FROM Accounts WHERE UserID in (SELECT UserID FROM Accounts WHERE AccountNumber = " + accountNumber + ");");
+        String query = ("SELECT AccountNumber, AccountType FROM Accounts0 WHERE UserID in (SELECT UserID FROM Accounts0 WHERE AccountNumber = " + accountNumber + ");");
 
         DatabaseConnection connection = new DatabaseConnection();
 
@@ -100,22 +100,73 @@ abstract class Account
     {
         float newBalance = getBalance() + increment;
         setBalance(newBalance);
-        this.updateDatabaseInformation();
+        updateDatabaseInformation();
     }
 
     // Function withdraw which calls getBalance and setBalance to decrement balance
     public void withdraw(float decrement) throws SQLException
     {
         float newBalance = getBalance() - decrement;
-        setBalance(newBalance);
-        this.updateDatabaseInformation();
+
+        if (newBalance + overdraft < 0)
+        {
+            System.out.println("Error. Insufficient funds. Try again.");
+        }
+        else
+        {
+            setBalance(newBalance);
+            updateDatabaseInformation();
+        }
     }
 
     // Function transfer which takes two accounts and an amount as an argument and transfers money between the two
 
-    public static void transfer(float amount, Account payee, Account recipient)
+    public void transfer(float amount, String recipientAccountNumber, String recipientSortCode) throws SQLException
     {
+        float newBalance = getBalance() - amount;
 
+        if (newBalance + overdraft < 0)
+        {
+            System.out.println("Error. Insufficient funds. Try again.");
+        }
+        else
+        {
+            setBalance(newBalance);
+            // IMPLEMENT FUNCTIONALITY HERE
+            updateDatabaseInformation();
+        }
+    }
+
+    public void directDebit(float amount, String recipientAccountNumber, String recipientSortCode) throws SQLException
+    {
+        float newBalance = getBalance() - amount;
+
+        if (newBalance + overdraft < 0)
+        {
+            System.out.println("Error. Insufficient funds. Try again.");
+        }
+        else
+        {
+            setBalance(newBalance);
+            // IMPLEMENT FUNCTIONALITY HERE
+            updateDatabaseInformation();
+        }
+    }
+
+    public void standingOrder(float amount, String recipientAccountNumber, String recipientSortCode) throws SQLException
+    {
+        float newBalance = getBalance() - amount;
+
+        if (newBalance + overdraft < 0)
+        {
+            System.out.println("Error. Insufficient funds. Try again.");
+        }
+        else
+        {
+            setBalance(newBalance);
+            // IMPLEMENT FUNCTIONALITY HERE
+            updateDatabaseInformation();
+        }
     }
 
 
