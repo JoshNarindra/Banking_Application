@@ -51,13 +51,16 @@ public class BusinessAccount extends Account
 
     public void paymentsMenu() throws SQLException
     {
-        int menu = Program.checkMultipleOptions("\nWhat would the customer like to do? \n1. Set up a direct debit. \n2. Set up a standing order. \n8. Back. \n9. Exit", new int[] {1, 2, 8, 9});
-
-        switch(menu)
+        while (true)
         {
-            case 1 -> directDebit(0, "placeholder", "placeholder");
-            case 2 -> standingOrder(0, "placeholder", "placeholder");
-            case 9 -> Program.exitProgram();
+            int menu = Program.checkMultipleOptions("\nWhat would the customer like to do? \n\n1. Set up a direct debit. \n2. Set up a standing order. \n8. Back. \n9. Exit", new int[] {1, 2, 8, 9});
+
+            switch(menu)
+            {
+                case 1 -> directDebit(0, "placeholder", "placeholder");
+                case 2 -> standingOrder(0, "placeholder", "placeholder");
+                case 9 -> Program.exitProgram();
+            }
         }
     }
 

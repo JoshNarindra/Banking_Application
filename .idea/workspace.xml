@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Implemented balance check for any methods where the customer tries to take money out of the account.">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2023_18_59__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account.java" afterDir="false" />
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Fixed the order of the queries so that businesses can now be created and added to the database.">
       <change beforePath="$PROJECT_DIR$/src/BusinessAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ISAAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ISAAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Queries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PersonalAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PersonalAccount.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -398,7 +394,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673305014517</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Fixed the order of the queries so that businesses can now be created and added to the database.">
+      <created>1673313763526</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1673313763526</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -416,7 +419,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="accountMenu() method added to children of account class." />
     <MESSAGE value="Added DatabaseConnection Class." />
     <MESSAGE value="Updated accounts menus." />
     <MESSAGE value="Added name and DOB variables." />
@@ -441,7 +443,8 @@
     <MESSAGE value="Formatting bits and bobs" />
     <MESSAGE value="Minor changes to placeholders in Account objects" />
     <MESSAGE value="Implemented balance check for any methods where the customer tries to take money out of the account." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented balance check for any methods where the customer tries to take money out of the account." />
+    <MESSAGE value="Fixed the order of the queries so that businesses can now be created and added to the database." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed the order of the queries so that businesses can now be created and added to the database." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
