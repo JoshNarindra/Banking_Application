@@ -5,6 +5,7 @@ Abstract class Account.
 //Imports
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 abstract class Account
@@ -32,7 +33,7 @@ abstract class Account
         return customerInfoResults;
     }
 
-    public static ArrayList retrieveCustomerAccounts(String accountNumber) throws SQLException
+    public static HashMap retrieveCustomerAccounts(String accountNumber) throws SQLException
     {
         Queries newQuery = new Queries();
         String query = ("SELECT AccountNumber, AccountType FROM Accounts0 WHERE UserID in (SELECT UserID FROM Accounts0 WHERE AccountNumber = " + accountNumber + ");");
@@ -42,12 +43,22 @@ abstract class Account
         var stmt = connection.getConnection().prepareStatement(query);
         var rs = stmt.executeQuery();
 
-        ArrayList<String> accountList = new ArrayList<>();
+        ///WORKING ARRAYLIST OUTPUT
+//        ArrayList<String> accountList = new ArrayList<>();
+//        int count = 0;
+//
+//        while(rs.next()){
+//            count = count+1;
+//            accountList.add(count + ". " + rs.getString(1).toString() + " " + rs.getString(2).toString());
+//        }
+//        return accountList;
+
+        HashMap<String, String> accountList = new HashMap<String, String>();
         int count = 0;
 
         while(rs.next()){
             count = count+1;
-            accountList.add(count + ". " + rs.getString(1).toString() + " " + rs.getString(2).toString());
+            accountList.put(rs.getString(1).toString(),rs.getString(2).toString());
         }
         return accountList;
     }

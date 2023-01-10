@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Prints customer account list in main menu">
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="fixed program menu bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Program.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +82,7 @@
       <workItem from="1672228202568" duration="2578000" />
       <workItem from="1672266508408" duration="6787000" />
       <workItem from="1672583152802" duration="8536000" />
-      <workItem from="1673371814510" duration="3898000" />
+      <workItem from="1673371814510" duration="5821000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Class Layout.">
       <created>1672148787123</created>
@@ -377,7 +378,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673372584975</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="fixed program menu bug">
+      <created>1673375872833</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1673375872833</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -418,6 +426,7 @@
     <MESSAGE value="Database Connection Class update." />
     <MESSAGE value="bug fixes." />
     <MESSAGE value="Prints customer account list in main menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Prints customer account list in main menu" />
+    <MESSAGE value="fixed program menu bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed program menu bug" />
   </component>
 </project>

@@ -4,6 +4,7 @@ Main Program Class.
 
 //imports
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 import java.sql.SQLException;
 
@@ -48,26 +49,30 @@ public class Program
         System.out.println("\nCustomer Accounts: ");
 
 
-        ArrayList<String> accountList = Account.retrieveCustomerAccounts(accountNumber);
+        HashMap<String, String> accountList = Account.retrieveCustomerAccounts(accountNumber);
 
         int count = 0; //TEMP counts how many accounts user has
 
-        for (String s: accountList)
+        for (HashMap.Entry<String,String> entry: accountList.entrySet())
         {
-            System.out.println(s);
-            count=count+1; //TEMP
+            count = count+1;
+            System.out.println(count+". "+"Account Number = " + entry.getKey() + ", Account Type = " + entry.getValue());
         }
 
         Scanner scanner = new Scanner(System.in);  // Create a Scanner object
         int userInput = Integer.parseInt(scanner.nextLine());  // Read user input
 
-        //FIX- breaks if wrong input
-        if(userInput < count){
-            System.out.println(accountList.get(userInput-1));
-        }
-        else{
-            System.out.println("Invalid input");
-        }
+        //Allow user to choose account dependent on input based on menu
+//        if(userInput < count){
+//            System.out.println(accountList.get(userInput-1));
+//        }
+//        else{
+//            System.out.println("Invalid input");
+//        }
+
+        //Create account object using Account Number + Type (If statement)
+
+        //Use account object to call individual account menu.
     }
 
     // Method newCustomersMenu() which displays a menu to new customers.
