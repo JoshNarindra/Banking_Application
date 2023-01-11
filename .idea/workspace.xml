@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="fixed program menu bug">
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Prints customer account list in main menu">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_01_2023_16_49__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_01_2023_16_49__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_01_2023_18_59__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_01_2023_18_59__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_01_2023_17_39__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_01_2023_17_39__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Program.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +84,7 @@
       <workItem from="1672228202568" duration="2578000" />
       <workItem from="1672266508408" duration="6787000" />
       <workItem from="1672583152802" duration="8536000" />
-      <workItem from="1673371814510" duration="5821000" />
+      <workItem from="1673371814510" duration="342000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Class Layout.">
       <created>1672148787123</created>
@@ -357,35 +359,7 @@
       <option name="project" value="LOCAL" />
       <updated>1673372160313</updated>
     </task>
-    <task id="LOCAL-00040" summary="Prints customer account list in main menu">
-      <created>1673372357254</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1673372357254</updated>
-    </task>
-    <task id="LOCAL-00041" summary="Prints customer account list in main menu">
-      <created>1673372566793</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1673372566793</updated>
-    </task>
-    <task id="LOCAL-00042" summary="Prints customer account list in main menu">
-      <created>1673372584975</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1673372584975</updated>
-    </task>
-    <task id="LOCAL-00043" summary="fixed program menu bug">
-      <created>1673375872833</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1673375872833</updated>
-    </task>
-    <option name="localTasksCounter" value="44" />
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -426,7 +400,6 @@
     <MESSAGE value="Database Connection Class update." />
     <MESSAGE value="bug fixes." />
     <MESSAGE value="Prints customer account list in main menu" />
-    <MESSAGE value="fixed program menu bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed program menu bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Prints customer account list in main menu" />
   </component>
 </project>

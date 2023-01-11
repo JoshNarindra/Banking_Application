@@ -62,13 +62,16 @@ public class Program
         Scanner scanner = new Scanner(System.in);  // Create a Scanner object
         int userInput = Integer.parseInt(scanner.nextLine());  // Read user input
 
-        //Allow user to choose account dependent on input based on menu
-//        if(userInput < count){
-//            System.out.println(accountList.get(userInput-1));
-//        }
-//        else{
-//            System.out.println("Invalid input");
-//        }
+//        Allow user to choose account dependent on input based on menu
+        if (userInput < count)
+        {
+            PersonalAccount personalAccount = queries.retrievePersonalAccount(accountList.entrySet().toArray()[userInput - 1].toString().split("=")[0]);
+            personalAccount.accountMenu();
+        }
+        else
+        {
+            System.out.println("Invalid input");
+        }
 
         //Create account object using Account Number + Type (If statement)
 
@@ -330,6 +333,5 @@ public class Program
         System.out.println("Successfully logged out.");
         System.exit(0);
     }
-
 
 }
