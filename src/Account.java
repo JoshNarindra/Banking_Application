@@ -141,8 +141,9 @@ abstract class Account
 
     // Function transfer which takes two accounts and an amount as an argument and transfers money between the two
 
-    public void transfer(float amount, String recipientAccountNumber, String recipientSortCode) throws SQLException
+    public void payAccount(float amount, String recipientAccountNumber) throws SQLException
     {
+        Queries queries = new Queries();
         float newBalance = getBalance() - amount;
 
         if (newBalance + overdraft < 0)
@@ -152,54 +153,13 @@ abstract class Account
         else
         {
             setBalance(newBalance);
-            // IMPLEMENT FUNCTIONALITY HERE
             updateDatabaseInformation();
+            queries.updateQuery("UPDATE Accounts0 SET Balance = Balance + " + amount + " WHERE AccountNumber = '" + recipientAccountNumber + "';");
         }
     }
-
-    public void directDebit(float amount, String recipientAccountNumber, String recipientSortCode) throws SQLException
-    {
-        float newBalance = getBalance() - amount;
-
-        if (newBalance + overdraft < 0)
-        {
-            System.out.println("Error. Insufficient funds. Try again.");
-        }
-        else
-        {
-            setBalance(newBalance);
-            // IMPLEMENT FUNCTIONALITY HERE
-            updateDatabaseInformation();
-        }
-    }
-
-    public void standingOrder(float amount, String recipientAccountNumber, String recipientSortCode) throws SQLException
-    {
-        float newBalance = getBalance() - amount;
-
-        if (newBalance + overdraft < 0)
-        {
-            System.out.println("Error. Insufficient funds. Try again.");
-        }
-        else
-        {
-            setBalance(newBalance);
-            // IMPLEMENT FUNCTIONALITY HERE
-            updateDatabaseInformation();
-        }
-    }
-
 
     // Abstract method to display menu system for account.
     abstract void accountMenu() throws SQLException;
-
-    //Abstract methods for creating accounts should use "override" in child classes for each type of account.
-    // (Note Are these methods abstract as a result of class being abstract?)
-
-    public static void generateSortCode()
-    {
-
-    }
 
     //Method which updates the database so that changes made to the Account object are reflected in the relevant table
     //In other words the method synchronizes the program with the database

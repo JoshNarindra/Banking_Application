@@ -153,7 +153,7 @@ public class Program
 
         if (checkTwoOptions(" Confirm account opening? \n 1. Yes \n 2. No"))
         {
-            PersonalAccount personalAccount = newQuery.createPersonalAccount(generator.generateAccountNumber(), "12-20-02", userID, openingBalance, 0.00f);
+            PersonalAccount personalAccount = newQuery.createPersonalAccount(generator.generateAccountNumber(), "02-12-20", userID, openingBalance, 0.00f);
             System.out.println(" Account creation successful.");
             personalAccount.accountMenu();
         }
@@ -180,8 +180,7 @@ public class Program
         if (checkTwoOptions("Confirm account opening? \n1. Yes. \n2. No"))
         {
             String accountNumber = generator.generateAccountNumber();
-            BusinessAccount businessAccount = newQuery.createBusinessAccount(accountNumber, "12-20-02", userID, openingBalance, overdraftAmount, businessName);
-            //createBusiness(businessName, accountNumber);
+            BusinessAccount businessAccount = newQuery.createBusinessAccount(accountNumber, "02-12-20", userID, openingBalance, overdraftAmount, businessName);
             System.out.println("Account creation successful.");
             businessAccount.accountMenu();
         }
@@ -204,7 +203,7 @@ public class Program
 
         if (checkTwoOptions("Confirm account opening? \n1. Yes. \n2. No."))
         {
-            ISAAccount isaAccount = newQuery.createISAAccount(generator.generateAccountNumber(), "12-20-02", userID, openingBalance, 0.00f);
+            ISAAccount isaAccount = newQuery.createISAAccount(generator.generateAccountNumber(), "02-12-20", userID, openingBalance, 0.00f);
             System.out.println("Account creation successful.");
             isaAccount.accountMenu();
         }
@@ -227,14 +226,6 @@ public class Program
         int birthYear = checkIntegerRange("Enter birth year: ", 1900, 2007);
         String dateOfBirth = (birthYear + "-" + String.format("%02d", birthMonth) + "-" + String.format("%02d", birthDay));
         return newQuery.createUser(firstName, lastName, dateOfBirth);
-    }
-
-    // Method createBusiness() takes a BusinessAccount object as its argument and calls the method createBusiness() from the Queries class.
-    // The result is that a new row is inserted into the Businesses0 table based on the newly created business account.
-    public static void createBusiness(String businessName, String accountNumber) throws SQLException
-    {
-        Queries newQuery = new Queries();
-        newQuery.createBusiness(businessName, accountNumber);
     }
 
     // Method checkTwoOptions() takes a String menuString (the sentence to be printed to the console) as an argument and returns a boolean.
@@ -264,11 +255,10 @@ public class Program
     {
         Scanner scanner = new Scanner(System.in);
         System.out.println(menuString);
-        int input = 0;
 
         while (true)
         {
-            input = scanner.nextInt();
+            int input = scanner.nextInt();
 
             for (int option : options)
             {

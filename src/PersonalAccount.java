@@ -1,5 +1,4 @@
 import java.sql.SQLException;
-import java.util.Scanner;
 
 public class PersonalAccount extends Account
 {
@@ -26,14 +25,9 @@ public class PersonalAccount extends Account
                 case 1 -> displayBalance();
                 case 2 -> deposit(Program.checkFloatRange("Enter deposit amount: ", 0.01f, 20000.00f));
                 case 3 -> withdraw(Program.checkFloatRange("Enter withdrawal amount: ", 0.01f, 20000.00f));
-                case 4 -> transfer(0, "placeholder", "placeholder");
-                case 5 -> directDebit(0, "placeholder", "placeholder");
-                case 6 -> standingOrder(0, "placeholder", "placeholder");
+                case 4, 5, 6 -> payAccount(0, "placeholder");
                 case 9 -> Program.exitProgram();
             }
         }
-
-
-        //Placeholder to return to the menu maybe?
     }
 }
