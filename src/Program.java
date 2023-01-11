@@ -37,9 +37,15 @@ public class Program
             accountNumber = checkAccountNumber();
         }
 
+        ArrayList<String> customerInfo = Account.retrieveCustomerInfo(accountNumber);
+
+        System.out.println("\nRetrieving account details...");
+        System.out.println("\nName: " + customerInfo.get(0) + " " + customerInfo.get(1));
+        System.out.println("D.O.B: " + customerInfo.get(2));
+
         while (true)
         {
-            boolean menu = checkTwoOptions("Would the customer like to access an existing account or open a new account? \n1. Access an existing account. \n2. Create a new account.");
+            boolean menu = checkTwoOptions("\nWould the customer like to access an existing account or open a new account? \n1. Access an existing account. \n2. Create a new account.");
 
             if (menu)
             {
@@ -78,17 +84,12 @@ public class Program
     {
         Queries queries = new Queries();
         Scanner scanner = new Scanner(System.in);
-        ArrayList<String> customerInfo = Account.retrieveCustomerInfo(accountNumber);
         int numberOfAccounts = 0;
         int userInput = 0;
 
-        System.out.println("\nRetrieving account details...");
-        System.out.println("\nName: " + customerInfo.get(0) + " " + customerInfo.get(1));
-        System.out.println("D.O.B: " + customerInfo.get(2));
-        System.out.println("\nCustomer Accounts: ");
+        System.out.println("\nSelect customer account: ");
 
         HashMap<String, String> accountList = Account.retrieveCustomerAccounts(accountNumber);
-        String accountType = accountList.entrySet().toArray()[userInput - 1].toString().split("=")[1];
 
         for (HashMap.Entry<String,String> entry: accountList.entrySet())
         {
@@ -100,6 +101,8 @@ public class Program
         {
             userInput = Integer.parseInt(scanner.nextLine());
         }
+
+        String accountType = accountList.entrySet().toArray()[userInput - 1].toString().split("=")[1];
 
         switch (accountType)
         {

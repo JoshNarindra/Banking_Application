@@ -35,22 +35,16 @@ abstract class Account
 
     public static HashMap retrieveCustomerAccounts(String accountNumber) throws SQLException
     {
-        Queries newQuery = new Queries();
-        String query = ("SELECT AccountNumber, AccountType FROM Accounts0 WHERE UserID in (SELECT UserID FROM Accounts0 WHERE AccountNumber = " + accountNumber + ");");
+        Queries queries = new Queries();
+        ArrayList<String> columns = new ArrayList<>(List.of("AccountNumber", "AccountType"));
+        ArrayList<String> results = queries.readQuery("SELECT AccountNumber, AccountType FROM Accounts0 WHERE UserID in (SELECT UserID FROM Accounts0 WHERE AccountNumber = " + accountNumber + ");", columns);
+        HashMap<String, String> accountList = new HashMap<>();
 
-        DatabaseConnection connection = new DatabaseConnection();
-
-        var stmt = connection.getConnection().prepareStatement(query);
-        var rs = stmt.executeQuery();
-
-        HashMap<String, String> accountList = new HashMap<String, String>();
-        int count = 0;
-
-        while(rs.next())
+        for (int i = 0; i < results.size(); i=i+2)
         {
-            count = count+1;
-            accountList.put(rs.getString(1).toString(),rs.getString(2).toString());
+            accountList.put(results.get(i), results.get(i+1));
         }
+
         return accountList;
     }
 
