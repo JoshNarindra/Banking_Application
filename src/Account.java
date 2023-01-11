@@ -43,43 +43,15 @@ abstract class Account
         var stmt = connection.getConnection().prepareStatement(query);
         var rs = stmt.executeQuery();
 
-        ///WORKING ARRAYLIST OUTPUT
-//        ArrayList<String> accountList = new ArrayList<>();
-//        int count = 0;
-//
-//        while(rs.next()){
-//            count = count+1;
-//            accountList.add(count + ". " + rs.getString(1).toString() + " " + rs.getString(2).toString());
-//        }
-//        return accountList;
-
         HashMap<String, String> accountList = new HashMap<String, String>();
         int count = 0;
 
-        while(rs.next()){
+        while(rs.next())
+        {
             count = count+1;
             accountList.put(rs.getString(1).toString(),rs.getString(2).toString());
         }
         return accountList;
-    }
-    
-    public String getAccountType(String accountNumber) throws SQLException
-    {
-        Queries newQuery = new Queries();
-        String query = ("SELECT AccountType FROM Accounts WHERE UserID in (SELECT UserID FROM Accounts WHERE AccountNumber = " + accountNumber + ");");
-
-        DatabaseConnection connection = new DatabaseConnection();
-
-        var stmt = connection.getConnection().prepareStatement(query);
-        var rs = stmt.executeQuery();
-        
-        String type = null;
-
-        while(rs.next()) {
-            type = rs.getString(1).toString();
-        }
-        
-        return type;
     }
 
     public static int retrieveUserID(String accountNumber) throws SQLException
@@ -88,16 +60,6 @@ abstract class Account
         ArrayList<String> columnNames = new ArrayList<>(List.of("UserID"));
         ArrayList<String> results = queries.readQuery("SELECT UserID FROM Accounts0 WHERE AccountNumber = '" + accountNumber + "';", columnNames);
         return Integer.parseInt(results.get(0));
-    }
-
-    public String getAccountNumber()
-    {
-        return accountNumber;
-    }
-
-    public String getSortCode()
-    {
-        return sortCode;
     }
 
     public float getBalance()

@@ -135,12 +135,6 @@ public class Queries
         return userID;
     }
 
-    //Method takes a created BusinessAccount and uses it to create a new business in the Businesses table
-    public void createBusiness(String accountNumber, String businessName) throws SQLException
-    {
-        updateQuery("INSERT INTO Businesses0 (Name, AccountNumber) VALUES ('" + businessName + "', '" + accountNumber + "');");
-    }
-
     //Method takes the relevant information and creates a personal account, before returning the account itself as an object
     public PersonalAccount createPersonalAccount(String accountNumber, String sortCode, int userID, float balance, float overdraft) throws SQLException
     {
@@ -165,24 +159,4 @@ public class Queries
         BusinessAccount businessAccount = new BusinessAccount(accountNumber, sortCode, balance, overdraft, businessName);
         return businessAccount;
     }
-
-    //Method takes an accountNumber String, and deletes the relevant entry from the Accounts table
-    public void deleteAccount(String accountNumber) throws SQLException
-    {
-        updateQuery("DELETE FROM Accounts0 WHERE AccountNumber = '" + accountNumber + "';");
-    }
-
-    //Method takes a userID integer and deletes the relevant entry from the Users table
-    public void deleteUser(int userID) throws SQLException
-    {
-        updateQuery("DELETE FROM Users0 WHERE UserID = " + userID + ";");
-    }
-
-    //Method takes a businessID integer and deletes the relevant entry from the Businesses table
-    public void deleteBusiness(int businessID) throws SQLException
-    {
-        updateQuery("DELETE FROM Businesses0 WHERE ID = " + businessID + ";");
-    }
-
-
 }
