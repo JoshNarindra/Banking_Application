@@ -31,7 +31,7 @@ public class Program
         Queries queries = new Queries();
         String accountNumber = checkAccountNumber();
 
-        while(!queries.checkAccountExists(accountNumber))
+        while (!queries.checkAccountExists(accountNumber))
         {
             System.out.println("No record of account. Try again.");
             accountNumber = checkAccountNumber();
@@ -71,36 +71,52 @@ public class Program
         }
     }
 
+    // Method existingAccountsMenu() takes a String accountNumber as an argument and displays all other accounts associated with the same user.
+    // The user is prompted to select an account to manage, with an Account object of the relevant type being created after user selection.
+    // Finally, the accountMenu() method of the Account object is accessed.
     public static void existingAccountsMenu(String accountNumber) throws SQLException
     {
         Queries queries = new Queries();
-        System.out.println("\nRetrieving account details...");
+        Scanner scanner = new Scanner(System.in);
         ArrayList<String> customerInfo = Account.retrieveCustomerInfo(accountNumber);
-        System.out.println("\nName: "+customerInfo.get(0)+" "+customerInfo.get(1));
-        System.out.println("D.O.B: "+customerInfo.get(2));
+        int numberOfAccounts = 0;
 
-        //Display customers accounts with bank - NEEDS FIXING.
+        System.out.println("\nRetrieving account details...");
+        System.out.println("\nName: " + customerInfo.get(0) + " " + customerInfo.get(1));
+        System.out.println("D.O.B: " + customerInfo.get(2));
         System.out.println("\nCustomer Accounts: ");
-
 
         HashMap<String, String> accountList = Account.retrieveCustomerAccounts(accountNumber);
 
-        int count = 0; //TEMP counts how many accounts user has
-
         for (HashMap.Entry<String,String> entry: accountList.entrySet())
         {
-            count = count+1;
-            System.out.println(count+". "+"Account Number = " + entry.getKey() + ", Account Type = " + entry.getValue());
+            numberOfAccounts++;
+            System.out.println(numberOfAccounts+". "+"Account Number = " + entry.getKey() + ", Account Type = " + entry.getValue());
         }
 
-        Scanner scanner = new Scanner(System.in);  // Create a Scanner object
-        int userInput = Integer.parseInt(scanner.nextLine());  // Read user input
+        int userInput = Integer.parseInt(scanner.nextLine());
+        String type = accountList.entrySet().toArray()[userInput - 1].toString().split("=")[1];
 
-//        Allow user to choose account dependent on input based on menu
-        if (userInput < count)
+        if (userInput < numberOfAccounts)
         {
-            PersonalAccount personalAccount = queries.retrievePersonalAccount(accountList.entrySet().toArray()[userInput - 1].toString().split("=")[0]);
-            personalAccount.accountMenu();
+            switch (type)
+            {
+                case "Personal" ->
+                {
+                    PersonalAccount personalAccount = queries.retrievePersonalAccount(accountList.entrySet().toArray()[userInput - 1].toString().split("=")[0]);
+                    personalAccount.accountMenu();
+                }
+                case "Business" ->
+                {
+                    BusinessAccount businessAccount = queries.retrieveBusinessAccount(accountList.entrySet().toArray()[userInput - 1].toString().split("=")[0]);
+                    businessAccount.accountMenu();
+                }
+                case "ISA" ->
+                {
+                    ISAAccount isaAccount = queries.retrieveISAAccount(accountList.entrySet().toArray()[userInput - 1].toString().split("=")[0]);
+                    isaAccount.accountMenu();
+                }
+            }
         }
         else
         {
@@ -108,6 +124,9 @@ public class Program
         }
     }
 
+    // Method createNewAccountMenu() takes an int userID as an argument and displays a menu.
+    // The user is then prompted to choose which type of account to create.
+    // Finally, the relevant method to open an account of the user's choosing is called, with the userID int passed as an argument.
     public static void createNewAccountMenu(int userID) throws SQLException
     {
         while (true)
