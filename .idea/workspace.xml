@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Fixed account selection">
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Fully implemented paying between accounts, implemented check on ISA deposits (not to exceed 20,000 pounds)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BusinessAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DatabaseConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ISAAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ISAAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PersonalAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PersonalAccount.java" afterDir="false" />
     </list>
@@ -86,13 +85,6 @@
       <workItem from="1672266508408" duration="6787000" />
       <workItem from="1672583152802" duration="8536000" />
       <workItem from="1673371814510" duration="342000" />
-    </task>
-    <task id="LOCAL-00001" summary="Initial Class Layout.">
-      <created>1672148787123</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1672148787123</updated>
     </task>
     <task id="LOCAL-00002" summary="Basic Menu Framework">
       <created>1672186553273</created>
@@ -423,7 +415,21 @@
       <option name="project" value="LOCAL" />
       <updated>1673464204699</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Implemented transfer, standing order and direct debit payments; tidying up">
+      <created>1673465940095</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1673465940096</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Tidying up and removing redundant code">
+      <created>1673466171157</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1673466171185</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -441,9 +447,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added abstract methods for account creation." />
-    <MESSAGE value="Added comments. fixed minor bugs" />
-    <MESSAGE value="Minor layout changes" />
     <MESSAGE value="File name change" />
     <MESSAGE value="." />
     <MESSAGE value="Added Menu System to Personal Acc." />
@@ -466,6 +469,9 @@
     <MESSAGE value="Fixed existingAccountsMenu()" />
     <MESSAGE value="Fixed BusinessAccount to display the menu again after a transaction" />
     <MESSAGE value="Fixed account selection" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed account selection" />
+    <MESSAGE value="Implemented transfer, standing order and direct debit payments; tidying up" />
+    <MESSAGE value="Tidying up and removing redundant code" />
+    <MESSAGE value="Fully implemented paying between accounts, implemented check on ISA deposits (not to exceed 20,000 pounds)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fully implemented paying between accounts, implemented check on ISA deposits (not to exceed 20,000 pounds)" />
   </component>
 </project>

@@ -59,7 +59,7 @@ public class BusinessAccount extends Account
 
             switch(menu)
             {
-                case 1, 2 -> payAccount(0, "placeholder");
+                case 1, 2 -> payAccount(0, retrieveRecipientAccountNumber());
                 case 9 -> Program.exitProgram();
             }
         }

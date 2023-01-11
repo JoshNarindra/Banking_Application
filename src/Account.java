@@ -112,12 +112,21 @@ abstract class Account
         {
             System.out.println("Error. Insufficient funds. Try again.");
         }
+        else if (!queries.checkAccountExists(recipientAccountNumber))
+        {
+            System.out.println("Recipient account not found. Try again.");
+        }
         else
         {
             setBalance(newBalance);
             updateDatabaseInformation();
             queries.updateQuery("UPDATE Accounts0 SET Balance = Balance + " + amount + " WHERE AccountNumber = '" + recipientAccountNumber + "';");
         }
+    }
+
+    public static String retrieveRecipientAccountNumber()
+    {
+        return Program.checkAccountNumber();
     }
 
     // Abstract method to display menu system for account.
