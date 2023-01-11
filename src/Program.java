@@ -94,33 +94,32 @@ public class Program
             System.out.println(numberOfAccounts+". "+"Account Number = " + entry.getKey() + ", Account Type = " + entry.getValue());
         }
 
-        int userInput = Integer.parseInt(scanner.nextLine());
+        int userInput = 0;
         String type = accountList.entrySet().toArray()[userInput - 1].toString().split("=")[1];
 
-        if (userInput <= numberOfAccounts)
+        while (userInput < 1 || userInput > numberOfAccounts)
         {
-            switch (type)
-            {
-                case "Personal" ->
-                {
-                    PersonalAccount personalAccount = queries.retrievePersonalAccount(accountList.entrySet().toArray()[userInput - 1].toString().split("=")[0]);
-                    personalAccount.accountMenu();
-                }
-                case "Business" ->
-                {
-                    BusinessAccount businessAccount = queries.retrieveBusinessAccount(accountList.entrySet().toArray()[userInput - 1].toString().split("=")[0]);
-                    businessAccount.accountMenu();
-                }
-                case "ISA" ->
-                {
-                    ISAAccount isaAccount = queries.retrieveISAAccount(accountList.entrySet().toArray()[userInput - 1].toString().split("=")[0]);
-                    isaAccount.accountMenu();
-                }
-            }
+            userInput = Integer.parseInt(scanner.nextLine());
         }
-        else
+
+        switch (type)
         {
-            System.out.println("Invalid input");
+            case "Personal" ->
+            {
+                PersonalAccount personalAccount = queries.retrievePersonalAccount(accountList.entrySet().toArray()[userInput - 1].toString().split("=")[0]);
+                personalAccount.accountMenu();
+            }
+            case "Business" ->
+            {
+                BusinessAccount businessAccount = queries.retrieveBusinessAccount(accountList.entrySet().toArray()[userInput - 1].toString().split("=")[0]);
+                businessAccount.accountMenu();
+            }
+            case "ISA" ->
+            {
+                ISAAccount isaAccount = queries.retrieveISAAccount(accountList.entrySet().toArray()[userInput - 1].toString().split("=")[0]);
+                isaAccount.accountMenu();
+            }
+            default -> {System.out.println("Invalid input. Try again.");}
         }
     }
 
