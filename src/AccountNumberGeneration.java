@@ -16,9 +16,12 @@ public class AccountNumberGeneration
     {
         String newAccountNumber = generateEightDigitString();
         Queries q = new Queries();
-        while (q.checkAccountExists(newAccountNumber)){
+
+        while (q.checkAccountExists(newAccountNumber))
+        {
             newAccountNumber = generateEightDigitString();
         }
+
         return newAccountNumber;
     }
 

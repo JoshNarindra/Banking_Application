@@ -37,11 +37,45 @@ public class Program
             accountNumber = checkAccountNumber();
         }
 
-        //Retrieve account details.
+        while (true)
+        {
+            boolean menu = checkTwoOptions("Would the customer like to access an existing account or open a new account? \n1. Access an existing account. \n2. Create a new account.");
+
+            if (menu)
+            {
+                existingAccountsMenu(accountNumber);
+            }
+            else
+            {
+                createNewAccountMenu(Account.retrieveUserID(accountNumber));
+            }
+        }
+    }
+
+    // Method newCustomersMenu() which displays a menu to new customers.
+    // The method calls the createUser() method and passes its return value to one of the methods which creates a new account, depending on user input.
+    public static void newCustomersMenu() throws SQLException
+    {
+        while (true)
+        {
+            System.out.println("Open an account with ACME Banking Solutions...\n");
+            int menu = checkMultipleOptions("1. Open a personal account. \n2. Open a business account. \n3. Open an ISA account. \n9. Exit.", new int[]{1, 2, 3, 8, 9});
+
+            switch (menu)
+            {
+                case 1 -> openPersonalAccount(createUser());
+                case 2 -> openBusinessAccount(createUser());
+                case 3 -> openISAAccount(createUser());
+                case 9 -> exitProgram();
+            }
+        }
+    }
+
+    public static void existingAccountsMenu(String accountNumber) throws SQLException
+    {
+        Queries queries = new Queries();
         System.out.println("\nRetrieving account details...");
         ArrayList<String> customerInfo = Account.retrieveCustomerInfo(accountNumber);
-
-        //Display customer info - NEEDS FIXING TO DISPLAY INDIVIDUAL RESULTS.
         System.out.println("\nName: "+customerInfo.get(0)+" "+customerInfo.get(1));
         System.out.println("D.O.B: "+customerInfo.get(2));
 
@@ -72,25 +106,21 @@ public class Program
         {
             System.out.println("Invalid input");
         }
-
-        //Create account object using Account Number + Type (If statement)
-
-        //Use account object to call individual account menu.
     }
 
-    // Method newCustomersMenu() which displays a menu to new customers.
-    // The method calls the createUser() method and passes its return value to one of the methods which creates a new account, depending on user input.
-    public static void newCustomersMenu() throws SQLException
+    public static void createNewAccountMenu(int userID) throws SQLException
     {
-        System.out.println("Open an account with ACME Banking Solutions...\n");
-        int menu = checkMultipleOptions("1. Open a personal account. \n2. Open a business account. \n3. Open an ISA Account. \n9. Exit.", new int[] {1, 2, 3, 9});
-
-        switch (menu)
+        while (true)
         {
-            case 1 -> openPersonalAccount(createUser());
-            case 2 -> openBusinessAccount(createUser());
-            case 3 -> openISAAccount(createUser());
-            case 9 -> exitProgram();
+            int menu = checkMultipleOptions("1. Open a personal account. \n2. Open a business account. \n3. Open an ISA account. \n8. Back. \n9. Exit.", new int[] {1, 2, 3, 8, 9});
+
+            switch(menu)
+            {
+                case 1 -> openPersonalAccount(userID);
+                case 2 -> openBusinessAccount(userID);
+                case 3 -> openISAAccount(userID);
+                case 9 -> exitProgram();
+            }
         }
     }
 
