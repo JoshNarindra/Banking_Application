@@ -23,9 +23,9 @@ public class PersonalAccount extends Account
             switch (menu)
             {
                 case 1 -> displayBalance();
-                case 2 -> deposit(Program.checkFloatRange("Enter deposit amount: ", 0.01f, 20000.00f));
-                case 3 -> withdraw(Program.checkFloatRange("Enter withdrawal amount: ", 0.01f, 20000.00f));
-                case 4, 5, 6 -> payAccount(0, retrieveRecipientAccountNumber());
+                case 2 -> deposit(Program.checkFloatRange("\nEnter deposit amount: ", 0.01f, 20000.00f));
+                case 3 -> withdraw(Program.checkFloatRange("\nEnter withdrawal amount: ", 0.01f, 20000.00f));
+                case 4, 5, 6 -> payAccount(Program.checkFloatRange("\nEnter payment amount:", 0, 20000), retrieveRecipientAccountNumber());
                 case 9 -> Program.exitProgram();
             }
         }

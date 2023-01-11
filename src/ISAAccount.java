@@ -20,7 +20,7 @@ public class ISAAccount extends Account
                 case 1 -> displayBalance();
                 case 2 -> deposit(Program.checkFloatRange("Enter deposit amount: ", 0.01f, 20000.00f));
                 case 3 -> withdraw(Program.checkFloatRange("Enter withdrawal amount: ", 0.01f, 20000.00f));
-                case 4, 6, 7 -> payAccount(0, retrieveRecipientAccountNumber());
+                case 4, 6, 7 -> payAccount(Program.checkFloatRange("\nEnter payment amount:", 0, 20000), retrieveRecipientAccountNumber());
                 case 5 -> interestPayment(1.025f);
                 case 9 -> Program.exitProgram();
             }

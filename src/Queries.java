@@ -19,7 +19,6 @@ public class Queries
         try
         {
             DatabaseConnection connection = new DatabaseConnection();
-
             var stmt = connection.getConnection().prepareStatement(query);
             stmt.execute();
         }
@@ -38,7 +37,6 @@ public class Queries
         try
         {
             DatabaseConnection connection = new DatabaseConnection();
-
             var stmt = connection.getConnection().prepareStatement(query);
             var rs = stmt.executeQuery();
 
@@ -59,35 +57,37 @@ public class Queries
         return results;
     }
 
-    // Method queries database to check if an account number exists in database. Returns true if account exists and false otherwise. -CHECK IF CAN USE PREEXISTING METHOD.
-    public Boolean checkAccountExists(String AccountNumber)
+    public static boolean checkExistsQuery(String query)
     {
-        DatabaseConnection connection = new DatabaseConnection();
-        Boolean accountExists=null;
-        String query = "select COUNT(1) from Accounts0 where AccountNumber = '" + AccountNumber + "';";
         try
         {
+            DatabaseConnection connection = new DatabaseConnection();
             var stmt = connection.getConnection().prepareStatement(query);
             var rs = stmt.executeQuery();
-            while (rs.next())
+
+            while(rs.next())
             {
                 if (rs.getInt(1) == 1)
                 {
-                    //System.out.println("Account Number already exists in database");
-                    accountExists = true;
+                    return true;
                 }
                 else
                 {
-                    //System.out.println("Account Number does not exist in database.");
-                    accountExists = false;
+                    return false;
                 }
             }
         }
-        catch (Exception e)
+        catch (SQLException e)
         {
             e.printStackTrace();
         }
-        return accountExists;
+        return false;
+    }
+
+    // Method queries database to check if an account number exists in database. Returns true if account exists and false otherwise. -CHECK IF CAN USE PREEXISTING METHOD.
+    public boolean checkAccountExists(String accountNumber)
+    {
+        return checkExistsQuery("SELECT COUNT(1) FROM Accounts0 WHERE AccountNumber = '" + accountNumber + "';");
     }
 
     //Method takes the account number provided and creates a PersonalAccount object using information from the database

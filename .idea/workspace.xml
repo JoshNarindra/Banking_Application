@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Fully implemented paying between accounts, implemented check on ISA deposits (not to exceed 20,000 pounds)">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Tweaked retrieverCustomerAccounts method to use the Queries class, fixed bug in Program">
       <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Program.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Queries.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,13 +82,6 @@
       <workItem from="1672266508408" duration="6787000" />
       <workItem from="1672583152802" duration="8536000" />
       <workItem from="1673371814510" duration="342000" />
-    </task>
-    <task id="LOCAL-00003" summary="Added Menu Framework">
-      <created>1672188041041</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1672188041041</updated>
     </task>
     <task id="LOCAL-00004" summary="workspace update">
       <created>1672188070384</created>
@@ -427,7 +419,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673476610893</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Tweaked retrieverCustomerAccounts method to use the Queries class, fixed bug in Program">
+      <created>1673478025393</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1673478025393</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -445,7 +444,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="File name change" />
     <MESSAGE value="." />
     <MESSAGE value="Added Menu System to Personal Acc." />
     <MESSAGE value="Updated Menu System to Personal Acc." />
@@ -470,6 +468,7 @@
     <MESSAGE value="Implemented transfer, standing order and direct debit payments; tidying up" />
     <MESSAGE value="Tidying up and removing redundant code" />
     <MESSAGE value="Fully implemented paying between accounts, implemented check on ISA deposits (not to exceed 20,000 pounds)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fully implemented paying between accounts, implemented check on ISA deposits (not to exceed 20,000 pounds)" />
+    <MESSAGE value="Tweaked retrieverCustomerAccounts method to use the Queries class, fixed bug in Program" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tweaked retrieverCustomerAccounts method to use the Queries class, fixed bug in Program" />
   </component>
 </project>

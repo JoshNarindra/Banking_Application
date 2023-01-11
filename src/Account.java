@@ -25,11 +25,9 @@ abstract class Account
 
     public static ArrayList retrieveCustomerInfo(String accountNumber) throws SQLException
     {
-        ArrayList<String> customerInfo = new ArrayList<>(List.of("FirstName","LastName","DateOfBirth"));
-
-        Queries newQuery = new Queries(); //Should move to Program? Only one instance needed.
-        ArrayList<String> customerInfoResults = newQuery.readQuery("SELECT FirstName, LastName, DateOfBirth from Users where ID in (SELECT UserID from Accounts where AccountNumber = " + accountNumber + " )",customerInfo);
-
+        Queries newQuery = new Queries();
+        ArrayList<String> columns = new ArrayList<>(List.of("FirstName", "LastName", "DateOfBirth"));
+        ArrayList<String> customerInfoResults = newQuery.readQuery("SELECT FirstName, LastName, DateOfBirth from Users where ID in (SELECT UserID from Accounts where AccountNumber = " + accountNumber + " )", columns);
         return customerInfoResults;
     }
 
