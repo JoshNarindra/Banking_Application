@@ -63,7 +63,8 @@ abstract class Account
         return accountList;
     }
     
-    public String getAccountType(String accountNumber) throws SQLException {
+    public String getAccountType(String accountNumber) throws SQLException
+    {
         Queries newQuery = new Queries();
         String query = ("SELECT AccountType FROM Accounts WHERE UserID in (SELECT UserID FROM Accounts WHERE AccountNumber = " + accountNumber + ");");
 
@@ -79,6 +80,14 @@ abstract class Account
         }
         
         return type;
+    }
+
+    public static int retrieveUserID(String accountNumber) throws SQLException
+    {
+        Queries queries = new Queries();
+        ArrayList<String> columnNames = new ArrayList<>(List.of("UserID"));
+        ArrayList<String> results = queries.readQuery("SELECT UserID FROM Accounts0 WHERE AccountNumber = '" + accountNumber + "';", columnNames);
+        return Integer.parseInt(results.get(0));
     }
 
     public String getAccountNumber()

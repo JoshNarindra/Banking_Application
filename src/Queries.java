@@ -162,7 +162,6 @@ public class Queries
     {
         updateQuery("INSERT INTO Accounts0 VALUES ('" + accountNumber + "', '" + sortCode + "', " + userID + ", '" + "Business" + "', " + balance + ", " + overdraft + ");");
         updateQuery("INSERT INTO Businesses0 (Name, AccountNumber) VALUES ('" + businessName + "', '" + accountNumber + "');");
-        //BusinessAccount businessAccount = retrieveBusinessAccount(accountNumber);
         BusinessAccount businessAccount = new BusinessAccount(accountNumber, sortCode, balance, overdraft, businessName);
         return businessAccount;
     }

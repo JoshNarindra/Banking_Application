@@ -1,0 +1,285 @@
+Index: src/Program.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/*\r\nMain Program Class.\r\n */\r\n\r\n//imports\r\nimport java.util.ArrayList;\r\nimport java.util.Scanner;\r\nimport java.sql.SQLException;\r\n\r\npublic class Program\r\n{\r\n    // Method main() which displays the opening menu to the user.\r\n    // The method either calls the existingCustomersMenu() or newCustomersMenu() methods depending on user input.\r\n    public static void main(String[] args) throws SQLException\r\n    {\r\n        System.out.println(\"\\nWelcome to ACME Banking Solutions...\\n\");\r\n        int menu = checkMultipleOptions(\"Does the customer currently have an account with us? \\n1. Yes. \\n2. No. \\n9. Exit.\", new int[]{1, 2, 9});\r\n\r\n        switch (menu)\r\n        {\r\n            case 1 -> existingCustomersMenu();\r\n            case 2 -> newCustomersMenu();\r\n            case 9 -> exitProgram();\r\n        }\r\n    }\r\n\r\n    // Method existingCustomersMenu() which displays a menu to customers who already have an account registered.\r\n    public static void existingCustomersMenu() throws SQLException\r\n    {\r\n        Queries queries = new Queries();\r\n        String accountNumber = checkAccountNumber();\r\n\r\n        while(!queries.checkAccountExists(accountNumber))\r\n        {\r\n            System.out.println(\"No record of account. Try again.\");\r\n            accountNumber = checkAccountNumber();\r\n        }\r\n\r\n        //Retrieve account details.\r\n        System.out.println(\"\\nRetrieving account details...\");\r\n        ArrayList<String> customerInfo = Account.retrieveCustomerInfo(accountNumber);\r\n\r\n        //Display customer info - NEEDS FIXING TO DISPLAY INDIVIDUAL RESULTS.\r\n        System.out.println(\"\\nName: \"+customerInfo.get(0)+\" \"+customerInfo.get(1));\r\n        System.out.println(\"D.O.B: \"+customerInfo.get(2));\r\n\r\n        //Display customers accounts with bank - NEEDS FIXING.\r\n        System.out.println(\"\\nCustomer Accounts: \");\r\n\r\n\r\n        ArrayList<String> accountList = Account.retrieveCustomerAccounts(accountNumber);\r\n        for (String s: accountList)\r\n        {\r\n            System.out.println(s);\r\n        }\r\n\r\n        System.out.println(\"\\nEnter the account number of the account that would you like to access:\");\r\n\r\n\r\n    }\r\n\r\n    // Method newCustomersMenu() which displays a menu to new customers.\r\n    // The method calls the createUser() method and passes its return value to one of the methods which creates a new account, depending on user input.\r\n    public static void newCustomersMenu() throws SQLException\r\n    {\r\n        System.out.println(\"Open an account with ACME Banking Solutions...\\n\");\r\n        int menu = checkMultipleOptions(\"1. Open a personal account. \\n2. Open a business account. \\n3. Open an ISA Account. \\n9. Exit.\", new int[] {1, 2, 3, 9});\r\n\r\n        switch (menu)\r\n        {\r\n            case 1 -> openPersonalAccount(createUser());\r\n            case 2 -> openBusinessAccount(createUser());\r\n            case 3 -> openISAAccount(createUser());\r\n            case 9 -> exitProgram();\r\n        }\r\n    }\r\n\r\n    // Method openPersonalAccount() takes an int userID as an argument and inserts a row into the Accounts0 table in the database.\r\n    // The information entered into the table is dependent on the user's input and is linked to the userID passed to the method.\r\n    // Finally, the PersonalAccount object's accountMenu() method is called.\r\n    public static void openPersonalAccount(int userID) throws SQLException\r\n    {\r\n        Queries newQuery = new Queries();\r\n        AccountNumberGeneration generator = new AccountNumberGeneration();\r\n        checkCredential(\"Does the customer have a valid personal ID? (Only driving licence or passport permitted.) \\n1. Yes. \\n2. No.\", \"Customer must have valid ID to open a personal account.\");\r\n        checkCredential(\"Does the customer have a valid proof of address? (Utility bill, council letter, etc. permitted.) \\n1. Yes. \\n2. No.\", \"Customer must have a valid proof of address to open a personal account.\");\r\n        float openingBalance = checkFloatRange(\"Enter opening balance: \", 1.00f, 20000.00f);\r\n\r\n        if (checkTwoOptions(\" Confirm account opening? \\n 1. Yes \\n 2. No\"))\r\n        {\r\n            PersonalAccount personalAccount = newQuery.createPersonalAccount(generator.generateAccountNumber(), \"12-20-02\", userID, openingBalance, 0.00f);\r\n            System.out.println(\" Account creation successful.\");\r\n            personalAccount.accountMenu();\r\n        }\r\n        else\r\n        {\r\n            exitProgram();\r\n        }\r\n    }\r\n\r\n    // Method openBusinessAccount() takes an int userID as an argument and inserts a row into the Accounts0 table in the database.\r\n    // The information entered into the table is dependent on the user's input and is linked to the userID passed to the method.\r\n    // Finally, the BusinessAccount object's accountMenu() method is called.\r\n    public static void openBusinessAccount(int userID) throws SQLException\r\n    {\r\n        Queries newQuery = new Queries();\r\n        AccountNumberGeneration generator = new AccountNumberGeneration();\r\n        String businessName = checkAlphabet(\"Enter business name: \");\r\n        System.out.println(businessName);\r\n        checkCredential(\"Does the customer have valid business credentials? \\n1. Yes. \\n2. No.\", \"Customer must have valid business credentials to open a business account\");\r\n        checkCredential(\"Does the customer have a valid business type? (No enterprises, public limited companies or charities are permitted.) \\n1. Yes. \\n2. No.\", \"Customer must have a valid business type to open a business account.\");\r\n        float openingBalance = checkFloatRange(\"Enter opening balance: \", 1.00f, 20000.00f);\r\n        float overdraftAmount = checkFloatRange(\"Enter agreed overdraft amount: \", 0.00f, 10000.00f);\r\n\r\n        if (checkTwoOptions(\"Confirm account opening? \\n1. Yes. \\n2. No\"))\r\n        {\r\n            String accountNumber = generator.generateAccountNumber();\r\n            BusinessAccount businessAccount = newQuery.createBusinessAccount(accountNumber, \"12-20-02\", userID, openingBalance, overdraftAmount, businessName);\r\n            //createBusiness(businessName, accountNumber);\r\n            System.out.println(\"Account creation successful.\");\r\n            businessAccount.accountMenu();\r\n        }\r\n        else\r\n        {\r\n            exitProgram();\r\n        }\r\n    }\r\n\r\n    // Method openISAAccount() takes an int userID as an argument and inserts a row into the Accounts0 table in the database.\r\n    // The information entered into the table is dependent on the user's input and is linked to the userID passed to the method.\r\n    // Finally, the ISAAccount object's accountMenu() method is called.\r\n    public static void openISAAccount(int userID) throws SQLException\r\n    {\r\n        Queries newQuery = new Queries();\r\n        AccountNumberGeneration generator = new AccountNumberGeneration();\r\n        checkCredential(\"Does the customer have valid personal ID? (Only driving licence or passport permitted.) \\n1. Yes. \\n2. No.\", \"Customer must have valid ID to open an ISA account.\");\r\n        checkCredential(\"Does the customer meet the age requirements for an ISA account? (16+) \\n1. Yes. \\n2. No.\", \"Customer must meet the age requirements to open an ISA account.\");\r\n        float openingBalance = checkFloatRange(\"Enter opening balance: \", 0.00f, 20000.00f);\r\n\r\n        if (checkTwoOptions(\"Confirm account opening? \\n1. Yes. \\n2. No.\"))\r\n        {\r\n            ISAAccount isaAccount = newQuery.createISAAccount(generator.generateAccountNumber(), \"12-20-02\", userID, openingBalance, 0.00f);\r\n            System.out.println(\"Account creation successful.\");\r\n            isaAccount.accountMenu();\r\n        }\r\n        else\r\n        {\r\n            exitProgram();\r\n        }\r\n    }\r\n\r\n    // Method createUser() prompts the user for information which is then fed to the method createUser() in the Queries class.\r\n    // The result is that a new row is added to the Users0 table in the database.\r\n    // Finally, an integer representing the relevant ID in the Users0 table is returned.\r\n    public static int createUser() throws SQLException\r\n    {\r\n        Queries newQuery = new Queries();\r\n        String firstName = checkAlphabet(\"Enter first name: \");\r\n        String lastName = checkAlphabet(\"Enter last name: \");\r\n        int birthDay = checkIntegerRange(\"Enter birth day: \", 1, 31);\r\n        int birthMonth = checkIntegerRange(\"Enter birth month: \", 1, 12);\r\n        int birthYear = checkIntegerRange(\"Enter birth year: \", 1900, 2007);\r\n        String dateOfBirth = (birthYear + \"-\" + String.format(\"%02d\", birthMonth) + \"-\" + String.format(\"%02d\", birthDay));\r\n        return newQuery.createUser(firstName, lastName, dateOfBirth);\r\n    }\r\n\r\n    // Method createBusiness() takes a BusinessAccount object as its argument and calls the method createBusiness() from the Queries class.\r\n    // The result is that a new row is inserted into the Businesses0 table based on the newly created business account.\r\n    public static void createBusiness(String businessName, String accountNumber) throws SQLException\r\n    {\r\n        Queries newQuery = new Queries();\r\n        newQuery.createBusiness(businessName, accountNumber);\r\n    }\r\n\r\n    // Method checkTwoOptions() takes a String menuString (the sentence to be printed to the console) as an argument and returns a boolean.\r\n    // The boolean returned is based on the comparison between the user's input and the integer 1.\r\n    // This method can be used as a template for any situation in which the user is prompted to choose between two options.\r\n    public static boolean checkTwoOptions(String menuString)\r\n    {\r\n        Scanner scanner = new Scanner(System.in);\r\n        System.out.println(menuString);\r\n        int input = scanner.nextInt();\r\n\r\n        while (input != 1 && input != 2)\r\n        {\r\n            System.out.println(\"Invalid input. Try again.\");\r\n            input = scanner.nextInt();\r\n        }\r\n\r\n        return (input == 1);\r\n    }\r\n\r\n    // Method checkMultipleOptions() takes a String menuString and an array of integers options as arguments.\r\n    // The options array contains all the numbers which can be selected by the user as options.\r\n    // The user is prompted repeatedly until they enter an integer which is contained in the options array.\r\n    // This integer inputted is finally returned.\r\n    // This method can be used as a template for any situation in which the user is prompted to choose between multiple options.\r\n    public static int checkMultipleOptions(String menuString, int[] options)\r\n    {\r\n        Scanner scanner = new Scanner(System.in);\r\n        System.out.println(menuString);\r\n        int input = 0;\r\n\r\n        while (true)\r\n        {\r\n            input = scanner.nextInt();\r\n\r\n            for (int option : options)\r\n            {\r\n                if (input == option)\r\n                {\r\n                    return input;\r\n                }\r\n            }\r\n\r\n            System.out.println(\"Invalid input. Try again.\");\r\n        }\r\n    }\r\n\r\n    // Method checkAccountNumber() prompts the user to enter an account number and checks that the number is valid.\r\n    // The account number entered must be the correct length and contain only numbers, or the user is re-prompted.\r\n    // The account number is returned as a String once the user has entered a valid number.\r\n    public static String checkAccountNumber()\r\n    {\r\n        Scanner scanner = new Scanner(System.in);\r\n        System.out.println(\"\\nEnter account number: \");\r\n        String accountNumber = scanner.next();\r\n\r\n        while (accountNumber.length() != 8 && !accountNumber.matches(\"[0-9]+\"))\r\n        {\r\n            System.out.println(\"Invalid input. Try again.\");\r\n            accountNumber = scanner.next();\r\n        }\r\n\r\n        return accountNumber;\r\n    }\r\n\r\n    // Method checkCredential() takes a String menuString and a String exitString as arguments.\r\n    // The user is prompted for an integer repeatedly until 1 or 2 is entered.\r\n    // If the user enters 1 the method passes, while if the user enters 2 the method exitProgram() is called to end the session.\r\n    // This method can be used as a template for any situation in which the user is prompted to verify customer credentials.\r\n    public static void checkCredential(String menuString, String exitString)\r\n    {\r\n        Scanner scanner = new Scanner(System.in);\r\n        System.out.println(menuString);\r\n        int input = scanner.nextInt();\r\n\r\n        while (input != 1 && input != 2)\r\n        {\r\n            input = scanner.nextInt();\r\n        }\r\n\r\n        if (input == 2)\r\n        {\r\n            System.out.println(exitString);\r\n            exitProgram();\r\n        }\r\n    }\r\n\r\n    // Method checkAlphabet() takes a String menuString as an argument and returns a String based on the user's input.\r\n    // The user is prompted repeatedly until an input of the correct type (only letters) is submitted.\r\n    // This method can be used as a template for any situation in which the user is prompted to enter a name or written response.\r\n    public static String checkAlphabet(String menuString)\r\n    {\r\n        Scanner scanner = new Scanner(System.in);\r\n        String input = \"-\";\r\n\r\n        while (!input.matches(\"[a-z, A-Z]+\"))\r\n        {\r\n            System.out.println(menuString);\r\n            input = scanner.nextLine();\r\n        }\r\n\r\n        return input;\r\n    }\r\n\r\n    // Method checkIntegerRange takes a String menuString, int lowerBound and int upperBound as arguments.\r\n    // The user is prompted to enter an integer which must fall between the lowerBound and upperBound (inclusive).\r\n    // This method can be used as a template for any situation in which the user is prompted to enter a date.\r\n    public static int checkIntegerRange(String menuString, int lowerBound, int upperBound)\r\n    {\r\n        Scanner scanner = new Scanner(System.in);\r\n        int input = lowerBound - 1;\r\n\r\n        while (input < lowerBound || input > upperBound)\r\n        {\r\n            System.out.println(menuString);\r\n            input = scanner.nextInt();\r\n        }\r\n\r\n        return input;\r\n    }\r\n\r\n    // Method checkFloatRange takes a String menuString, float lowerBound and float upperBound as arguments.\r\n    // The user is prompted to enter a float which must fall between the lowerBound and upperBound (inclusive).\r\n    // This method can be used as a template for any situation in which the user is prompted to enter a monetary amount.\r\n    public static float checkFloatRange(String menuString, float lowerBound, float upperBound)\r\n    {\r\n        Scanner scanner = new Scanner(System.in);\r\n        float input = lowerBound - 1.00f;\r\n\r\n        while (input < lowerBound || input > upperBound)\r\n        {\r\n            System.out.println(menuString);\r\n            input = scanner.nextFloat();\r\n        }\r\n\r\n        return input;\r\n    }\r\n\r\n    // Method exitProgram() terminates the program running to end the session when called.\r\n    public static void exitProgram()\r\n    {\r\n        System.out.println(\"Successfully logged out.\");\r\n        System.exit(0);\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Program.java b/src/Program.java
+--- a/src/Program.java	(revision a126019890d8f361ad0d3af5a4905909a1ddad7a)
++++ b/src/Program.java	(date 1673372616267)
+@@ -315,5 +315,4 @@
+         System.exit(0);
+     }
+ 
+-
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"ff4c1b09-c4a5-42c9-9134-c7e38c5d977e\" name=\"Changes\" comment=\"Prints customer account list in main menu\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2023_18_59_[Changes]/shelved.patch\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2023_18_59__Changes_.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">\r\n    <option name=\"selectedUrlAndAccountId\">\r\n      <UrlAndAccount>\r\n        <option name=\"accountId\" value=\"e56f4684-27dc-4235-a5c5-dd35980a8d2e\" />\r\n        <option name=\"url\" value=\"https://github.com/JoshNarindra/Banking_Application.git\" />\r\n      </UrlAndAccount>\r\n    </option>\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2JSL54fu2ktI1BDk3LOo7HV2SQx\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,\r\n    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,\r\n    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,\r\n    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/joshu/IdeaProjects/JavaFXLogin&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"ff4c1b09-c4a5-42c9-9134-c7e38c5d977e\" name=\"Changes\" comment=\"\" />\r\n      <created>1672066355779</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1672066355779</updated>\r\n      <workItem from=\"1672066358101\" duration=\"5246000\" />\r\n      <workItem from=\"1672103908147\" duration=\"60000\" />\r\n      <workItem from=\"1672104969952\" duration=\"121000\" />\r\n      <workItem from=\"1672148124721\" duration=\"7995000\" />\r\n      <workItem from=\"1672228202568\" duration=\"2578000\" />\r\n      <workItem from=\"1672266508408\" duration=\"6787000\" />\r\n      <workItem from=\"1672583152802\" duration=\"8536000\" />\r\n      <workItem from=\"1673371814510\" duration=\"342000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Initial Class Layout.\">\r\n      <created>1672148787123</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672148787123</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Basic Menu Framework\">\r\n      <created>1672186553273</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672186553273</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Added Menu Framework\">\r\n      <created>1672188041041</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672188041041</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"workspace update\">\r\n      <created>1672188070384</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672188070384</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Minor update.\">\r\n      <created>1672188825949</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672188825949</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Minor update.\">\r\n      <created>1672189009523</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672189009523</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Added abstract methods for account creation.\">\r\n      <created>1672229169763</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672229169763</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Added abstract methods for account creation.\">\r\n      <created>1672229245986</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672229245986</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"Added comments. fixed minor bugs\">\r\n      <created>1672230776747</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672230776747</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"Minor layout changes\">\r\n      <created>1672267689678</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672267689678</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"File name change\">\r\n      <created>1672268217286</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672268217286</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\".\">\r\n      <created>1672268239343</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672268239343</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"Added Menu System to Personal Acc.\">\r\n      <created>1672326525155</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672326525155</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"Updated Menu System to Personal Acc.\">\r\n      <created>1672327260299</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672327260299</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"Updated Menu System to Personal Acc.\">\r\n      <created>1672327397920</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672327397920</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00016\" summary=\"accountMenu() method added to children of account class.\">\r\n      <created>1672327998633</created>\r\n      <option name=\"number\" value=\"00016\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00016\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672327998633</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00017\" summary=\"Added DatabaseConnection Class.\">\r\n      <created>1672420460300</created>\r\n      <option name=\"number\" value=\"00017\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00017\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672420460300</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00018\" summary=\"Added DatabaseConnection Class.\">\r\n      <created>1672420487889</created>\r\n      <option name=\"number\" value=\"00018\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00018\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672420487889</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00019\" summary=\"Updated accounts menus.\">\r\n      <created>1672605561203</created>\r\n      <option name=\"number\" value=\"00019\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00019\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672605561204</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00020\" summary=\"Updated accounts menus.\">\r\n      <created>1672606443775</created>\r\n      <option name=\"number\" value=\"00020\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00020\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672606443775</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00021\" summary=\"Updated accounts menus.\">\r\n      <created>1672606774637</created>\r\n      <option name=\"number\" value=\"00021\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00021\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672606774637</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00022\" summary=\"Added name and DOB variables.\">\r\n      <created>1672606831283</created>\r\n      <option name=\"number\" value=\"00022\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00022\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672606831283</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00023\" summary=\"Added constructor for user class.\">\r\n      <created>1672606965811</created>\r\n      <option name=\"number\" value=\"00023\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00023\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672606965811</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00024\" summary=\"Added constructor for user class.\">\r\n      <created>1672674813823</created>\r\n      <option name=\"number\" value=\"00024\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00024\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672674813823</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00025\" summary=\"Database Connection update.\">\r\n      <created>1672680270871</created>\r\n      <option name=\"number\" value=\"00025\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00025\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672680270871</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00026\" summary=\"Database Connection update.\">\r\n      <created>1672680291715</created>\r\n      <option name=\"number\" value=\"00026\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00026\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672680291715</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00027\" summary=\"getConnection can now run queries\">\r\n      <created>1672684223142</created>\r\n      <option name=\"number\" value=\"00027\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00027\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672684223142</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00028\" summary=\"Database Connection Class update.\">\r\n      <created>1672685227562</created>\r\n      <option name=\"number\" value=\"00028\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00028\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672685227562</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00029\" summary=\"Database Connection Class update.\">\r\n      <created>1672685934261</created>\r\n      <option name=\"number\" value=\"00029\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00029\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672685934261</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00030\" summary=\"Database Connection Class update.\">\r\n      <created>1672687214597</created>\r\n      <option name=\"number\" value=\"00030\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00030\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672687214597</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00031\" summary=\"bug fixes.\">\r\n      <created>1672957725729</created>\r\n      <option name=\"number\" value=\"00031\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00031\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672957725729</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00032\" summary=\"bug fixes.\">\r\n      <created>1672957737643</created>\r\n      <option name=\"number\" value=\"00032\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00032\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672957737643</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00033\" summary=\"bug fixes.\">\r\n      <created>1672961668273</created>\r\n      <option name=\"number\" value=\"00033\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00033\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672961668273</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00034\" summary=\"bug fixes.\">\r\n      <created>1672961677706</created>\r\n      <option name=\"number\" value=\"00034\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00034\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672961677706</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00035\" summary=\"bug fixes.\">\r\n      <created>1673283047652</created>\r\n      <option name=\"number\" value=\"00035\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00035\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1673283047652</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00036\" summary=\"Prints customer account list in main menu\">\r\n      <created>1673291980281</created>\r\n      <option name=\"number\" value=\"00036\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00036\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1673291980281</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00037\" summary=\"Prints customer account list in main menu\">\r\n      <created>1673291992601</created>\r\n      <option name=\"number\" value=\"00037\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00037\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1673291992601</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00038\" summary=\"Prints customer account list in main menu\">\r\n      <created>1673308204369</created>\r\n      <option name=\"number\" value=\"00038\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00038\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1673308204369</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00039\" summary=\"Prints customer account list in main menu\">\r\n      <created>1673372160313</created>\r\n      <option name=\"number\" value=\"00039\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00039\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1673372160313</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"40\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Initial Class Layout.\" />\r\n    <MESSAGE value=\"Basic Menu Framework\" />\r\n    <MESSAGE value=\"Added Menu Framework\" />\r\n    <MESSAGE value=\"workspace update\" />\r\n    <MESSAGE value=\"Minor update.\" />\r\n    <MESSAGE value=\"Added abstract methods for account creation.\" />\r\n    <MESSAGE value=\"Added comments. fixed minor bugs\" />\r\n    <MESSAGE value=\"Minor layout changes\" />\r\n    <MESSAGE value=\"File name change\" />\r\n    <MESSAGE value=\".\" />\r\n    <MESSAGE value=\"Added Menu System to Personal Acc.\" />\r\n    <MESSAGE value=\"Updated Menu System to Personal Acc.\" />\r\n    <MESSAGE value=\"accountMenu() method added to children of account class.\" />\r\n    <MESSAGE value=\"Added DatabaseConnection Class.\" />\r\n    <MESSAGE value=\"Updated accounts menus.\" />\r\n    <MESSAGE value=\"Added name and DOB variables.\" />\r\n    <MESSAGE value=\"Added constructor for user class.\" />\r\n    <MESSAGE value=\"Fixed connection bug.\" />\r\n    <MESSAGE value=\"Database Connection update.\" />\r\n    <MESSAGE value=\"getConnection can now run queries\" />\r\n    <MESSAGE value=\"Database Connection Class update.\" />\r\n    <MESSAGE value=\"bug fixes.\" />\r\n    <MESSAGE value=\"Prints customer account list in main menu\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Prints customer account list in main menu\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision a126019890d8f361ad0d3af5a4905909a1ddad7a)
++++ b/.idea/workspace.xml	(date 1673392108371)
+@@ -4,10 +4,9 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Prints customer account list in main menu">
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2023_18_59_[Changes]/shelved.patch" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2023_18_59__Changes_.xml" beforeDir="false" />
++    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Fixed the order of the queries so that businesses can now be created and added to the database.">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Program.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -39,6 +38,9 @@
+   </component>
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
++  </component>
++  <component name="ProblemsViewState">
++    <option name="selectedTabId" value="CurrentFile" />
+   </component>
+   <component name="ProjectId" id="2JSL54fu2ktI1BDk3LOo7HV2SQx" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+@@ -56,7 +58,7 @@
+     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/Users/joshu/IdeaProjects/JavaFXLogin&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/joshu/IdeaProjects/Banking_Application&quot;,
+     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+@@ -82,7 +84,6 @@
+       <workItem from="1672228202568" duration="2578000" />
+       <workItem from="1672266508408" duration="6787000" />
+       <workItem from="1672583152802" duration="8536000" />
+-      <workItem from="1673371814510" duration="342000" />
+     </task>
+     <task id="LOCAL-00001" summary="Initial Class Layout.">
+       <created>1672148787123</created>
+@@ -280,84 +281,126 @@
+       <option name="project" value="LOCAL" />
+       <updated>1672685227562</updated>
+     </task>
+-    <task id="LOCAL-00029" summary="Database Connection Class update.">
+-      <created>1672685934261</created>
++    <task id="LOCAL-00029" summary="Added framework for methods which need to query the database before there are any instances of an account (for example queries to create users, create accounts etc.). These are contained in a separate Queries class for tidiness.">
++      <created>1672876821396</created>
+       <option name="number" value="00029" />
+       <option name="presentableId" value="LOCAL-00029" />
+       <option name="project" value="LOCAL" />
+-      <updated>1672685934261</updated>
++      <updated>1672876821396</updated>
+     </task>
+-    <task id="LOCAL-00030" summary="Database Connection Class update.">
+-      <created>1672687214597</created>
++    <task id="LOCAL-00030" summary="Wrote methods which return objects of type PersonalAccount, ISAAccount and BusinessAccount based on database queries.">
++      <created>1672879311823</created>
+       <option name="number" value="00030" />
+       <option name="presentableId" value="LOCAL-00030" />
+       <option name="project" value="LOCAL" />
+-      <updated>1672687214597</updated>
++      <updated>1672879311823</updated>
+     </task>
+-    <task id="LOCAL-00031" summary="bug fixes.">
+-      <created>1672957725729</created>
++    <task id="LOCAL-00031" summary="Wrote various query methods which will needed in the application (on paper should work but haven't yet had chance to test).">
++      <created>1672881601671</created>
+       <option name="number" value="00031" />
+       <option name="presentableId" value="LOCAL-00031" />
+       <option name="project" value="LOCAL" />
+-      <updated>1672957725729</updated>
++      <updated>1672881601671</updated>
+     </task>
+-    <task id="LOCAL-00032" summary="bug fixes.">
+-      <created>1672957737643</created>
++    <task id="LOCAL-00032" summary="Tiny formatting change.">
++      <created>1672936337771</created>
+       <option name="number" value="00032" />
+       <option name="presentableId" value="LOCAL-00032" />
+       <option name="project" value="LOCAL" />
+-      <updated>1672957737643</updated>
++      <updated>1672936337771</updated>
+     </task>
+-    <task id="LOCAL-00033" summary="bug fixes.">
+-      <created>1672961668273</created>
++    <task id="LOCAL-00033" summary="Implemented methods to create a personal account and a business account for customers who do not have an account for acme banking.">
++      <created>1672954735423</created>
+       <option name="number" value="00033" />
+       <option name="presentableId" value="LOCAL-00033" />
+       <option name="project" value="LOCAL" />
+-      <updated>1672961668273</updated>
++      <updated>1672954735423</updated>
+     </task>
+-    <task id="LOCAL-00034" summary="bug fixes.">
+-      <created>1672961677706</created>
++    <task id="LOCAL-00034" summary="Implemented method to create an ISA account and generalised the methods to create business and personal accounts.">
++      <created>1672955476671</created>
+       <option name="number" value="00034" />
+       <option name="presentableId" value="LOCAL-00034" />
+       <option name="project" value="LOCAL" />
+-      <updated>1672961677706</updated>
++      <updated>1672955476671</updated>
+     </task>
+-    <task id="LOCAL-00035" summary="bug fixes.">
+-      <created>1673283047652</created>
++    <task id="LOCAL-00035" summary="Fixed the program so that new users and new PersonalAccounts can be created and added to the database. Switched to new tables in the database. Edited many of the queries which had syntax errors.">
++      <created>1672976979140</created>
+       <option name="number" value="00035" />
+       <option name="presentableId" value="LOCAL-00035" />
+       <option name="project" value="LOCAL" />
+-      <updated>1673283047652</updated>
++      <updated>1672976979140</updated>
+     </task>
+-    <task id="LOCAL-00036" summary="Prints customer account list in main menu">
+-      <created>1673291980281</created>
++    <task id="LOCAL-00036" summary="Removed some test code.">
++      <created>1672977936910</created>
+       <option name="number" value="00036" />
+       <option name="presentableId" value="LOCAL-00036" />
+       <option name="project" value="LOCAL" />
+-      <updated>1673291980281</updated>
++      <updated>1672977936910</updated>
+     </task>
+-    <task id="LOCAL-00037" summary="Prints customer account list in main menu">
+-      <created>1673291992601</created>
++    <task id="LOCAL-00037" summary="Fixed createBusinessAccount so that it now properly creates a business account and adds it to the database.">
++      <created>1673022546494</created>
+       <option name="number" value="00037" />
+       <option name="presentableId" value="LOCAL-00037" />
+       <option name="project" value="LOCAL" />
+-      <updated>1673291992601</updated>
++      <updated>1673022546494</updated>
+     </task>
+-    <task id="LOCAL-00038" summary="Prints customer account list in main menu">
+-      <created>1673308204369</created>
++    <task id="LOCAL-00038" summary="Fixed the createBusinessAccount method in Queries.">
++      <created>1673023367771</created>
+       <option name="number" value="00038" />
+       <option name="presentableId" value="LOCAL-00038" />
+       <option name="project" value="LOCAL" />
+-      <updated>1673308204369</updated>
++      <updated>1673023367771</updated>
+     </task>
+-    <task id="LOCAL-00039" summary="Prints customer account list in main menu">
+-      <created>1673372160313</created>
++    <task id="LOCAL-00039" summary="Fixed (I think) all of the SQL syntax in Queries.">
++      <created>1673023794293</created>
+       <option name="number" value="00039" />
+       <option name="presentableId" value="LOCAL-00039" />
+       <option name="project" value="LOCAL" />
+-      <updated>1673372160313</updated>
++      <updated>1673023794293</updated>
++    </task>
++    <task id="LOCAL-00040" summary="Abstracted much of the functionality of methods in Program class into their own methods, for more DRY code.">
++      <created>1673222358834</created>
++      <option name="number" value="00040" />
++      <option name="presentableId" value="LOCAL-00040" />
++      <option name="project" value="LOCAL" />
++      <updated>1673222358834</updated>
++    </task>
++    <task id="LOCAL-00041" summary="Formatting and comments.">
++      <created>1673222515833</created>
++      <option name="number" value="00041" />
++      <option name="presentableId" value="LOCAL-00041" />
++      <option name="project" value="LOCAL" />
++      <updated>1673222515833</updated>
++    </task>
++    <task id="LOCAL-00042" summary="Formatting bits and bobs">
++      <created>1673295784196</created>
++      <option name="number" value="00042" />
++      <option name="presentableId" value="LOCAL-00042" />
++      <option name="project" value="LOCAL" />
++      <updated>1673295784197</updated>
++    </task>
++    <task id="LOCAL-00043" summary="Minor changes to placeholders in Account objects">
++      <created>1673297130091</created>
++      <option name="number" value="00043" />
++      <option name="presentableId" value="LOCAL-00043" />
++      <option name="project" value="LOCAL" />
++      <updated>1673297130091</updated>
++    </task>
++    <task id="LOCAL-00044" summary="Implemented balance check for any methods where the customer tries to take money out of the account.">
++      <created>1673305014517</created>
++      <option name="number" value="00044" />
++      <option name="presentableId" value="LOCAL-00044" />
++      <option name="project" value="LOCAL" />
++      <updated>1673305014517</updated>
+     </task>
+-    <option name="localTasksCounter" value="40" />
++    <task id="LOCAL-00045" summary="Fixed the order of the queries so that businesses can now be created and added to the database.">
++      <created>1673313763526</created>
++      <option name="number" value="00045" />
++      <option name="presentableId" value="LOCAL-00045" />
++      <option name="project" value="LOCAL" />
++      <updated>1673313763526</updated>
++    </task>
++    <option name="localTasksCounter" value="46" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -375,19 +418,6 @@
+     </option>
+   </component>
+   <component name="VcsManagerConfiguration">
+-    <MESSAGE value="Initial Class Layout." />
+-    <MESSAGE value="Basic Menu Framework" />
+-    <MESSAGE value="Added Menu Framework" />
+-    <MESSAGE value="workspace update" />
+-    <MESSAGE value="Minor update." />
+-    <MESSAGE value="Added abstract methods for account creation." />
+-    <MESSAGE value="Added comments. fixed minor bugs" />
+-    <MESSAGE value="Minor layout changes" />
+-    <MESSAGE value="File name change" />
+-    <MESSAGE value="." />
+-    <MESSAGE value="Added Menu System to Personal Acc." />
+-    <MESSAGE value="Updated Menu System to Personal Acc." />
+-    <MESSAGE value="accountMenu() method added to children of account class." />
+     <MESSAGE value="Added DatabaseConnection Class." />
+     <MESSAGE value="Updated accounts menus." />
+     <MESSAGE value="Added name and DOB variables." />
+@@ -396,8 +426,33 @@
+     <MESSAGE value="Database Connection update." />
+     <MESSAGE value="getConnection can now run queries" />
+     <MESSAGE value="Database Connection Class update." />
+-    <MESSAGE value="bug fixes." />
+-    <MESSAGE value="Prints customer account list in main menu" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Prints customer account list in main menu" />
++    <MESSAGE value="Added framework for methods which need to query the database before there are any instances of an account (for example queries to create users, create accounts etc.). These are contained in a separate Queries class for tidiness." />
++    <MESSAGE value="Wrote methods which return objects of type PersonalAccount, ISAAccount and BusinessAccount based on database queries." />
++    <MESSAGE value="Wrote various query methods which will needed in the application (on paper should work but haven't yet had chance to test)." />
++    <MESSAGE value="Tiny formatting change." />
++    <MESSAGE value="Implemented methods to create a personal account and a business account for customers who do not have an account for acme banking." />
++    <MESSAGE value="Implemented method to create an ISA account and generalised the methods to create business and personal accounts." />
++    <MESSAGE value="Fixed the program so that new users and new PersonalAccounts can be created and added to the database. Switched to new tables in the database. Edited many of the queries which had syntax errors." />
++    <MESSAGE value="Removed some test code." />
++    <MESSAGE value="Fixed createBusinessAccount so that it now properly creates a business account and adds it to the database." />
++    <MESSAGE value="Fixed the createBusinessAccount method in Queries." />
++    <MESSAGE value="Fixed (I think) all of the SQL syntax in Queries." />
++    <MESSAGE value="Abstracted much of the functionality of methods in Program class into their own methods, for more DRY code." />
++    <MESSAGE value="Formatting and comments." />
++    <MESSAGE value="Formatting bits and bobs" />
++    <MESSAGE value="Minor changes to placeholders in Account objects" />
++    <MESSAGE value="Implemented balance check for any methods where the customer tries to take money out of the account." />
++    <MESSAGE value="Fixed the order of the queries so that businesses can now be created and added to the database." />
++    <option name="LAST_COMMIT_MESSAGE" value="Fixed the order of the queries so that businesses can now be created and added to the database." />
++  </component>
++  <component name="XDebuggerManager">
++    <breakpoint-manager>
++      <breakpoints>
++        <breakpoint enabled="true" type="java-exception">
++          <properties class="com.microsoft.sqlserver.jdbc.SQLServerException" package="com.microsoft.sqlserver.jdbc" />
++          <option name="timeStamp" value="1" />
++        </breakpoint>
++      </breakpoints>
++    </breakpoint-manager>
+   </component>
+ </project>
+\ No newline at end of file

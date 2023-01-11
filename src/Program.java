@@ -31,63 +31,115 @@ public class Program
         Queries queries = new Queries();
         String accountNumber = checkAccountNumber();
 
-        while(!queries.checkAccountExists(accountNumber))
+        while (!queries.checkAccountExists(accountNumber))
         {
             System.out.println("No record of account. Try again.");
             accountNumber = checkAccountNumber();
         }
 
-        //Retrieve account details.
-        System.out.println("\nRetrieving account details...");
-        ArrayList<String> customerInfo = Account.retrieveCustomerInfo(accountNumber);
-
-        //Display customer info - NEEDS FIXING TO DISPLAY INDIVIDUAL RESULTS.
-        System.out.println("\nName: "+customerInfo.get(0)+" "+customerInfo.get(1));
-        System.out.println("D.O.B: "+customerInfo.get(2));
-
-        //Display customers accounts with bank - NEEDS FIXING.
-        System.out.println("\nCustomer Accounts: ");
-
-
-        HashMap<String, String> accountList = Account.retrieveCustomerAccounts(accountNumber);
-
-        int count = 0; //TEMP counts how many accounts user has
-
-        for (HashMap.Entry<String,String> entry: accountList.entrySet())
+        while (true)
         {
-            count = count+1;
-            System.out.println(count+". "+"Account Number = " + entry.getKey() + ", Account Type = " + entry.getValue());
+            boolean menu = checkTwoOptions("Would the customer like to access an existing account or open a new account? \n1. Access an existing account. \n2. Create a new account.");
+
+            if (menu)
+            {
+                existingAccountsMenu(accountNumber);
+            }
+            else
+            {
+                createNewAccountMenu(Account.retrieveUserID(accountNumber));
+            }
         }
-
-        Scanner scanner = new Scanner(System.in);  // Create a Scanner object
-        int userInput = Integer.parseInt(scanner.nextLine());  // Read user input
-
-        //Allow user to choose account dependent on input based on menu
-//        if(userInput < count){
-//            System.out.println(accountList.get(userInput-1));
-//        }
-//        else{
-//            System.out.println("Invalid input");
-//        }
-
-        //Create account object using Account Number + Type (If statement)
-
-        //Use account object to call individual account menu.
     }
 
     // Method newCustomersMenu() which displays a menu to new customers.
     // The method calls the createUser() method and passes its return value to one of the methods which creates a new account, depending on user input.
     public static void newCustomersMenu() throws SQLException
     {
-        System.out.println("Open an account with ACME Banking Solutions...\n");
-        int menu = checkMultipleOptions("1. Open a personal account. \n2. Open a business account. \n3. Open an ISA Account. \n9. Exit.", new int[] {1, 2, 3, 9});
-
-        switch (menu)
+        while (true)
         {
-            case 1 -> openPersonalAccount(createUser());
-            case 2 -> openBusinessAccount(createUser());
-            case 3 -> openISAAccount(createUser());
-            case 9 -> exitProgram();
+            System.out.println("Open an account with ACME Banking Solutions...\n");
+            int menu = checkMultipleOptions("1. Open a personal account. \n2. Open a business account. \n3. Open an ISA account. \n9. Exit.", new int[]{1, 2, 3, 8, 9});
+
+            switch (menu)
+            {
+                case 1 -> openPersonalAccount(createUser());
+                case 2 -> openBusinessAccount(createUser());
+                case 3 -> openISAAccount(createUser());
+                case 9 -> exitProgram();
+            }
+        }
+    }
+
+    // Method existingAccountsMenu() takes a String accountNumber as an argument and displays all other accounts associated with the same user.
+    // The user is prompted to select an account to manage, with an Account object of the relevant type being created after user selection.
+    // Finally, the accountMenu() method of the Account object is accessed.
+    public static void existingAccountsMenu(String accountNumber) throws SQLException
+    {
+        Queries queries = new Queries();
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<String> customerInfo = Account.retrieveCustomerInfo(accountNumber);
+        int numberOfAccounts = 0;
+
+        System.out.println("\nRetrieving account details...");
+        System.out.println("\nName: " + customerInfo.get(0) + " " + customerInfo.get(1));
+        System.out.println("D.O.B: " + customerInfo.get(2));
+        System.out.println("\nCustomer Accounts: ");
+
+        HashMap<String, String> accountList = Account.retrieveCustomerAccounts(accountNumber);
+
+        for (HashMap.Entry<String,String> entry: accountList.entrySet())
+        {
+            numberOfAccounts++;
+            System.out.println(numberOfAccounts+". "+"Account Number = " + entry.getKey() + ", Account Type = " + entry.getValue());
+        }
+
+        int userInput = Integer.parseInt(scanner.nextLine());
+        String type = accountList.entrySet().toArray()[userInput - 1].toString().split("=")[1];
+
+        if (userInput < numberOfAccounts)
+        {
+            switch (type)
+            {
+                case "Personal" ->
+                {
+                    PersonalAccount personalAccount = queries.retrievePersonalAccount(accountList.entrySet().toArray()[userInput - 1].toString().split("=")[0]);
+                    personalAccount.accountMenu();
+                }
+                case "Business" ->
+                {
+                    BusinessAccount businessAccount = queries.retrieveBusinessAccount(accountList.entrySet().toArray()[userInput - 1].toString().split("=")[0]);
+                    businessAccount.accountMenu();
+                }
+                case "ISA" ->
+                {
+                    ISAAccount isaAccount = queries.retrieveISAAccount(accountList.entrySet().toArray()[userInput - 1].toString().split("=")[0]);
+                    isaAccount.accountMenu();
+                }
+            }
+        }
+        else
+        {
+            System.out.println("Invalid input");
+        }
+    }
+
+    // Method createNewAccountMenu() takes an int userID as an argument and displays a menu.
+    // The user is then prompted to choose which type of account to create.
+    // Finally, the relevant method to open an account of the user's choosing is called, with the userID int passed as an argument.
+    public static void createNewAccountMenu(int userID) throws SQLException
+    {
+        while (true)
+        {
+            int menu = checkMultipleOptions("1. Open a personal account. \n2. Open a business account. \n3. Open an ISA account. \n8. Back. \n9. Exit.", new int[] {1, 2, 3, 8, 9});
+
+            switch(menu)
+            {
+                case 1 -> openPersonalAccount(userID);
+                case 2 -> openBusinessAccount(userID);
+                case 3 -> openISAAccount(userID);
+                case 9 -> exitProgram();
+            }
         }
     }
 
@@ -330,6 +382,5 @@ public class Program
         System.out.println("Successfully logged out.");
         System.exit(0);
     }
-
 
 }
