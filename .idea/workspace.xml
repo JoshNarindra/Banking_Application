@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Fixed updateDatabaseInformation()" />
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Fixed account selection" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -381,7 +381,28 @@
       <option name="project" value="LOCAL" />
       <updated>1673460937980</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Fixed existingAccountsMenu()">
+      <created>1673461357699</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1673461357699</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Fixed BusinessAccount to display the menu again after a transaction">
+      <created>1673461477872</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1673461477872</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Fixed account selection">
+      <created>1673461922535</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1673461922536</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -399,9 +420,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added Menu Framework" />
-    <MESSAGE value="workspace update" />
-    <MESSAGE value="Minor update." />
     <MESSAGE value="Added abstract methods for account creation." />
     <MESSAGE value="Added comments. fixed minor bugs" />
     <MESSAGE value="Minor layout changes" />
@@ -424,6 +442,9 @@
     <MESSAGE value="DRYd Program class and added back options into menus" />
     <MESSAGE value="Tidying and commenting on code." />
     <MESSAGE value="Fixed updateDatabaseInformation()" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed updateDatabaseInformation()" />
+    <MESSAGE value="Fixed existingAccountsMenu()" />
+    <MESSAGE value="Fixed BusinessAccount to display the menu again after a transaction" />
+    <MESSAGE value="Fixed account selection" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed account selection" />
   </component>
 </project>

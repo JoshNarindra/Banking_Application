@@ -39,7 +39,7 @@ public class Program
 
         while (true)
         {
-            boolean menu = checkTwoOptions("\nWould the customer like to access an existing account or open a new account? \n1. Access an existing account. \n2. Create a new account.");
+            boolean menu = checkTwoOptions("Would the customer like to access an existing account or open a new account? \n1. Access an existing account. \n2. Create a new account.");
 
             if (menu)
             {
@@ -93,8 +93,6 @@ public class Program
             numberOfAccounts++;
             System.out.println(numberOfAccounts+". "+"Account Number = " + entry.getKey() + ", Account Type = " + entry.getValue());
         }
-
-        System.out.println("\nWhich account would you like to access?");
 
         int userInput = Integer.parseInt(scanner.nextLine());
         String type = accountList.entrySet().toArray()[userInput - 1].toString().split("=")[1];
