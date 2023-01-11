@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Tidying and commenting on code.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Fixed updateDatabaseInformation()" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -376,7 +374,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673410562158</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Fixed updateDatabaseInformation()">
+      <created>1673460937979</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1673460937980</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -394,7 +399,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Basic Menu Framework" />
     <MESSAGE value="Added Menu Framework" />
     <MESSAGE value="workspace update" />
     <MESSAGE value="Minor update." />
@@ -419,6 +423,7 @@
     <MESSAGE value="Fixed existingCustomersMenu so that an account can be selected and accessed." />
     <MESSAGE value="DRYd Program class and added back options into menus" />
     <MESSAGE value="Tidying and commenting on code." />
-    <option name="LAST_COMMIT_MESSAGE" value="Tidying and commenting on code." />
+    <MESSAGE value="Fixed updateDatabaseInformation()" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed updateDatabaseInformation()" />
   </component>
 </project>

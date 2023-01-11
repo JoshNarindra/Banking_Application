@@ -97,7 +97,7 @@ public class Program
         int userInput = Integer.parseInt(scanner.nextLine());
         String type = accountList.entrySet().toArray()[userInput - 1].toString().split("=")[1];
 
-        if (userInput < numberOfAccounts)
+        if (userInput <= numberOfAccounts)
         {
             switch (type)
             {
