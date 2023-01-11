@@ -31,6 +31,7 @@ abstract class Account
         return customerInfoResults;
     }
 
+    //Method retrieves all accounts a customer owns ant returns a hashmap of the Account Numbers and Account Type.
     public static HashMap retrieveCustomerAccounts(String accountNumber) throws SQLException
     {
         Queries queries = new Queries();
