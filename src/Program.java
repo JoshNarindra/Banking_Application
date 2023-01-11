@@ -94,12 +94,12 @@ public class Program
             System.out.println(numberOfAccounts+". "+"Account Number = " + entry.getKey() + ", Account Type = " + entry.getValue());
         }
 
-        System.out.println("Which account would you like to access?");
+        System.out.println("\nWhich account would you like to access?");
 
         int userInput = Integer.parseInt(scanner.nextLine());
         String type = accountList.entrySet().toArray()[userInput - 1].toString().split("=")[1];
 
-        if (userInput < numberOfAccounts)
+        if (userInput <= numberOfAccounts)
         {
             switch (type)
             {
