@@ -39,7 +39,7 @@ public class Program
 
         while (true)
         {
-            boolean menu = checkTwoOptions("Would the customer like to access an existing account or open a new account? \n1. Access an existing account. \n2. Create a new account.");
+            boolean menu = checkTwoOptions("\nWould the customer like to access an existing account or open a new account? \n1. Access an existing account. \n2. Create a new account.");
 
             if (menu)
             {

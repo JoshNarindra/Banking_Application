@@ -33,6 +33,7 @@ abstract class Account
         return customerInfoResults;
     }
 
+    //Method retrieves all accounts a customer owns ant returns a hashmap of the Account Numbers and Account Type.
     public static HashMap retrieveCustomerAccounts(String accountNumber) throws SQLException
     {
         Queries newQuery = new Queries();
@@ -42,16 +43,6 @@ abstract class Account
 
         var stmt = connection.getConnection().prepareStatement(query);
         var rs = stmt.executeQuery();
-
-        ///WORKING ARRAYLIST OUTPUT
-//        ArrayList<String> accountList = new ArrayList<>();
-//        int count = 0;
-//
-//        while(rs.next()){
-//            count = count+1;
-//            accountList.add(count + ". " + rs.getString(1).toString() + " " + rs.getString(2).toString());
-//        }
-//        return accountList;
 
         HashMap<String, String> accountList = new HashMap<String, String>();
         int count = 0;
