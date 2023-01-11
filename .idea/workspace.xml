@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="DRYd Program class and added back options into menus">
-      <change beforePath="$PROJECT_DIR$/src/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Queries.java" afterDir="false" />
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Tidying and commenting on code.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -370,7 +369,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673401683795</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Tidying and commenting on code.">
+      <created>1673410562157</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1673410562158</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -388,7 +394,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Initial Class Layout." />
     <MESSAGE value="Basic Menu Framework" />
     <MESSAGE value="Added Menu Framework" />
     <MESSAGE value="workspace update" />
@@ -413,6 +418,7 @@
     <MESSAGE value="Prints customer account list in main menu" />
     <MESSAGE value="Fixed existingCustomersMenu so that an account can be selected and accessed." />
     <MESSAGE value="DRYd Program class and added back options into menus" />
-    <option name="LAST_COMMIT_MESSAGE" value="DRYd Program class and added back options into menus" />
+    <MESSAGE value="Tidying and commenting on code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Tidying and commenting on code." />
   </component>
 </project>
