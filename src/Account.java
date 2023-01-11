@@ -206,6 +206,6 @@ abstract class Account
     public void updateDatabaseInformation() throws SQLException
     {
         Queries newQuery = new Queries();
-        newQuery.updateQuery("UPDATE Accounts SET Balance = " + balance + ", Overdraft = " + overdraft + "WHERE AccountNumber = " + accountNumber + ";");
+        newQuery.updateQuery("UPDATE Accounts0 SET Balance = " + balance + ", Overdraft = " + overdraft + "WHERE AccountNumber = '" + accountNumber + "';");
     }
 }
