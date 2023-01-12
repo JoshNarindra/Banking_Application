@@ -38,7 +38,7 @@ abstract class Account
 
     // Method retrieveCustomerInfo() takes a String accountNumber as its argument.
     // The readQuery() method of the Queries class is then called to return the first name, last name and date of birth of the customer as an ArrayList.
-    public static ArrayList retrieveCustomerInfo(String accountNumber) throws SQLException
+    public static ArrayList<String> retrieveCustomerInfo(String accountNumber) throws SQLException
     {
         Queries queries = new Queries();
         ArrayList<String> columns = new ArrayList<>(List.of("FirstName", "LastName", "DateOfBirth"));
@@ -48,7 +48,7 @@ abstract class Account
 
     // Method retrieveCustomerAccounts() takes a String accountNumber as its argument.
     // The readQuery() method of the Queries class is then called to return all accounts associated with the customer as a HashMap.
-    public static HashMap retrieveCustomerAccounts(String accountNumber) throws SQLException
+    public static HashMap<String, String> retrieveCustomerAccounts(String accountNumber) throws SQLException
     {
         Queries queries = new Queries();
         ArrayList<String> columns = new ArrayList<>(List.of("AccountNumber", "AccountType"));

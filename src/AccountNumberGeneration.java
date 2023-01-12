@@ -34,7 +34,7 @@ public class AccountNumberGeneration
     {
         Random rand = new Random();
         ArrayList<String> accountNumberArray = new ArrayList<>();
-        String generatedAccountNumber = "";
+        StringBuilder generatedAccountNumber = new StringBuilder();
 
         for (int i = 0; i < 8; i++)
         {
@@ -44,9 +44,9 @@ public class AccountNumberGeneration
 
         for (String digit: accountNumberArray)
         {
-            generatedAccountNumber = generatedAccountNumber + digit;
+            generatedAccountNumber.append(digit);
         }
 
-        return generatedAccountNumber;
+        return generatedAccountNumber.toString();
     }
 }

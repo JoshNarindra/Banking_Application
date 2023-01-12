@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Removed redundant imports">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Queries.java" afterDir="false" />
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Corrected IntelliJ-reported problems in Queries class">
+      <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,14 +82,7 @@
       <workItem from="1672583152802" duration="8536000" />
       <workItem from="1673371814510" duration="342000" />
       <workItem from="1673518705157" duration="51000" />
-      <workItem from="1673518766965" duration="10926000" />
-    </task>
-    <task id="LOCAL-00016" summary="accountMenu() method added to children of account class.">
-      <created>1672327998633</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1672327998633</updated>
+      <workItem from="1673518766965" duration="11897000" />
     </task>
     <task id="LOCAL-00017" summary="Added DatabaseConnection Class.">
       <created>1672420460300</created>
@@ -428,7 +420,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673542142698</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="Corrected IntelliJ-reported problems in Queries class">
+      <created>1673543957934</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1673543957934</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -446,7 +445,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Prints customer account list in main menu" />
     <MESSAGE value="Fixed existingCustomersMenu so that an account can be selected and accessed." />
     <MESSAGE value="DRYd Program class and added back options into menus" />
     <MESSAGE value="Tidying and commenting on code." />
@@ -471,6 +469,7 @@
     <MESSAGE value="Updated method and class comments on BusinessAccount and ISAAccount" />
     <MESSAGE value="Modified comments on AccountNumberGeneration" />
     <MESSAGE value="Removed redundant imports" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed redundant imports" />
+    <MESSAGE value="Corrected IntelliJ-reported problems in Queries class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Corrected IntelliJ-reported problems in Queries class" />
   </component>
 </project>

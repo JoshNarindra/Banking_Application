@@ -42,11 +42,14 @@ public class Program
         System.out.println("\nWelcome to ACME Banking Solutions...\n");
         int menu = checkMultipleOptions("\nDoes the customer currently have an account with us? \n1. Yes. \n2. No. \n9. Exit.", new int[]{1, 2, 9});
 
-        switch (menu)
+        while (true)
         {
-            case 1 -> existingCustomersMenu();
-            case 2 -> newCustomersMenu();
-            case 9 -> exitProgram();
+            switch (menu)
+            {
+                case 1 -> existingCustomersMenu();
+                case 2 -> newCustomersMenu();
+                case 9 -> exitProgram();
+            }
         }
     }
 
@@ -70,18 +73,15 @@ public class Program
         System.out.println("\nName: " + customerInfo.get(0) + " " + customerInfo.get(1));
         System.out.println("D.O.B: " + customerInfo.get(2));
 
-        while (true)
-        {
-            boolean menu = checkTwoOptions("\nWould the customer like to access an existing account or open a new account? \n1. Access an existing account. \n2. Create a new account.");
+        boolean menu = checkTwoOptions("\nWould the customer like to access an existing account or open a new account? \n1. Access an existing account. \n2. Create a new account.");
 
-            if (menu)
-            {
-                existingAccountsMenu(accountNumber);
-            }
-            else
-            {
-                createNewAccountMenu(Account.retrieveUserID(accountNumber));
-            }
+        if (menu)
+        {
+            existingAccountsMenu(accountNumber);
+        }
+        else
+        {
+            createNewAccountMenu(Account.retrieveUserID(accountNumber));
         }
     }
 
@@ -244,7 +244,7 @@ public class Program
     // Method createUser() prompts the user for information which is then fed to the method createUser() in the Queries class.
     // The result is that a new row is added to the Users0 table in the database.
     // Finally, an integer representing the relevant ID in the Users0 table is returned.
-    public static int createUser() throws SQLException
+    public static int createUser()
     {
         Queries queries = new Queries();
         String firstName = checkAlphabet("\nEnter first name: ");
