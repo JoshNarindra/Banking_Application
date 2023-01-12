@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Updated BusinessAccount and Variables classes to remove hard-coding">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BusinessAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ISAAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ISAAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Variables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Variables.java" afterDir="false" />
-    </list>
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Removing redundant code" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,35 +79,7 @@
       <workItem from="1672583152802" duration="8536000" />
       <workItem from="1673371814510" duration="342000" />
       <workItem from="1673518705157" duration="51000" />
-      <workItem from="1673518766965" duration="16100000" />
-    </task>
-    <task id="LOCAL-00021" summary="Updated accounts menus.">
-      <created>1672606774637</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1672606774637</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Added name and DOB variables.">
-      <created>1672606831283</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1672606831283</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Added constructor for user class.">
-      <created>1672606965811</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1672606965811</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Added constructor for user class.">
-      <created>1672674813823</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1672674813823</updated>
+      <workItem from="1673518766965" duration="17177000" />
     </task>
     <task id="LOCAL-00025" summary="Database Connection update.">
       <created>1672680270871</created>
@@ -429,7 +396,35 @@
       <option name="project" value="LOCAL" />
       <updated>1673547028495</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="Updated Queries and other classes to make use of the Variables class; implemented compound interest calculator in ISAAccount class">
+      <created>1673549147313</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1673549147313</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Improved Variables class">
+      <created>1673549246308</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1673549246308</updated>
+    </task>
+    <task id="LOCAL-00072" summary="Tidied Variables class">
+      <created>1673549270084</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1673549270084</updated>
+    </task>
+    <task id="LOCAL-00073" summary="Removing redundant code">
+      <created>1673549512494</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1673549512494</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -447,10 +442,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed existingAccountsMenu()" />
-    <MESSAGE value="Fixed BusinessAccount to display the menu again after a transaction" />
-    <MESSAGE value="Fixed account selection" />
-    <MESSAGE value="Implemented transfer, standing order and direct debit payments; tidying up" />
     <MESSAGE value="Tidying up and removing redundant code" />
     <MESSAGE value="Fully implemented paying between accounts, implemented check on ISA deposits (not to exceed 20,000 pounds)" />
     <MESSAGE value="Tweaked retrieverCustomerAccounts method to use the Queries class, fixed bug in Program" />
@@ -472,6 +463,10 @@
     <MESSAGE value="Corrected IntelliJ-reported problems in Program and other classes" />
     <MESSAGE value="Created Variables class to remove hard-coding of variables and refactored Program and PersonalAccount classes accordingly" />
     <MESSAGE value="Updated BusinessAccount and Variables classes to remove hard-coding" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated BusinessAccount and Variables classes to remove hard-coding" />
+    <MESSAGE value="Updated Queries and other classes to make use of the Variables class; implemented compound interest calculator in ISAAccount class" />
+    <MESSAGE value="Improved Variables class" />
+    <MESSAGE value="Tidied Variables class" />
+    <MESSAGE value="Removing redundant code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removing redundant code" />
   </component>
 </project>

@@ -11,7 +11,8 @@
         retrieveBusinessAccount(),
         retrieveISAAccount(),
         retrieveBusinessName(),
-        checkAccountExists().
+        checkAccountExists(),
+        checkISAAccountExists().
 
     Create methods call the updateQuery() method to alter database and the readQuery() method to return relevant information:
         createUser(),
@@ -94,6 +95,11 @@ public class Queries
     public boolean checkAccountExists(String accountNumber)
     {
         return checkExistsQuery("SELECT COUNT(1) FROM Accounts0 WHERE AccountNumber = '" + accountNumber + "';");
+    }
+
+    public boolean checkISAAccountExists(int userID)
+    {
+        return checkExistsQuery("SELECT COUNT(1) FROM Accounts0 WHERE UserID = " + userID + " AND AccountType = '" + "ISA" + "';");
     }
 
     // Method retrievePersonalAccount() takes a String accountNumber as an argument and creates a PersonalAccount object using information from the database.
