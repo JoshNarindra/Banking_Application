@@ -2,7 +2,6 @@
 //For example cannot call functions inside of Account, BusinessAccount etc. until a query made is made to create an instance
 //Also separates the queries from the connection itself which looks more tidy I think
 
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
