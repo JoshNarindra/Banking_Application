@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Tidied up and removed boolean variables for PersonalAccount objects">
-      <change beforePath="$PROJECT_DIR$/src/BusinessAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ISAAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ISAAccount.java" afterDir="false" />
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Updated some variable names to make comments redundant">
+      <change beforePath="$PROJECT_DIR$/src/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Program.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,21 +82,7 @@
       <workItem from="1672583152802" duration="8536000" />
       <workItem from="1673371814510" duration="342000" />
       <workItem from="1673518705157" duration="51000" />
-      <workItem from="1673518766965" duration="439000" />
-    </task>
-    <task id="LOCAL-00006" summary="Minor update.">
-      <created>1672189009523</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1672189009523</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Added abstract methods for account creation.">
-      <created>1672229169763</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1672229169763</updated>
+      <workItem from="1673518766965" duration="1642000" />
     </task>
     <task id="LOCAL-00008" summary="Added abstract methods for account creation.">
       <created>1672229245986</created>
@@ -428,7 +413,21 @@
       <option name="project" value="LOCAL" />
       <updated>1673518982275</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Fleshed out implementation of payments">
+      <created>1673519565125</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1673519565126</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Updated some variable names to make comments redundant">
+      <created>1673519788541</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1673519788541</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -446,8 +445,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated Menu System to Personal Acc." />
-    <MESSAGE value="accountMenu() method added to children of account class." />
     <MESSAGE value="Added DatabaseConnection Class." />
     <MESSAGE value="Updated accounts menus." />
     <MESSAGE value="Added name and DOB variables." />
@@ -471,6 +468,8 @@
     <MESSAGE value="Tweaked retrieverCustomerAccounts method to use the Queries class, fixed bug in Program" />
     <MESSAGE value="Tweaked checkAccountExists method to use new method checkExistsQuery for more DRY code; fixed a bug with paying into another account where the user was not prompted for an amount" />
     <MESSAGE value="Tidied up and removed boolean variables for PersonalAccount objects" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tidied up and removed boolean variables for PersonalAccount objects" />
+    <MESSAGE value="Fleshed out implementation of payments" />
+    <MESSAGE value="Updated some variable names to make comments redundant" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated some variable names to make comments redundant" />
   </component>
 </project>
