@@ -49,19 +49,16 @@ public class Variables
 
     public static String getServerURL()
     {
-        String serverURL = "jdbc:sqlserver://SQL8002.site4now.net;database=db_a8cc79_Ewahes";
-        return serverURL;
+        return "jdbc:sqlserver://SQL8002.site4now.net;database=db_a8cc79_Ewahes";
     }
 
     public static String getServerUsername()
     {
-        String serverUsername = "db_a8cc79_Ewahes_admin";
-        return serverUsername;
+        return "db_a8cc79_Ewahes_admin";
     }
 
     public static String getServerPassword()
     {
-        String serverPassword = "Fr43yX52kE71";
-        return serverPassword;
+        return "Fr43yX52kE71";
     }
 }
