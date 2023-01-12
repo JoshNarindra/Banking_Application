@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Updated method and class comments on Account" />
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Removed redundant imports">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Queries.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -80,35 +83,7 @@
       <workItem from="1672583152802" duration="8536000" />
       <workItem from="1673371814510" duration="342000" />
       <workItem from="1673518705157" duration="51000" />
-      <workItem from="1673518766965" duration="7324000" />
-    </task>
-    <task id="LOCAL-00012" summary=".">
-      <created>1672268239343</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1672268239343</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Added Menu System to Personal Acc.">
-      <created>1672326525155</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1672326525155</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Updated Menu System to Personal Acc.">
-      <created>1672327260299</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1672327260299</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Updated Menu System to Personal Acc.">
-      <created>1672327397920</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1672327397920</updated>
+      <workItem from="1673518766965" duration="10926000" />
     </task>
     <task id="LOCAL-00016" summary="accountMenu() method added to children of account class.">
       <created>1672327998633</created>
@@ -425,7 +400,35 @@
       <option name="project" value="LOCAL" />
       <updated>1673530843388</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="Updated method and class comments on PersonalAccount">
+      <created>1673540692546</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1673540692546</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Updated method and class comments on BusinessAccount and ISAAccount">
+      <created>1673541998416</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1673541998416</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Modified comments on AccountNumberGeneration">
+      <created>1673542033007</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1673542033007</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Removed redundant imports">
+      <created>1673542142698</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1673542142698</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -443,10 +446,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Database Connection update." />
-    <MESSAGE value="getConnection can now run queries" />
-    <MESSAGE value="Database Connection Class update." />
-    <MESSAGE value="bug fixes." />
     <MESSAGE value="Prints customer account list in main menu" />
     <MESSAGE value="Fixed existingCustomersMenu so that an account can be selected and accessed." />
     <MESSAGE value="DRYd Program class and added back options into menus" />
@@ -468,6 +467,10 @@
     <MESSAGE value="Added method and class comments on AccountNumberGeneration" />
     <MESSAGE value="Added method and class comments on Account" />
     <MESSAGE value="Updated method and class comments on Account" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated method and class comments on Account" />
+    <MESSAGE value="Updated method and class comments on PersonalAccount" />
+    <MESSAGE value="Updated method and class comments on BusinessAccount and ISAAccount" />
+    <MESSAGE value="Modified comments on AccountNumberGeneration" />
+    <MESSAGE value="Removed redundant imports" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed redundant imports" />
   </component>
 </project>
