@@ -7,8 +7,6 @@
         paymentsMenu().
  */
 
-import java.sql.SQLException;
-
 public class BusinessAccount extends Account
 {
     private String name;
@@ -30,7 +28,7 @@ public class BusinessAccount extends Account
     // User is prompted to select a transaction, then the relevant method from Account or BusinessAccount is called.
     // In some cases, the checkFloatRange() method from Program is passed as an argument, in order to get further user input.
     @Override
-    public void accountMenu() throws SQLException
+    public void accountMenu()
     {
         while (true)
         {
@@ -82,7 +80,7 @@ public class BusinessAccount extends Account
 
             switch(menu)
             {
-                case 1, 2 -> payAccount(Program.checkFloatRange("\nEnter payment amount:", 0, 20000), retrieveRecipientAccountNumber());
+                case 1, 2 -> payAccount(Program.checkFloatRange("\nEnter payment amount:", Variables.businessAccountMinimumPayment, Variables.businessAccountMinimumPayment), retrieveRecipientAccountNumber());
                 case 9 -> Program.exitProgram();
             }
         }

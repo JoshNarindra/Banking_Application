@@ -1,18 +1,20 @@
+/*
+    Method DatabaseConnection simply implements a connection to the database using the getConnection() method.
+ */
+
 import java.sql.*;
 
 public class DatabaseConnection
 {
-    static String website = "jdbc:sqlserver://SQL8002.site4now.net;database=db_a8cc79_Ewahes";
-    static String username = "db_a8cc79_Ewahes_admin";
-    static String password = "Fr43yX52kE71";
     public static Connection connection;
 
-    // Method returns variable of type connection, which is SQL connection to server.
+    // Method getConnection() connects to the database using the details stored in the Variables class.
+    // The connection is then returned as an object.
     public static Connection getConnection()
     {
         try
         {
-            connection = DriverManager.getConnection(website, username, password);
+            connection = DriverManager.getConnection(Variables.getServerURL(), Variables.getServerUsername(), Variables.getServerPassword());
         }
         catch (Exception e)
         {

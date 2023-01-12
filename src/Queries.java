@@ -11,7 +11,8 @@
         retrieveBusinessAccount(),
         retrieveISAAccount(),
         retrieveBusinessName(),
-        checkAccountExists().
+        checkAccountExists(),
+        checkISAAccountExists().
 
     Create methods call the updateQuery() method to alter database and the readQuery() method to return relevant information:
         createUser(),
@@ -22,14 +23,9 @@
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Queries
 {
-    public ArrayList<String> accountsColumns = new ArrayList<>(List.of("AccountNumber", "SortCode", "UserID", "AccountType", "Balance", "Overdraft"));
-    public ArrayList<String> usersColumns = new ArrayList<>(List.of("ID", "FirstName", "LastName", "DateOfBirth"));
-    public ArrayList<String> businessesColumns = new ArrayList<>(List.of("ID", "Name", "AccountNumber"));
-
     // Method updateQuery() takes a String query as an argument and executes the query in the SQL database.
     public static void updateQuery(String query)
     {
@@ -101,12 +97,17 @@ public class Queries
         return checkExistsQuery("SELECT COUNT(1) FROM Accounts0 WHERE AccountNumber = '" + accountNumber + "';");
     }
 
+    public boolean checkISAAccountExists(int userID)
+    {
+        return checkExistsQuery("SELECT COUNT(1) FROM Accounts0 WHERE UserID = " + userID + " AND AccountType = '" + "ISA" + "';");
+    }
+
     // Method retrievePersonalAccount() takes a String accountNumber as an argument and creates a PersonalAccount object using information from the database.
     // This PersonalAccount object is then returned.
     public PersonalAccount retrievePersonalAccount(String accountNumber)
     {
         ArrayList<String> accountInformation;
-        accountInformation = readQuery("SELECT * FROM Accounts0 WHERE AccountNumber = '" + accountNumber + "';", accountsColumns);
+        accountInformation = readQuery("SELECT * FROM Accounts0 WHERE AccountNumber = '" + accountNumber + "';", Variables.accountsColumns);
         return new PersonalAccount(accountInformation.get(0), accountInformation.get(1), Float.parseFloat(accountInformation.get(4)), Float.parseFloat(accountInformation.get(5)));
     }
 
@@ -115,7 +116,7 @@ public class Queries
     public ISAAccount retrieveISAAccount(String accountNumber)
     {
         ArrayList<String> accountInformation;
-        accountInformation = readQuery("SELECT * FROM Accounts0 WHERE AccountNumber = '" + accountNumber + "';", accountsColumns);
+        accountInformation = readQuery("SELECT * FROM Accounts0 WHERE AccountNumber = '" + accountNumber + "';", Variables.accountsColumns);
         return new ISAAccount(accountInformation.get(0), accountInformation.get(1), Float.parseFloat(accountInformation.get(4)), Float.parseFloat(accountInformation.get(5)));
     }
 
@@ -124,7 +125,7 @@ public class Queries
     public BusinessAccount retrieveBusinessAccount(String accountNumber)
     {
         ArrayList<String> accountInformation;
-        accountInformation = readQuery("SELECT * FROM Accounts0 WHERE AccountNumber = '" + accountNumber + "';", accountsColumns);
+        accountInformation = readQuery("SELECT * FROM Accounts0 WHERE AccountNumber = '" + accountNumber + "';", Variables.accountsColumns);
         return new BusinessAccount(accountInformation.get(0), accountInformation.get(1), Float.parseFloat(accountInformation.get(4)), Float.parseFloat(accountInformation.get(5)), retrieveBusinessName(accountNumber));
     }
 
@@ -132,7 +133,7 @@ public class Queries
     public String retrieveBusinessName(String accountNumber)
     {
         ArrayList<String> businessInformation;
-        businessInformation = readQuery("SELECT * FROM Businesses0 WHERE AccountNumber = '" + accountNumber + "';", businessesColumns);
+        businessInformation = readQuery("SELECT * FROM Businesses0 WHERE AccountNumber = '" + accountNumber + "';", Variables.businessesColumns);
         return businessInformation.get(1);
     }
 
@@ -141,7 +142,7 @@ public class Queries
     public int createUser(String firstName, String lastName, String dateOfBirth)
     {
         updateQuery("INSERT INTO Users0 (FirstName, LastName, DateOfBirth) VALUES ('" + firstName + "', '" + lastName + "', '" + dateOfBirth + "');");
-        ArrayList<String> userInformation = readQuery("SELECT * FROM Users0 WHERE (FirstName = '" + firstName + "' AND LastName = '" + lastName + "' AND DateOfBirth = '" + dateOfBirth + "');", usersColumns);
+        ArrayList<String> userInformation = readQuery("SELECT * FROM Users0 WHERE (FirstName = '" + firstName + "' AND LastName = '" + lastName + "' AND DateOfBirth = '" + dateOfBirth + "');", Variables.usersColumns);
         return Integer.parseInt(userInformation.get(0));
     }
 

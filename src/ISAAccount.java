@@ -1,10 +1,8 @@
 /*
     Class ISAAccount extends the abstract class Account and is used to model ISA accounts from the database as objects.
-    An additional method, interestPayment() is contained which is unique to ISAAccount, given the account pays interest.
+    Additional methods, interestPayment() and monthlyInterestFactorCalculator() are contained which are unique to ISAAccount, given the account pays interest.
     An override of the deposit() method is also contained and unique to ISAAccount.
  */
-
-import java.sql.SQLException;
 
 public class ISAAccount extends Account
 {
@@ -18,7 +16,7 @@ public class ISAAccount extends Account
     // User is prompted to select a transaction, then the relevant method from Account or ISAAccount is called.
     // In some cases, the checkFloatRange() method from Program is passed as an argument, in order to get further user input.
     @Override
-    public void accountMenu() throws SQLException
+    public void accountMenu()
     {
         while (true)
         {
@@ -27,10 +25,10 @@ public class ISAAccount extends Account
             switch (menu)
             {
                 case 1 -> displayBalance();
-                case 2 -> deposit(Program.checkFloatRange("\nEnter deposit amount: ", 0.01f, 20000.00f));
-                case 3 -> withdraw(Program.checkFloatRange("\nEnter withdrawal amount: ", 0.01f, 20000.00f));
-                case 4, 6, 7 -> payAccount(Program.checkFloatRange("\nEnter payment amount:", 0, 20000), retrieveRecipientAccountNumber());
-                case 5 -> interestPayment(1.025f);
+                case 2 -> deposit(Program.checkFloatRange("\nEnter deposit amount: ", Variables.isaAccountMinimumDeposit, Variables.isaAccountMaximumDeposit));
+                case 3 -> withdraw(Program.checkFloatRange("\nEnter withdrawal amount: ", Variables.isaAccountMinimumWithdrawal, Variables.isaAccountMaximumWithdrawal));
+                case 4, 6, 7 -> payAccount(Program.checkFloatRange("\nEnter payment amount:", Variables.isaAccountMinimumPayment, Variables.isaAccountMaximumPayment), retrieveRecipientAccountNumber());
+                case 5 -> interestPayment(Variables.isaAccountYearlyInterestFactor);
                 case 9 -> Program.exitProgram();
             }
         }
@@ -38,13 +36,13 @@ public class ISAAccount extends Account
 
     // Method deposit() is an Override of the method in the Account class and takes a float increment as an argument.
     // The account's balance is incremented and the database updated by calling methods setBalance() and updateDatabaseInformation().
-    // Additionally, a check is included to ensure that the new account balance does not exceed 20000, given this is a limit for ISA accounts (currently this is hard-coded).
+    // Additionally, a check is included to ensure that the new account balance does not exceed the limit.
     @Override
-    public void deposit(float increment) throws SQLException
+    public void deposit(float increment)
     {
         float newBalance = getBalance() + increment;
 
-        if (newBalance > 20000f)
+        if (newBalance > Variables.isaAccountMaximumBalance)
         {
             System.out.println("Amount exceeds maximum balance for ISA account. Try again.");
         }
@@ -55,11 +53,19 @@ public class ISAAccount extends Account
         }
     }
 
-    // Method interestPayment() takes a float monthlyInterestMultiplier as an argument.
-    // Methods setBalance() and updateDatabaseInformation() are then called to increase the balance by factor monthlyInterestMultiplier.
-    public void interestPayment(float monthlyInterestMultiplier) throws SQLException
+    // Method interestPayment() takes a float yearlyInterestFactor as an argument.
+    // Methods setBalance(), monthlyInterestFactorCalculator() and updateDatabaseInformation() are then called to increase the balance by a factor.
+    public void interestPayment(float yearlyInterestFactor)
     {
-        setBalance(getBalance() * monthlyInterestMultiplier);
+        setBalance((float) (getBalance() * monthlyInterestFactorCalculator(yearlyInterestFactor)));
         updateDatabaseInformation();
+    }
+
+    // Method monthlyInterestFactorCalculator takes a float yearlyInterestFactor as an argument.
+    // Bernoulli's compound interest formula is then applied to return the equivalent monthly interest factor.
+    public double monthlyInterestFactorCalculator(float yearlyInterestFactor)
+    {
+        double base = (1f + ((yearlyInterestFactor - 1f)/12f));
+        return Math.pow(base, 12);
     }
 }

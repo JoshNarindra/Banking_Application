@@ -31,13 +31,12 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
-import java.sql.SQLException;
 
 public class Program
 {
     // Method main() which displays the opening menu to the user.
     // The method either calls the existingCustomersMenu() or newCustomersMenu() methods depending on user input.
-    public static void main(String[] args) throws SQLException
+    public static void main(String[] args)
     {
         System.out.println("\nWelcome to ACME Banking Solutions...\n");
         int menu = checkMultipleOptions("\nDoes the customer currently have an account with us? \n1. Yes. \n2. No. \n9. Exit.", new int[]{1, 2, 9});
@@ -56,7 +55,7 @@ public class Program
     // Method existingCustomersMenu() which displays a menu to customers who already have an account registered.
     // Personal details are printed to the console in order to verify customer identity.
     // Finally, method calls the existingAccountsMenu() or createNewAccountMenu() methods depending on user input.
-    public static void existingCustomersMenu() throws SQLException
+    public static void existingCustomersMenu()
     {
         Queries queries = new Queries();
         String accountNumber = checkAccountNumber();
@@ -87,7 +86,7 @@ public class Program
 
     // Method newCustomersMenu() which displays a menu to new customers.
     // The method calls the createUser() method and passes its return value to one of the methods which creates a new account, depending on user input.
-    public static void newCustomersMenu() throws SQLException
+    public static void newCustomersMenu()
     {
         while (true)
         {
@@ -107,7 +106,7 @@ public class Program
     // Method existingAccountsMenu() takes a String accountNumber as an argument and displays all other accounts associated with the same user.
     // The user is prompted to select an account to manage, with an Account object of the relevant type being created after user selection.
     // Finally, the accountMenu() method of the Account object is accessed.
-    public static void existingAccountsMenu(String accountNumber) throws SQLException
+    public static void existingAccountsMenu(String accountNumber)
     {
         Queries queries = new Queries();
         Scanner scanner = new Scanner(System.in);
@@ -120,7 +119,7 @@ public class Program
         for (HashMap.Entry<String,String> entry: accountList.entrySet())
         {
             numberOfAccounts++;
-            System.out.println(numberOfAccounts + entry.getKey() + entry.getValue());
+            System.out.println(numberOfAccounts + ". " + entry.getKey() + ", " + entry.getValue());
         }
 
         while (userInput < 1 || userInput > numberOfAccounts)
@@ -153,7 +152,7 @@ public class Program
     // Method createNewAccountMenu() takes an int userID as an argument and displays a menu.
     // The user is then prompted to choose which type of account to create.
     // Finally, the relevant method to open an account of the user's choosing is called, with the userID int passed as an argument.
-    public static void createNewAccountMenu(int userID) throws SQLException
+    public static void createNewAccountMenu(int userID)
     {
         while (true)
         {
@@ -172,7 +171,7 @@ public class Program
     // Method openPersonalAccount() takes an int userID as an argument and inserts a row into the Accounts0 table in the database.
     // The information entered into the table is dependent on the user's input and is linked to the userID passed to the method.
     // Finally, the PersonalAccount object's accountMenu() method is called.
-    public static void openPersonalAccount(int userID) throws SQLException
+    public static void openPersonalAccount(int userID)
     {
         Queries queries = new Queries();
         AccountNumberGeneration generator = new AccountNumberGeneration();
@@ -195,7 +194,7 @@ public class Program
     // Method openBusinessAccount() takes an int userID as an argument and inserts a row into the Accounts0 table in the database.
     // The information entered into the table is dependent on the user's input and is linked to the userID passed to the method.
     // Finally, the BusinessAccount object's accountMenu() method is called.
-    public static void openBusinessAccount(int userID) throws SQLException
+    public static void openBusinessAccount(int userID)
     {
         Queries queries = new Queries();
         AccountNumberGeneration generator = new AccountNumberGeneration();
@@ -220,11 +219,19 @@ public class Program
 
     // Method openISAAccount() takes an int userID as an argument and inserts a row into the Accounts0 table in the database.
     // The information entered into the table is dependent on the user's input and is linked to the userID passed to the method.
+    // A check is made to ensure the customer does not already have an ISA account, calling the checkISAAccountExists() method from the Queries class.
     // Finally, the ISAAccount object's accountMenu() method is called.
-    public static void openISAAccount(int userID) throws SQLException
+    public static void openISAAccount(int userID)
     {
         Queries queries = new Queries();
         AccountNumberGeneration generator = new AccountNumberGeneration();
+
+        if (queries.checkISAAccountExists(userID))
+        {
+            System.out.println("\nError. Limit one ISA account per customer.");
+            exitProgram();
+        }
+
         checkCredential("\nDoes the customer have valid personal ID? (Only driving licence or passport permitted.) \n1. Yes. \n2. No.", "Customer must have valid ID to open an ISA account.");
         checkCredential("\nDoes the customer meet the age requirements for an ISA account? (16+) \n1. Yes. \n2. No.", "Customer must meet the age requirements to open an ISA account.");
         float openingBalance = checkFloatRange("\nEnter opening balance: ", Variables.isaAccountMinimumOpeningBalance, Variables.isaAccountMaximumOpeningBalance);
