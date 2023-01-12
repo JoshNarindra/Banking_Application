@@ -15,7 +15,6 @@
         retrieveRecipientAccountNumber().
  */
 
-//Imports
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -41,9 +40,9 @@ abstract class Account
     // The readQuery() method of the Queries class is then called to return the first name, last name and date of birth of the customer as an ArrayList.
     public static ArrayList retrieveCustomerInfo(String accountNumber) throws SQLException
     {
-        Queries newQuery = new Queries();
+        Queries queries = new Queries();
         ArrayList<String> columns = new ArrayList<>(List.of("FirstName", "LastName", "DateOfBirth"));
-        ArrayList<String> customerInfoResults = newQuery.readQuery("SELECT FirstName, LastName, DateOfBirth from Users where ID in (SELECT UserID from Accounts where AccountNumber = " + accountNumber + " )", columns);
+        ArrayList<String> customerInfoResults = queries.readQuery("SELECT FirstName, LastName, DateOfBirth from Users where ID in (SELECT UserID from Accounts where AccountNumber = " + accountNumber + " )", columns);
         return customerInfoResults;
     }
 
@@ -154,8 +153,8 @@ abstract class Account
     // Method updateDatabaseInformation() synchronises the account's balance and overdraft variables with the Balance and Overdraft columns in the database.
     public void updateDatabaseInformation() throws SQLException
     {
-        Queries newQuery = new Queries();
-        newQuery.updateQuery("UPDATE Accounts0 SET Balance = " + balance + ", Overdraft = " + overdraft + "WHERE AccountNumber = '" + accountNumber + "';");
+        Queries queries = new Queries();
+        queries.updateQuery("UPDATE Accounts0 SET Balance = " + balance + ", Overdraft = " + overdraft + "WHERE AccountNumber = '" + accountNumber + "';");
     }
 
     // Abstract method accountMenu() is implemented in the daughter classes of Account.
