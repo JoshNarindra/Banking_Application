@@ -103,7 +103,7 @@ abstract class Account
 
         if (newBalance + overdraft < 0)
         {
-            System.out.println("Error. Insufficient funds. Try again.");
+            System.out.println("Insufficient funds. Try again.");
         }
         else if (!queries.checkAccountExists(recipientAccountNumber))
         {
@@ -114,6 +114,7 @@ abstract class Account
             setBalance(newBalance);
             updateDatabaseInformation();
             queries.updateQuery("UPDATE Accounts0 SET Balance = Balance + " + amount + " WHERE AccountNumber = '" + recipientAccountNumber + "';");
+            System.out.println("\nPayment successful.");
         }
     }
 

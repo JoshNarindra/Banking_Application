@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Tweaked checkAccountExists method to use new method checkExistsQuery for more DRY code; fixed a bug with paying into another account where the user was not prompted for an amount">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_04_01_2023_23_04_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_04_01_2023_23_04__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Tidied up and removed boolean variables for PersonalAccount objects">
+      <change beforePath="$PROJECT_DIR$/src/BusinessAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ISAAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ISAAccount.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,13 +83,7 @@
       <workItem from="1672583152802" duration="8536000" />
       <workItem from="1673371814510" duration="342000" />
       <workItem from="1673518705157" duration="51000" />
-    </task>
-    <task id="LOCAL-00005" summary="Minor update.">
-      <created>1672188825949</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1672188825949</updated>
+      <workItem from="1673518766965" duration="439000" />
     </task>
     <task id="LOCAL-00006" summary="Minor update.">
       <created>1672189009523</created>
@@ -428,7 +421,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673480001370</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Tidied up and removed boolean variables for PersonalAccount objects">
+      <created>1673518982275</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1673518982275</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -446,7 +446,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added Menu System to Personal Acc." />
     <MESSAGE value="Updated Menu System to Personal Acc." />
     <MESSAGE value="accountMenu() method added to children of account class." />
     <MESSAGE value="Added DatabaseConnection Class." />
@@ -471,6 +470,7 @@
     <MESSAGE value="Fully implemented paying between accounts, implemented check on ISA deposits (not to exceed 20,000 pounds)" />
     <MESSAGE value="Tweaked retrieverCustomerAccounts method to use the Queries class, fixed bug in Program" />
     <MESSAGE value="Tweaked checkAccountExists method to use new method checkExistsQuery for more DRY code; fixed a bug with paying into another account where the user was not prompted for an amount" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tweaked checkAccountExists method to use new method checkExistsQuery for more DRY code; fixed a bug with paying into another account where the user was not prompted for an amount" />
+    <MESSAGE value="Tidied up and removed boolean variables for PersonalAccount objects" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tidied up and removed boolean variables for PersonalAccount objects" />
   </component>
 </project>

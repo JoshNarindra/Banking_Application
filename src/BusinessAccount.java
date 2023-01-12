@@ -26,9 +26,9 @@ public class BusinessAccount extends Account
             switch (menu)
             {
                 case 1 -> displayBalance();
-                case 2 -> deposit(Program.checkFloatRange("Enter deposit amount: ", 0.01f, 20000.00f));
-                case 3 -> withdraw(Program.checkFloatRange("Enter withdrawal amount: ", 0.01f, 20000.00f));
-                case 4 -> payAccount(0, "placeholder");
+                case 2 -> deposit(Program.checkFloatRange("\nEnter deposit amount: ", 0.01f, 20000.00f));
+                case 3 -> withdraw(Program.checkFloatRange("\nEnter withdrawal amount: ", 0.01f, 20000.00f));
+                case 4 -> payAccount(Program.checkFloatRange("\nEnter payment amount:", 0, 20000), retrieveRecipientAccountNumber());
                 case 5 -> requestsMenu();
                 case 6 -> paymentsMenu();
                 case 7 -> makeAnnualPayment();
@@ -43,10 +43,16 @@ public class BusinessAccount extends Account
 
         switch(menu)
         {
-            case 1 -> System.out.println("Placeholder request chequebook");
-            case 2 -> System.out.println("Placeholder request credit card");
-            case 3 -> System.out.println("Placeholder request change to overdraft");
-            case 4 -> System.out.println("Placeholder request a loan");
+            case 1 -> System.out.println("Chequebook request logged.");
+            case 2 -> System.out.println("Credit card request logged.");
+            case 3 -> {
+                        Program.checkFloatRange("\nEnter proposed overdraft amount: ", 0f, 10000.00f);
+                        System.out.println("Change to overdraft request logged.");
+                      }
+            case 4 -> {
+                        Program.checkFloatRange("\nEnter desired loan amount: ", 0f, 10000.00f);
+                        System.out.println("Loan request logged.");
+                      }
             case 9 -> Program.exitProgram();
         }
     }
