@@ -1,4 +1,7 @@
-public class Variables
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class Variables
 {
     public static float personalAccountMinimumOpeningBalance = 1f;
     public static float personalAccountMaximumOpeningBalance = 20000f;
@@ -34,11 +37,32 @@ public class Variables
     public static float isaAccountMaximumWithdrawal = 20000f;
     public static float isaAccountMinimumPayment = 0.01f;
     public static float isaAccountMaximumPayment = 20000f;
+    public static float isaAccountYearlyInterestFactor = 1.03f;
 
     public static int earliestBirthYear = 1900;
     public static int latestBirthYear = 2007;
 
-
-
     public static String branchSortCode = "02-12-20";
+    public static ArrayList<String> accountsColumns = new ArrayList<>(List.of("AccountNumber", "SortCode", "UserID", "AccountType", "Balance", "Overdraft"));
+    public static ArrayList<String> usersColumns = new ArrayList<>(List.of("ID", "FirstName", "LastName", "DateOfBirth"));
+    public static ArrayList<String> businessesColumns = new ArrayList<>(List.of("ID", "Name", "AccountNumber"));
+
+    private static String serverURL = "jdbc:sqlserver://SQL8002.site4now.net;database=db_a8cc79_Ewahes";
+    private static String serverUsername = "db_a8cc79_Ewahes_admin";
+    private static String serverPassword = "Fr43yX52kE71";
+
+    public static String getServerURL()
+    {
+        return serverURL;
+    }
+
+    public static String getServerUsername()
+    {
+        return serverUsername;
+    }
+
+    public static String getServerPassword()
+    {
+        return serverPassword;
+    }
 }

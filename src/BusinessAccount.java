@@ -82,7 +82,7 @@ public class BusinessAccount extends Account
 
             switch(menu)
             {
-                case 1, 2 -> payAccount(Program.checkFloatRange("\nEnter payment amount:", 0, 20000), retrieveRecipientAccountNumber());
+                case 1, 2 -> payAccount(Program.checkFloatRange("\nEnter payment amount:", Variables.businessAccountMinimumPayment, Variables.businessAccountMinimumPayment), retrieveRecipientAccountNumber());
                 case 9 -> Program.exitProgram();
             }
         }

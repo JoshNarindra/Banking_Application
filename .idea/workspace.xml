@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Created Variables class to remove hard-coding of variables and refactored Program and PersonalAccount classes accordingly">
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Updated BusinessAccount and Variables classes to remove hard-coding">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BusinessAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ISAAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ISAAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Variables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Variables.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,14 +84,7 @@
       <workItem from="1672583152802" duration="8536000" />
       <workItem from="1673371814510" duration="342000" />
       <workItem from="1673518705157" duration="51000" />
-      <workItem from="1673518766965" duration="14295000" />
-    </task>
-    <task id="LOCAL-00020" summary="Updated accounts menus.">
-      <created>1672606443775</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1672606443775</updated>
+      <workItem from="1673518766965" duration="16100000" />
     </task>
     <task id="LOCAL-00021" summary="Updated accounts menus.">
       <created>1672606774637</created>
@@ -426,7 +422,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673546318759</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="Updated BusinessAccount and Variables classes to remove hard-coding">
+      <created>1673547028495</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1673547028495</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -444,7 +447,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed updateDatabaseInformation()" />
     <MESSAGE value="Fixed existingAccountsMenu()" />
     <MESSAGE value="Fixed BusinessAccount to display the menu again after a transaction" />
     <MESSAGE value="Fixed account selection" />
@@ -469,6 +471,7 @@
     <MESSAGE value="Corrected IntelliJ-reported problems in Program and AccountNumberGeneration class" />
     <MESSAGE value="Corrected IntelliJ-reported problems in Program and other classes" />
     <MESSAGE value="Created Variables class to remove hard-coding of variables and refactored Program and PersonalAccount classes accordingly" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Variables class to remove hard-coding of variables and refactored Program and PersonalAccount classes accordingly" />
+    <MESSAGE value="Updated BusinessAccount and Variables classes to remove hard-coding" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated BusinessAccount and Variables classes to remove hard-coding" />
   </component>
 </project>
