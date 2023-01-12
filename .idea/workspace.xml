@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Removing redundant code" />
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Implemented check that a customer has only one ISA account" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -79,14 +79,7 @@
       <workItem from="1672583152802" duration="8536000" />
       <workItem from="1673371814510" duration="342000" />
       <workItem from="1673518705157" duration="51000" />
-      <workItem from="1673518766965" duration="17177000" />
-    </task>
-    <task id="LOCAL-00025" summary="Database Connection update.">
-      <created>1672680270871</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1672680270871</updated>
+      <workItem from="1673518766965" duration="17737000" />
     </task>
     <task id="LOCAL-00026" summary="Database Connection update.">
       <created>1672680291715</created>
@@ -424,7 +417,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673549512494</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="Implemented check that a customer has only one ISA account">
+      <created>1673550073115</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1673550073115</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -442,7 +442,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Tidying up and removing redundant code" />
     <MESSAGE value="Fully implemented paying between accounts, implemented check on ISA deposits (not to exceed 20,000 pounds)" />
     <MESSAGE value="Tweaked retrieverCustomerAccounts method to use the Queries class, fixed bug in Program" />
     <MESSAGE value="Tweaked checkAccountExists method to use new method checkExistsQuery for more DRY code; fixed a bug with paying into another account where the user was not prompted for an amount" />
@@ -467,6 +466,7 @@
     <MESSAGE value="Improved Variables class" />
     <MESSAGE value="Tidied Variables class" />
     <MESSAGE value="Removing redundant code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removing redundant code" />
+    <MESSAGE value="Implemented check that a customer has only one ISA account" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented check that a customer has only one ISA account" />
   </component>
 </project>

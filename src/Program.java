@@ -119,7 +119,7 @@ public class Program
         for (HashMap.Entry<String,String> entry: accountList.entrySet())
         {
             numberOfAccounts++;
-            System.out.println(numberOfAccounts + entry.getKey() + entry.getValue());
+            System.out.println(numberOfAccounts + ". " + entry.getKey() + ", " + entry.getValue());
         }
 
         while (userInput < 1 || userInput > numberOfAccounts)
