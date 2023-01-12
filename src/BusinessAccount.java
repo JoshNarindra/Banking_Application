@@ -74,7 +74,7 @@ public class BusinessAccount extends Account
 
     // Method paymentsMenu() prompts the user for an integer menu and carries out a function depending on the selection.
     // In some cases, the checkFloatRange() method from Program is passed as an argument, in order to get further user input.
-    public void paymentsMenu() throws SQLException
+    public void paymentsMenu()
     {
         while (true)
         {
@@ -89,7 +89,7 @@ public class BusinessAccount extends Account
     }
 
     // Method makeAnnualPayment() calls the setBalance() method to reduce the account balance by 120, and calls updateDatabaseInformation() to alter the Balance in the database.
-    public void makeAnnualPayment() throws SQLException
+    public void makeAnnualPayment()
     {
         float newBalance = getBalance() - 120f;
         setBalance(newBalance);
