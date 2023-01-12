@@ -2,8 +2,6 @@
     Class PersonalAccount extends the abstract class Account and is used to model personal accounts from the database as objects.
  */
 
-import java.sql.SQLException;
-
 public class PersonalAccount extends Account
 {
     // Constructor method PersonalAccount().
@@ -16,7 +14,7 @@ public class PersonalAccount extends Account
     // User is prompted to select a transaction, then the relevant method from Account is called.
     // In some cases, the checkFloatRange() method from Program is passed as an argument, in order to get further user input.
     @Override
-    public void accountMenu() throws SQLException
+    public void accountMenu()
     {
         while (true)
         {

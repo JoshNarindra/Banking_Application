@@ -89,7 +89,7 @@ abstract class Account
 
     // Method deposit() takes a float increment as its argument.
     // The account's balance is then incremented and the database updated by calling methods setBalance() and updateDatabaseInformation().
-    public void deposit(float increment) throws SQLException
+    public void deposit(float increment)
     {
         float newBalance = getBalance() + increment;
         setBalance(newBalance);

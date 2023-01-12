@@ -4,8 +4,6 @@
     An override of the deposit() method is also contained and unique to ISAAccount.
  */
 
-import java.sql.SQLException;
-
 public class ISAAccount extends Account
 {
     // Constructor method ISAAccount().
@@ -18,7 +16,7 @@ public class ISAAccount extends Account
     // User is prompted to select a transaction, then the relevant method from Account or ISAAccount is called.
     // In some cases, the checkFloatRange() method from Program is passed as an argument, in order to get further user input.
     @Override
-    public void accountMenu() throws SQLException
+    public void accountMenu()
     {
         while (true)
         {
@@ -40,7 +38,7 @@ public class ISAAccount extends Account
     // The account's balance is incremented and the database updated by calling methods setBalance() and updateDatabaseInformation().
     // Additionally, a check is included to ensure that the new account balance does not exceed the limit.
     @Override
-    public void deposit(float increment) throws SQLException
+    public void deposit(float increment)
     {
         float newBalance = getBalance() + increment;
 
@@ -57,7 +55,7 @@ public class ISAAccount extends Account
 
     // Method interestPayment() takes a float yearlyInterestFactor as an argument.
     // Methods setBalance(), monthlyInterestFactorCalculator() and updateDatabaseInformation() are then called to increase the balance by a factor.
-    public void interestPayment(float yearlyInterestFactor) throws SQLException
+    public void interestPayment(float yearlyInterestFactor)
     {
         setBalance((float) (getBalance() * monthlyInterestFactorCalculator(yearlyInterestFactor)));
         updateDatabaseInformation();
