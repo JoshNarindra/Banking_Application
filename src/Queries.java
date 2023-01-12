@@ -19,8 +19,8 @@ public class Queries
         try
         {
             DatabaseConnection connection = new DatabaseConnection();
-            var stmt = connection.getConnection().prepareStatement(query);
-            stmt.execute();
+            var statement = connection.getConnection().prepareStatement(query);
+            statement.execute();
         }
         catch (Exception e)
         {
@@ -37,14 +37,14 @@ public class Queries
         try
         {
             DatabaseConnection connection = new DatabaseConnection();
-            var stmt = connection.getConnection().prepareStatement(query);
-            var rs = stmt.executeQuery();
+            var statement = connection.getConnection().prepareStatement(query);
+            var resultSet = statement.executeQuery();
 
-            while (rs.next())
+            while (resultSet.next())
             {
                 for (int i = 0; i < columnNames.size(); i++)
                 {
-                    results.add(rs.getString(columnNames.get(i).toString()));
+                    results.add(resultSet.getString(columnNames.get(i).toString()));
                 }
             }
 
@@ -62,12 +62,12 @@ public class Queries
         try
         {
             DatabaseConnection connection = new DatabaseConnection();
-            var stmt = connection.getConnection().prepareStatement(query);
-            var rs = stmt.executeQuery();
+            var statement = connection.getConnection().prepareStatement(query);
+            var resultSet = statement.executeQuery();
 
-            while(rs.next())
+            while(resultSet.next())
             {
-                if (rs.getInt(1) == 1)
+                if (resultSet.getInt(1) == 1)
                 {
                     return true;
                 }
