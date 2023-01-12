@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Updated some variable names to make comments redundant">
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Tidied AccountNumberGeneration class">
+      <change beforePath="$PROJECT_DIR$/src/AccountNumberGeneration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AccountNumberGeneration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Program.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,14 +83,7 @@
       <workItem from="1672583152802" duration="8536000" />
       <workItem from="1673371814510" duration="342000" />
       <workItem from="1673518705157" duration="51000" />
-      <workItem from="1673518766965" duration="1642000" />
-    </task>
-    <task id="LOCAL-00008" summary="Added abstract methods for account creation.">
-      <created>1672229245986</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1672229245986</updated>
+      <workItem from="1673518766965" duration="3498000" />
     </task>
     <task id="LOCAL-00009" summary="Added comments. fixed minor bugs">
       <created>1672230776747</created>
@@ -427,7 +421,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673519788541</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Added detailed explanation for Program class">
+      <created>1673521533465</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1673521533465</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -445,8 +446,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added DatabaseConnection Class." />
-    <MESSAGE value="Updated accounts menus." />
     <MESSAGE value="Added name and DOB variables." />
     <MESSAGE value="Added constructor for user class." />
     <MESSAGE value="Fixed connection bug." />
@@ -470,6 +469,8 @@
     <MESSAGE value="Tidied up and removed boolean variables for PersonalAccount objects" />
     <MESSAGE value="Fleshed out implementation of payments" />
     <MESSAGE value="Updated some variable names to make comments redundant" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated some variable names to make comments redundant" />
+    <MESSAGE value="Added detailed explanation for Program class" />
+    <MESSAGE value="Tidied AccountNumberGeneration class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tidied AccountNumberGeneration class" />
   </component>
 </project>

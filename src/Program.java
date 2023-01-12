@@ -1,7 +1,7 @@
 /*
     Class Program is the main class of the application, which contains the initial methods to be run.
     The main role of the Program class is to get customer information on which Account object is to be manipulated.
-    The Account object is either created from existing data in the database (i.e. accessing an existing account) or from new data inputted by the user (i.e. creating a new account).
+    An Account object is either created from existing data in the database (i.e. accessing an existing account) or from new data inputted by the user (i.e. creating a new account).
     Once the Account object is identified, the Account.accountMenu() method is called.
     The Program class contains some related methods which fall into categories.
 
@@ -26,10 +26,9 @@
         checkIntegerRange(),
         checkFloatRange().
 
-    Finally, the exitProgram() method is used to terminate the program while running, equivalent to a logout.
+    Finally, the exitProgram() method can be called to terminate the program while running, equivalent to a logout.
  */
 
-//imports
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
