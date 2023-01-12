@@ -178,11 +178,11 @@ public class Program
         AccountNumberGeneration generator = new AccountNumberGeneration();
         checkCredential("\nDoes the customer have a valid personal ID? (Only driving licence or passport permitted.) \n1. Yes. \n2. No.", "Customer must have valid ID to open a personal account.");
         checkCredential("\nDoes the customer have a valid proof of address? (Utility bill, council letter, etc. permitted.) \n1. Yes. \n2. No.", "Customer must have a valid proof of address to open a personal account.");
-        float openingBalance = checkFloatRange("\nEnter opening balance: ", 1.00f, 20000.00f);
+        float openingBalance = checkFloatRange("\nEnter opening balance: ", Variables.personalAccountMinimumOpeningBalance, Variables.personalAccountMaximumOpeningBalance);
 
         if (checkTwoOptions("\nConfirm account opening? \n 1. Yes \n 2. No"))
         {
-            PersonalAccount personalAccount = queries.createPersonalAccount(generator.generateAccountNumber(), "02-12-20", userID, openingBalance, 0.00f);
+            PersonalAccount personalAccount = queries.createPersonalAccount(generator.generateAccountNumber(), Variables.branchSortCode, userID, openingBalance, Variables.personalAccountDefaultOverdraft);
             System.out.println("\nAccount creation successful.");
             personalAccount.accountMenu();
         }
@@ -202,13 +202,13 @@ public class Program
         String businessName = checkAlphabet("\nEnter business name: ");
         checkCredential("\nDoes the customer have valid business credentials? \n1. Yes. \n2. No.", "Customer must have valid business credentials to open a business account");
         checkCredential("\nDoes the customer have a valid business type? (No enterprises, public limited companies or charities are permitted.) \n1. Yes. \n2. No.", "Customer must have a valid business type to open a business account.");
-        float openingBalance = checkFloatRange("\nEnter opening balance: ", 1.00f, 20000.00f);
-        float overdraftAmount = checkFloatRange("\nEnter agreed overdraft amount: ", 0.00f, 10000.00f);
+        float openingBalance = checkFloatRange("\nEnter opening balance: ", Variables.businessAccountMinimumOpeningBalance, Variables.businessAccountMaximumOpeningBalance);
+        float overdraftAmount = checkFloatRange("\nEnter agreed overdraft amount: ", Variables.businessAccountMinimumOverdraft, Variables.businessAccountMaximumOverdraft);
 
         if (checkTwoOptions("\nConfirm account opening? \n1. Yes. \n2. No"))
         {
             String accountNumber = generator.generateAccountNumber();
-            BusinessAccount businessAccount = queries.createBusinessAccount(accountNumber, "02-12-20", userID, openingBalance, overdraftAmount, businessName);
+            BusinessAccount businessAccount = queries.createBusinessAccount(accountNumber, Variables.branchSortCode, userID, openingBalance, overdraftAmount, businessName);
             System.out.println("\nAccount creation successful.");
             businessAccount.accountMenu();
         }
@@ -227,11 +227,11 @@ public class Program
         AccountNumberGeneration generator = new AccountNumberGeneration();
         checkCredential("\nDoes the customer have valid personal ID? (Only driving licence or passport permitted.) \n1. Yes. \n2. No.", "Customer must have valid ID to open an ISA account.");
         checkCredential("\nDoes the customer meet the age requirements for an ISA account? (16+) \n1. Yes. \n2. No.", "Customer must meet the age requirements to open an ISA account.");
-        float openingBalance = checkFloatRange("\nEnter opening balance: ", 0.00f, 20000.00f);
+        float openingBalance = checkFloatRange("\nEnter opening balance: ", Variables.isaAccountMinimumOpeningBalance, Variables.isaAccountMaximumOpeningBalance);
 
         if (checkTwoOptions("\nConfirm account opening? \n1. Yes. \n2. No."))
         {
-            ISAAccount isaAccount = queries.createISAAccount(generator.generateAccountNumber(), "02-12-20", userID, openingBalance, 0.00f);
+            ISAAccount isaAccount = queries.createISAAccount(generator.generateAccountNumber(), Variables.branchSortCode, userID, openingBalance, Variables.isaAccountDefaultOverdraft);
             System.out.println("\nAccount creation successful.");
             isaAccount.accountMenu();
         }
@@ -251,7 +251,7 @@ public class Program
         String lastName = checkAlphabet("\nEnter last name: ");
         int birthDay = checkIntegerRange("\nEnter birth day: ", 1, 31);
         int birthMonth = checkIntegerRange("\nEnter birth month: ", 1, 12);
-        int birthYear = checkIntegerRange("\nEnter birth year: ", 1900, 2007);
+        int birthYear = checkIntegerRange("\nEnter birth year: ", Variables.earliestBirthYear, Variables.latestBirthYear);
         String dateOfBirth = (birthYear + "-" + String.format("%02d", birthMonth) + "-" + String.format("%02d", birthDay));
         return queries.createUser(firstName, lastName, dateOfBirth);
     }
