@@ -2,14 +2,9 @@ import java.sql.SQLException;
 
 public class PersonalAccount extends Account
 {
-    private Boolean validPersonalID;
-    private Boolean validAddressID;
-
-    public PersonalAccount(String accountNumber, String sortCode, float balance, float overdraft, Boolean validPersonalID, Boolean validAddressID)
+    public PersonalAccount(String accountNumber, String sortCode, float balance, float overdraft)
     {
         super(accountNumber, sortCode, balance, overdraft);
-        this.validPersonalID = validPersonalID;
-        this.validAddressID = validAddressID;
     }
 
     //Menu function for Personal Account.

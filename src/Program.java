@@ -88,7 +88,6 @@ public class Program
         int userInput = 0;
 
         System.out.println("\nSelect customer account: ");
-
         HashMap<String, String> accountList = Account.retrieveCustomerAccounts(accountNumber);
 
         for (HashMap.Entry<String,String> entry: accountList.entrySet())
@@ -372,5 +371,4 @@ public class Program
         System.out.println("Successfully logged out.");
         System.exit(0);
     }
-
 }

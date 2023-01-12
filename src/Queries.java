@@ -95,7 +95,7 @@ public class Queries
     {
         ArrayList<String> accountInformation;
         accountInformation = readQuery("SELECT * FROM Accounts0 WHERE AccountNumber = '" + accountNumber + "';", accountsColumns);
-        PersonalAccount personalAccount = new PersonalAccount(accountInformation.get(0), accountInformation.get(1), Float.parseFloat(accountInformation.get(4)), Float.parseFloat(accountInformation.get(5)), true, true);
+        PersonalAccount personalAccount = new PersonalAccount(accountInformation.get(0), accountInformation.get(1), Float.parseFloat(accountInformation.get(4)), Float.parseFloat(accountInformation.get(5)));
         return personalAccount;
     }
 
