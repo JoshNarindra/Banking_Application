@@ -1,5 +1,18 @@
 /*
-Abstract class Account.
+    Abstract class Account is used model the accounts in the database as objects.
+    Most importantly Account contains the abstract method accountMenu() which is used to implement the main menu for each account type.
+
+    Functionality methods carry out functions which are common to all types of accounts:
+        deposit(),
+        withdraw(),
+        payAccount(),
+        accountMenu().
+
+    Retrieve methods call methods from Queries to retrieve customer and account information; or methods from Program to obtain user input:
+        retrieveCustomerInfo(),
+        retrieveCustomerAccounts(),
+        retrieveUserID(),
+        retrieveRecipientAccountNumber().
  */
 
 //Imports
@@ -15,6 +28,7 @@ abstract class Account
     private float balance;
     private float overdraft;
 
+    // Constructor method Account().
     public Account(String accountNumber, String sortCode, float balance, float overdraft)
     {
         this.accountNumber = accountNumber;
@@ -23,6 +37,8 @@ abstract class Account
         this.overdraft = overdraft;
     }
 
+    // Method retrieveCustomerInfo() takes a String accountNumber as its argument.
+    // The readQuery() method of the Queries class is then called to return the first name, last name and date of birth of the customer as an ArrayList.
     public static ArrayList retrieveCustomerInfo(String accountNumber) throws SQLException
     {
         Queries newQuery = new Queries();
@@ -31,7 +47,8 @@ abstract class Account
         return customerInfoResults;
     }
 
-    //Method retrieves all accounts a customer owns ant returns a hashmap of the Account Numbers and Account Type.
+    // Method retrieveCustomerAccounts() takes a String accountNumber as its argument.
+    // The readQuery() method of the Queries class is then called to return all accounts associated with the customer as a HashMap.
     public static HashMap retrieveCustomerAccounts(String accountNumber) throws SQLException
     {
         Queries queries = new Queries();
@@ -47,6 +64,8 @@ abstract class Account
         return accountList;
     }
 
+    // Method retrieveUserID() takes a String accountNumber as its argument.
+    // The readQuery() method of the Queries class is then called to return the UserID integer in the database associated with the customer.
     public static int retrieveUserID(String accountNumber) throws SQLException
     {
         Queries queries = new Queries();
@@ -55,22 +74,26 @@ abstract class Account
         return Integer.parseInt(results.get(0));
     }
 
+    // Method getBalance().
     public float getBalance()
     {
         return balance;
     }
 
+    // Method setBalance().
     public void setBalance(float balance)
     {
         this.balance = balance;
     }
 
+    // Method displayBalance() prints the account's current balance to the console.
     public void displayBalance()
     {
         System.out.println("Current balance: £" + String.format("%.2f", getBalance()));
     }
 
-    // Function deposit which calls getBalance and setBalance to increment balance
+    // Method deposit() takes a float increment as its argument.
+    // The account's balance is then incremented and the database updated by calling methods setBalance() and updateDatabaseInformation().
     public void deposit(float increment) throws SQLException
     {
         float newBalance = getBalance() + increment;
@@ -78,7 +101,9 @@ abstract class Account
         updateDatabaseInformation();
     }
 
-    // Function withdraw which calls getBalance and setBalance to decrement balance
+    // Method withdraw() takes a float decrement as its argument.
+    // A check is made to ensure that the account has sufficient funds to make the withdrawal.
+    // If funds are sufficient, then the balance is decremented and the database updated, by calling methods setBalance() and updateDatabaseInformation().
     public void withdraw(float decrement) throws SQLException
     {
         float newBalance = getBalance() - decrement;
@@ -94,8 +119,10 @@ abstract class Account
         }
     }
 
-    // Function transfer which takes two accounts and an amount as an argument and transfers money between the two
-
+    // Method payAccount takes a float amount and String recipientAccountNumber as arguments.
+    // Checks are made to make sure the account has sufficient funds to make a payment and that the recipient account exists.
+    // If checks are passed, then the balance is decremented by amount by calling the setBalance() method.
+    // Lastly, the database is updated by calling the updateDatabaseInformation() method and the updateQuery() method of the Queries class.
     public void payAccount(float amount, String recipientAccountNumber) throws SQLException
     {
         Queries queries = new Queries();
@@ -118,19 +145,19 @@ abstract class Account
         }
     }
 
+    // Method retrieveRecipientAccountNumber() calls the checkAccountNumber() of the Program class, and returns the user-inputted account number.
     public static String retrieveRecipientAccountNumber()
     {
         return Program.checkAccountNumber();
     }
 
-    // Abstract method to display menu system for account.
-    abstract void accountMenu() throws SQLException;
-
-    //Method which updates the database so that changes made to the Account object are reflected in the relevant table
-    //In other words the method synchronizes the program with the database
+    // Method updateDatabaseInformation() synchronises the account's balance and overdraft variables with the Balance and Overdraft columns in the database.
     public void updateDatabaseInformation() throws SQLException
     {
         Queries newQuery = new Queries();
         newQuery.updateQuery("UPDATE Accounts0 SET Balance = " + balance + ", Overdraft = " + overdraft + "WHERE AccountNumber = '" + accountNumber + "';");
     }
+
+    // Abstract method accountMenu() is implemented in the daughter classes of Account.
+    abstract void accountMenu() throws SQLException;
 }
