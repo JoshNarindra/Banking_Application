@@ -9,7 +9,7 @@ public class DatabaseConnection
     static String password = "Fr43yX52kE71";
     public static Connection connection;
 
-//    //Method returns variable of type connection, which is SQL connection to server.
+    // Method returns variable of type connection, which is SQL connection to server.
     public static Connection getConnection()
     {
         try
@@ -22,6 +22,4 @@ public class DatabaseConnection
         }
         return connection;
     }
-
-
 }

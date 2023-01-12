@@ -37,6 +37,12 @@ public class Program
             accountNumber = checkAccountNumber();
         }
 
+        ArrayList<String> customerInfo = Account.retrieveCustomerInfo(accountNumber);
+
+        System.out.println("\nRetrieving account details...");
+        System.out.println("\nName: " + customerInfo.get(0) + " " + customerInfo.get(1));
+        System.out.println("D.O.B: " + customerInfo.get(2));
+
         while (true)
         {
             boolean menu = checkTwoOptions("\nWould the customer like to access an existing account or open a new account? \n1. Access an existing account. \n2. Create a new account.");
@@ -78,13 +84,10 @@ public class Program
     {
         Queries queries = new Queries();
         Scanner scanner = new Scanner(System.in);
-        ArrayList<String> customerInfo = Account.retrieveCustomerInfo(accountNumber);
         int numberOfAccounts = 0;
+        int userInput = 0;
 
-        System.out.println("\nRetrieving account details...");
-        System.out.println("\nName: " + customerInfo.get(0) + " " + customerInfo.get(1));
-        System.out.println("D.O.B: " + customerInfo.get(2));
-        System.out.println("\nCustomer Accounts: ");
+        System.out.println("\nSelect customer account: ");
 
         HashMap<String, String> accountList = Account.retrieveCustomerAccounts(accountNumber);
 
@@ -94,33 +97,30 @@ public class Program
             System.out.println(numberOfAccounts+". "+"Account Number = " + entry.getKey() + ", Account Type = " + entry.getValue());
         }
 
-        int userInput = Integer.parseInt(scanner.nextLine());
-        String type = accountList.entrySet().toArray()[userInput - 1].toString().split("=")[1];
-
-        if (userInput <= numberOfAccounts)
+        while (userInput < 1 || userInput > numberOfAccounts)
         {
-            switch (type)
-            {
-                case "Personal" ->
-                {
-                    PersonalAccount personalAccount = queries.retrievePersonalAccount(accountList.entrySet().toArray()[userInput - 1].toString().split("=")[0]);
-                    personalAccount.accountMenu();
-                }
-                case "Business" ->
-                {
-                    BusinessAccount businessAccount = queries.retrieveBusinessAccount(accountList.entrySet().toArray()[userInput - 1].toString().split("=")[0]);
-                    businessAccount.accountMenu();
-                }
-                case "ISA" ->
-                {
-                    ISAAccount isaAccount = queries.retrieveISAAccount(accountList.entrySet().toArray()[userInput - 1].toString().split("=")[0]);
-                    isaAccount.accountMenu();
-                }
-            }
+            userInput = Integer.parseInt(scanner.nextLine());
         }
-        else
+
+        String accountType = accountList.entrySet().toArray()[userInput - 1].toString().split("=")[1];
+
+        switch (accountType)
         {
-            System.out.println("Invalid input");
+            case "Personal" ->
+            {
+                PersonalAccount personalAccount = queries.retrievePersonalAccount(accountList.entrySet().toArray()[userInput - 1].toString().split("=")[0]);
+                personalAccount.accountMenu();
+            }
+            case "Business" ->
+            {
+                BusinessAccount businessAccount = queries.retrieveBusinessAccount(accountList.entrySet().toArray()[userInput - 1].toString().split("=")[0]);
+                businessAccount.accountMenu();
+            }
+            case "ISA" ->
+            {
+                ISAAccount isaAccount = queries.retrieveISAAccount(accountList.entrySet().toArray()[userInput - 1].toString().split("=")[0]);
+                isaAccount.accountMenu();
+            }
         }
     }
 
@@ -156,7 +156,7 @@ public class Program
 
         if (checkTwoOptions(" Confirm account opening? \n 1. Yes \n 2. No"))
         {
-            PersonalAccount personalAccount = newQuery.createPersonalAccount(generator.generateAccountNumber(), "12-20-02", userID, openingBalance, 0.00f);
+            PersonalAccount personalAccount = newQuery.createPersonalAccount(generator.generateAccountNumber(), "02-12-20", userID, openingBalance, 0.00f);
             System.out.println(" Account creation successful.");
             personalAccount.accountMenu();
         }
@@ -183,8 +183,7 @@ public class Program
         if (checkTwoOptions("Confirm account opening? \n1. Yes. \n2. No"))
         {
             String accountNumber = generator.generateAccountNumber();
-            BusinessAccount businessAccount = newQuery.createBusinessAccount(accountNumber, "12-20-02", userID, openingBalance, overdraftAmount, businessName);
-            //createBusiness(businessName, accountNumber);
+            BusinessAccount businessAccount = newQuery.createBusinessAccount(accountNumber, "02-12-20", userID, openingBalance, overdraftAmount, businessName);
             System.out.println("Account creation successful.");
             businessAccount.accountMenu();
         }
@@ -207,7 +206,7 @@ public class Program
 
         if (checkTwoOptions("Confirm account opening? \n1. Yes. \n2. No."))
         {
-            ISAAccount isaAccount = newQuery.createISAAccount(generator.generateAccountNumber(), "12-20-02", userID, openingBalance, 0.00f);
+            ISAAccount isaAccount = newQuery.createISAAccount(generator.generateAccountNumber(), "02-12-20", userID, openingBalance, 0.00f);
             System.out.println("Account creation successful.");
             isaAccount.accountMenu();
         }
@@ -230,14 +229,6 @@ public class Program
         int birthYear = checkIntegerRange("Enter birth year: ", 1900, 2007);
         String dateOfBirth = (birthYear + "-" + String.format("%02d", birthMonth) + "-" + String.format("%02d", birthDay));
         return newQuery.createUser(firstName, lastName, dateOfBirth);
-    }
-
-    // Method createBusiness() takes a BusinessAccount object as its argument and calls the method createBusiness() from the Queries class.
-    // The result is that a new row is inserted into the Businesses0 table based on the newly created business account.
-    public static void createBusiness(String businessName, String accountNumber) throws SQLException
-    {
-        Queries newQuery = new Queries();
-        newQuery.createBusiness(businessName, accountNumber);
     }
 
     // Method checkTwoOptions() takes a String menuString (the sentence to be printed to the console) as an argument and returns a boolean.
@@ -267,11 +258,10 @@ public class Program
     {
         Scanner scanner = new Scanner(System.in);
         System.out.println(menuString);
-        int input = 0;
 
         while (true)
         {
-            input = scanner.nextInt();
+            int input = scanner.nextInt();
 
             for (int option : options)
             {
