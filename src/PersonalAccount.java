@@ -1,18 +1,20 @@
+/*
+    Class PersonalAccount extends the abstract class Account and is used to model personal accounts from the database as objects.
+ */
+
 import java.sql.SQLException;
 
 public class PersonalAccount extends Account
 {
-    private Boolean validPersonalID;
-    private Boolean validAddressID;
-
-    public PersonalAccount(String accountNumber, String sortCode, float balance, float overdraft, Boolean validPersonalID, Boolean validAddressID)
+    // Constructor method PersonalAccount().
+    public PersonalAccount(String accountNumber, String sortCode, float balance, float overdraft)
     {
         super(accountNumber, sortCode, balance, overdraft);
-        this.validPersonalID = validPersonalID;
-        this.validAddressID = validAddressID;
     }
 
-    //Menu function for Personal Account.
+    // Method accountMenu() implements the abstract accountMenu() method from the Account class.
+    // User is prompted to select a transaction, then the relevant method from Account is called.
+    // In some cases, the checkFloatRange() method from Program is passed as an argument, in order to get further user input.
     @Override
     public void accountMenu() throws SQLException
     {
@@ -23,9 +25,9 @@ public class PersonalAccount extends Account
             switch (menu)
             {
                 case 1 -> displayBalance();
-                case 2 -> deposit(Program.checkFloatRange("\nEnter deposit amount: ", 0.01f, 20000.00f));
-                case 3 -> withdraw(Program.checkFloatRange("\nEnter withdrawal amount: ", 0.01f, 20000.00f));
-                case 4, 5, 6 -> payAccount(Program.checkFloatRange("\nEnter payment amount:", 0, 20000), retrieveRecipientAccountNumber());
+                case 2 -> deposit(Program.checkFloatRange("\nEnter deposit amount: ", Variables.personalAccountMinimumDeposit, Variables.personalAccountMaximumDeposit));
+                case 3 -> withdraw(Program.checkFloatRange("\nEnter withdrawal amount: ", Variables.personalAccountMinimumWithdrawal, Variables.personalAccountMaximumWithdrawal));
+                case 4, 5, 6 -> payAccount(Program.checkFloatRange("\nEnter payment amount:", Variables.personalAccountMinimumPayment, Variables.personalAccountMaximumPayment), retrieveRecipientAccountNumber());
                 case 9 -> Program.exitProgram();
             }
         }

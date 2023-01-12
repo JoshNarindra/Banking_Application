@@ -1,23 +1,25 @@
 /*
-Class AccountNumberGenerator generates an 8 digit UK Format Account Number.
+    Class AccountNumberGeneration is responsible for generating account numbers for new accounts registered.
 
-The
-
+    The class has two methods:
+        generateAccountNumber(),
+        generateEightDigitString().
  */
 
-//Imports
 import java.util.ArrayList;
 import java.util.Random;
 
 public class AccountNumberGeneration
 {
-    //Generate Account number.
+    // Method generateAccountNumber() calls the generateEightDigitString() method to create a String newAccountNumber.
+    // The method then calls queries.checkAccountExists() to verify that the newAccountNumber does not belong to an account already.
+    // newAccountNumber is then returned if it is free, or regenerated and returned if it is in use.
     public String generateAccountNumber()
     {
+        Queries queries = new Queries();
         String newAccountNumber = generateEightDigitString();
-        Queries q = new Queries();
 
-        while (q.checkAccountExists(newAccountNumber))
+        while (queries.checkAccountExists(newAccountNumber))
         {
             newAccountNumber = generateEightDigitString();
         }
@@ -25,26 +27,26 @@ public class AccountNumberGeneration
         return newAccountNumber;
     }
 
-    //Method generate a string consisting of a concatenation of 8 random digits.
+    // Method generateEightDigitString() returns a String of 8 random digits.
+    // Digits are randomly generated and added to an ArrayList, with the contents of the ArrayList then concatenated into a single String.
+    // The single String is then returned.
     public String generateEightDigitString()
     {
         Random rand = new Random();
-        ArrayList<String> accountNumberArray = new ArrayList<String>();
-        String generatedAccountNumber = "";
+        ArrayList<String> accountNumberArray = new ArrayList<>();
+        StringBuilder generatedAccountNumber = new StringBuilder();
 
-        //Generate random 8 digit array.
-        for (int i=0; i<8; i++)
+        for (int i = 0; i < 8; i++)
         {
-            int randomDigit = rand.nextInt(10); //Generate random digit.
-            accountNumberArray.add(Integer.toString(randomDigit)); //Add each digit to Arraylist.
+            int randomDigit = rand.nextInt(10);
+            accountNumberArray.add(Integer.toString(randomDigit));
         }
 
-        //Generate 8 digit String.
         for (String digit: accountNumberArray)
         {
-            generatedAccountNumber = generatedAccountNumber+digit;
+            generatedAccountNumber.append(digit);
         }
 
-        return generatedAccountNumber;
+        return generatedAccountNumber.toString();
     }
 }

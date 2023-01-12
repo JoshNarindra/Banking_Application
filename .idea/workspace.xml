@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Tweaked retrieverCustomerAccounts method to use the Queries class, fixed bug in Program">
-      <change beforePath="$PROJECT_DIR$/src/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Queries.java" afterDir="false" />
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Created Variables class to remove hard-coding of variables and refactored Program and PersonalAccount classes accordingly">
+      <change beforePath="$PROJECT_DIR$/src/Variables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Variables.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,27 +44,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ewanh/IdeaProjects/JFX/FXLoginPage&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/ewanh/IdeaProjects/JFX/FXLoginPage",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -81,118 +80,8 @@
       <workItem from="1672266508408" duration="6787000" />
       <workItem from="1672583152802" duration="8536000" />
       <workItem from="1673371814510" duration="342000" />
-    </task>
-    <task id="LOCAL-00004" summary="workspace update">
-      <created>1672188070384</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1672188070384</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Minor update.">
-      <created>1672188825949</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1672188825949</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Minor update.">
-      <created>1672189009523</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1672189009523</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Added abstract methods for account creation.">
-      <created>1672229169763</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1672229169763</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Added abstract methods for account creation.">
-      <created>1672229245986</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1672229245986</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Added comments. fixed minor bugs">
-      <created>1672230776747</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1672230776747</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Minor layout changes">
-      <created>1672267689678</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1672267689678</updated>
-    </task>
-    <task id="LOCAL-00011" summary="File name change">
-      <created>1672268217286</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1672268217286</updated>
-    </task>
-    <task id="LOCAL-00012" summary=".">
-      <created>1672268239343</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1672268239343</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Added Menu System to Personal Acc.">
-      <created>1672326525155</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1672326525155</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Updated Menu System to Personal Acc.">
-      <created>1672327260299</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1672327260299</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Updated Menu System to Personal Acc.">
-      <created>1672327397920</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1672327397920</updated>
-    </task>
-    <task id="LOCAL-00016" summary="accountMenu() method added to children of account class.">
-      <created>1672327998633</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1672327998633</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Added DatabaseConnection Class.">
-      <created>1672420460300</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1672420460300</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Added DatabaseConnection Class.">
-      <created>1672420487889</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1672420487889</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Updated accounts menus.">
-      <created>1672605561203</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1672605561204</updated>
+      <workItem from="1673518705157" duration="51000" />
+      <workItem from="1673518766965" duration="14295000" />
     </task>
     <task id="LOCAL-00020" summary="Updated accounts menus.">
       <created>1672606443775</created>
@@ -425,7 +314,119 @@
       <option name="project" value="LOCAL" />
       <updated>1673478025393</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Tweaked checkAccountExists method to use new method checkExistsQuery for more DRY code; fixed a bug with paying into another account where the user was not prompted for an amount">
+      <created>1673480001370</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1673480001370</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Tidied up and removed boolean variables for PersonalAccount objects">
+      <created>1673518982275</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1673518982275</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Fleshed out implementation of payments">
+      <created>1673519565125</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1673519565126</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Updated some variable names to make comments redundant">
+      <created>1673519788541</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1673519788541</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Added detailed explanation for Program class">
+      <created>1673521533465</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1673521533465</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Added method and class comments on AccountNumberGeneration">
+      <created>1673522415642</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1673522415642</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Added method and class comments on Account">
+      <created>1673530565767</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1673530565767</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Updated method and class comments on Account">
+      <created>1673530843388</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1673530843388</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Updated method and class comments on PersonalAccount">
+      <created>1673540692546</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1673540692546</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Updated method and class comments on BusinessAccount and ISAAccount">
+      <created>1673541998416</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1673541998416</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Modified comments on AccountNumberGeneration">
+      <created>1673542033007</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1673542033007</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Removed redundant imports">
+      <created>1673542142698</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1673542142698</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Corrected IntelliJ-reported problems in Queries class">
+      <created>1673543957934</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1673543957934</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Corrected IntelliJ-reported problems in Program and AccountNumberGeneration class">
+      <created>1673544570614</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1673544570614</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Corrected IntelliJ-reported problems in Program and other classes">
+      <created>1673544877433</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1673544877433</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Created Variables class to remove hard-coding of variables and refactored Program and PersonalAccount classes accordingly">
+      <created>1673546318759</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1673546318759</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -443,23 +444,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="." />
-    <MESSAGE value="Added Menu System to Personal Acc." />
-    <MESSAGE value="Updated Menu System to Personal Acc." />
-    <MESSAGE value="accountMenu() method added to children of account class." />
-    <MESSAGE value="Added DatabaseConnection Class." />
-    <MESSAGE value="Updated accounts menus." />
-    <MESSAGE value="Added name and DOB variables." />
-    <MESSAGE value="Added constructor for user class." />
-    <MESSAGE value="Fixed connection bug." />
-    <MESSAGE value="Database Connection update." />
-    <MESSAGE value="getConnection can now run queries" />
-    <MESSAGE value="Database Connection Class update." />
-    <MESSAGE value="bug fixes." />
-    <MESSAGE value="Prints customer account list in main menu" />
-    <MESSAGE value="Fixed existingCustomersMenu so that an account can be selected and accessed." />
-    <MESSAGE value="DRYd Program class and added back options into menus" />
-    <MESSAGE value="Tidying and commenting on code." />
     <MESSAGE value="Fixed updateDatabaseInformation()" />
     <MESSAGE value="Fixed existingAccountsMenu()" />
     <MESSAGE value="Fixed BusinessAccount to display the menu again after a transaction" />
@@ -468,6 +452,23 @@
     <MESSAGE value="Tidying up and removing redundant code" />
     <MESSAGE value="Fully implemented paying between accounts, implemented check on ISA deposits (not to exceed 20,000 pounds)" />
     <MESSAGE value="Tweaked retrieverCustomerAccounts method to use the Queries class, fixed bug in Program" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tweaked retrieverCustomerAccounts method to use the Queries class, fixed bug in Program" />
+    <MESSAGE value="Tweaked checkAccountExists method to use new method checkExistsQuery for more DRY code; fixed a bug with paying into another account where the user was not prompted for an amount" />
+    <MESSAGE value="Tidied up and removed boolean variables for PersonalAccount objects" />
+    <MESSAGE value="Fleshed out implementation of payments" />
+    <MESSAGE value="Updated some variable names to make comments redundant" />
+    <MESSAGE value="Added detailed explanation for Program class" />
+    <MESSAGE value="Tidied AccountNumberGeneration class" />
+    <MESSAGE value="Added method and class comments on AccountNumberGeneration" />
+    <MESSAGE value="Added method and class comments on Account" />
+    <MESSAGE value="Updated method and class comments on Account" />
+    <MESSAGE value="Updated method and class comments on PersonalAccount" />
+    <MESSAGE value="Updated method and class comments on BusinessAccount and ISAAccount" />
+    <MESSAGE value="Modified comments on AccountNumberGeneration" />
+    <MESSAGE value="Removed redundant imports" />
+    <MESSAGE value="Corrected IntelliJ-reported problems in Queries class" />
+    <MESSAGE value="Corrected IntelliJ-reported problems in Program and AccountNumberGeneration class" />
+    <MESSAGE value="Corrected IntelliJ-reported problems in Program and other classes" />
+    <MESSAGE value="Created Variables class to remove hard-coding of variables and refactored Program and PersonalAccount classes accordingly" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Variables class to remove hard-coding of variables and refactored Program and PersonalAccount classes accordingly" />
   </component>
 </project>

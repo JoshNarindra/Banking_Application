@@ -1,8 +1,33 @@
 /*
-Main Program Class.
+    Class Program is the main class of the application, which contains the initial methods to be run.
+    The main role of the Program class is to get customer information on which Account object is to be manipulated.
+    An Account object is either created from existing data in the database (i.e. accessing an existing account) or from new data inputted by the user (i.e. creating a new account).
+    Once the Account object is identified, the Account.accountMenu() method is called.
+
+    Menu methods print a number of options to the console, take user input and call the appropriate method:
+        existingCustomersMenu(),
+        newCustomersMenu(),
+        existingAccountsMenu(),
+        createNewAccountMenu().
+
+    Open account methods take user input by calling a check method, create a new Account object and database entry based on that input, and call the accountMenu() method of that Account object:
+        openPersonalAccount(),
+        openBusinessAccount(),
+        openISAAccount().
+
+    Check methods take user input, verify the input is of the correct type, value etc. and return the input to the stack:
+        createUser(),
+        checkTwoOptions(),
+        checkMultipleOptions(),
+        checkAccountNumber(),
+        checkCredential()
+        checkAlphabet(),
+        checkIntegerRange(),
+        checkFloatRange().
+
+    The exitProgram() method can be called to terminate the program while running, equivalent to a logout.
  */
 
-//imports
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -15,17 +40,22 @@ public class Program
     public static void main(String[] args) throws SQLException
     {
         System.out.println("\nWelcome to ACME Banking Solutions...\n");
-        int menu = checkMultipleOptions("Does the customer currently have an account with us? \n1. Yes. \n2. No. \n9. Exit.", new int[]{1, 2, 9});
+        int menu = checkMultipleOptions("\nDoes the customer currently have an account with us? \n1. Yes. \n2. No. \n9. Exit.", new int[]{1, 2, 9});
 
-        switch (menu)
+        while (true)
         {
-            case 1 -> existingCustomersMenu();
-            case 2 -> newCustomersMenu();
-            case 9 -> exitProgram();
+            switch (menu)
+            {
+                case 1 -> existingCustomersMenu();
+                case 2 -> newCustomersMenu();
+                case 9 -> exitProgram();
+            }
         }
     }
 
     // Method existingCustomersMenu() which displays a menu to customers who already have an account registered.
+    // Personal details are printed to the console in order to verify customer identity.
+    // Finally, method calls the existingAccountsMenu() or createNewAccountMenu() methods depending on user input.
     public static void existingCustomersMenu() throws SQLException
     {
         Queries queries = new Queries();
@@ -43,18 +73,15 @@ public class Program
         System.out.println("\nName: " + customerInfo.get(0) + " " + customerInfo.get(1));
         System.out.println("D.O.B: " + customerInfo.get(2));
 
-        while (true)
-        {
-            boolean menu = checkTwoOptions("\nWould the customer like to access an existing account or open a new account? \n1. Access an existing account. \n2. Create a new account.");
+        boolean menu = checkTwoOptions("\nWould the customer like to access an existing account or open a new account? \n1. Access an existing account. \n2. Create a new account.");
 
-            if (menu)
-            {
-                existingAccountsMenu(accountNumber);
-            }
-            else
-            {
-                createNewAccountMenu(Account.retrieveUserID(accountNumber));
-            }
+        if (menu)
+        {
+            existingAccountsMenu(accountNumber);
+        }
+        else
+        {
+            createNewAccountMenu(Account.retrieveUserID(accountNumber));
         }
     }
 
@@ -64,7 +91,7 @@ public class Program
     {
         while (true)
         {
-            System.out.println("Open an account with ACME Banking Solutions...\n");
+            System.out.println("\nOpen an account with ACME Banking Solutions...\n");
             int menu = checkMultipleOptions("1. Open a personal account. \n2. Open a business account. \n3. Open an ISA account. \n9. Exit.", new int[]{1, 2, 3, 8, 9});
 
             switch (menu)
@@ -88,13 +115,12 @@ public class Program
         int userInput = 0;
 
         System.out.println("\nSelect customer account: ");
-
         HashMap<String, String> accountList = Account.retrieveCustomerAccounts(accountNumber);
 
         for (HashMap.Entry<String,String> entry: accountList.entrySet())
         {
             numberOfAccounts++;
-            System.out.println(numberOfAccounts+". "+"Account Number = " + entry.getKey() + ", Account Type = " + entry.getValue());
+            System.out.println(numberOfAccounts + entry.getKey() + entry.getValue());
         }
 
         while (userInput < 1 || userInput > numberOfAccounts)
@@ -131,7 +157,7 @@ public class Program
     {
         while (true)
         {
-            int menu = checkMultipleOptions("1. Open a personal account. \n2. Open a business account. \n3. Open an ISA account. \n8. Back. \n9. Exit.", new int[] {1, 2, 3, 8, 9});
+            int menu = checkMultipleOptions("\n1. Open a personal account. \n2. Open a business account. \n3. Open an ISA account. \n8. Back. \n9. Exit.", new int[] {1, 2, 3, 8, 9});
 
             switch(menu)
             {
@@ -148,16 +174,16 @@ public class Program
     // Finally, the PersonalAccount object's accountMenu() method is called.
     public static void openPersonalAccount(int userID) throws SQLException
     {
-        Queries newQuery = new Queries();
+        Queries queries = new Queries();
         AccountNumberGeneration generator = new AccountNumberGeneration();
-        checkCredential("Does the customer have a valid personal ID? (Only driving licence or passport permitted.) \n1. Yes. \n2. No.", "Customer must have valid ID to open a personal account.");
-        checkCredential("Does the customer have a valid proof of address? (Utility bill, council letter, etc. permitted.) \n1. Yes. \n2. No.", "Customer must have a valid proof of address to open a personal account.");
-        float openingBalance = checkFloatRange("Enter opening balance: ", 1.00f, 20000.00f);
+        checkCredential("\nDoes the customer have a valid personal ID? (Only driving licence or passport permitted.) \n1. Yes. \n2. No.", "Customer must have valid ID to open a personal account.");
+        checkCredential("\nDoes the customer have a valid proof of address? (Utility bill, council letter, etc. permitted.) \n1. Yes. \n2. No.", "Customer must have a valid proof of address to open a personal account.");
+        float openingBalance = checkFloatRange("\nEnter opening balance: ", Variables.personalAccountMinimumOpeningBalance, Variables.personalAccountMaximumOpeningBalance);
 
-        if (checkTwoOptions(" Confirm account opening? \n 1. Yes \n 2. No"))
+        if (checkTwoOptions("\nConfirm account opening? \n 1. Yes \n 2. No"))
         {
-            PersonalAccount personalAccount = newQuery.createPersonalAccount(generator.generateAccountNumber(), "02-12-20", userID, openingBalance, 0.00f);
-            System.out.println(" Account creation successful.");
+            PersonalAccount personalAccount = queries.createPersonalAccount(generator.generateAccountNumber(), Variables.branchSortCode, userID, openingBalance, Variables.personalAccountDefaultOverdraft);
+            System.out.println("\nAccount creation successful.");
             personalAccount.accountMenu();
         }
         else
@@ -171,20 +197,19 @@ public class Program
     // Finally, the BusinessAccount object's accountMenu() method is called.
     public static void openBusinessAccount(int userID) throws SQLException
     {
-        Queries newQuery = new Queries();
+        Queries queries = new Queries();
         AccountNumberGeneration generator = new AccountNumberGeneration();
-        String businessName = checkAlphabet("Enter business name: ");
-        System.out.println(businessName);
-        checkCredential("Does the customer have valid business credentials? \n1. Yes. \n2. No.", "Customer must have valid business credentials to open a business account");
-        checkCredential("Does the customer have a valid business type? (No enterprises, public limited companies or charities are permitted.) \n1. Yes. \n2. No.", "Customer must have a valid business type to open a business account.");
-        float openingBalance = checkFloatRange("Enter opening balance: ", 1.00f, 20000.00f);
-        float overdraftAmount = checkFloatRange("Enter agreed overdraft amount: ", 0.00f, 10000.00f);
+        String businessName = checkAlphabet("\nEnter business name: ");
+        checkCredential("\nDoes the customer have valid business credentials? \n1. Yes. \n2. No.", "Customer must have valid business credentials to open a business account");
+        checkCredential("\nDoes the customer have a valid business type? (No enterprises, public limited companies or charities are permitted.) \n1. Yes. \n2. No.", "Customer must have a valid business type to open a business account.");
+        float openingBalance = checkFloatRange("\nEnter opening balance: ", Variables.businessAccountMinimumOpeningBalance, Variables.businessAccountMaximumOpeningBalance);
+        float overdraftAmount = checkFloatRange("\nEnter agreed overdraft amount: ", Variables.businessAccountMinimumOverdraft, Variables.businessAccountMaximumOverdraft);
 
-        if (checkTwoOptions("Confirm account opening? \n1. Yes. \n2. No"))
+        if (checkTwoOptions("\nConfirm account opening? \n1. Yes. \n2. No"))
         {
             String accountNumber = generator.generateAccountNumber();
-            BusinessAccount businessAccount = newQuery.createBusinessAccount(accountNumber, "02-12-20", userID, openingBalance, overdraftAmount, businessName);
-            System.out.println("Account creation successful.");
+            BusinessAccount businessAccount = queries.createBusinessAccount(accountNumber, Variables.branchSortCode, userID, openingBalance, overdraftAmount, businessName);
+            System.out.println("\nAccount creation successful.");
             businessAccount.accountMenu();
         }
         else
@@ -198,16 +223,16 @@ public class Program
     // Finally, the ISAAccount object's accountMenu() method is called.
     public static void openISAAccount(int userID) throws SQLException
     {
-        Queries newQuery = new Queries();
+        Queries queries = new Queries();
         AccountNumberGeneration generator = new AccountNumberGeneration();
-        checkCredential("Does the customer have valid personal ID? (Only driving licence or passport permitted.) \n1. Yes. \n2. No.", "Customer must have valid ID to open an ISA account.");
-        checkCredential("Does the customer meet the age requirements for an ISA account? (16+) \n1. Yes. \n2. No.", "Customer must meet the age requirements to open an ISA account.");
-        float openingBalance = checkFloatRange("Enter opening balance: ", 0.00f, 20000.00f);
+        checkCredential("\nDoes the customer have valid personal ID? (Only driving licence or passport permitted.) \n1. Yes. \n2. No.", "Customer must have valid ID to open an ISA account.");
+        checkCredential("\nDoes the customer meet the age requirements for an ISA account? (16+) \n1. Yes. \n2. No.", "Customer must meet the age requirements to open an ISA account.");
+        float openingBalance = checkFloatRange("\nEnter opening balance: ", Variables.isaAccountMinimumOpeningBalance, Variables.isaAccountMaximumOpeningBalance);
 
-        if (checkTwoOptions("Confirm account opening? \n1. Yes. \n2. No."))
+        if (checkTwoOptions("\nConfirm account opening? \n1. Yes. \n2. No."))
         {
-            ISAAccount isaAccount = newQuery.createISAAccount(generator.generateAccountNumber(), "02-12-20", userID, openingBalance, 0.00f);
-            System.out.println("Account creation successful.");
+            ISAAccount isaAccount = queries.createISAAccount(generator.generateAccountNumber(), Variables.branchSortCode, userID, openingBalance, Variables.isaAccountDefaultOverdraft);
+            System.out.println("\nAccount creation successful.");
             isaAccount.accountMenu();
         }
         else
@@ -219,16 +244,16 @@ public class Program
     // Method createUser() prompts the user for information which is then fed to the method createUser() in the Queries class.
     // The result is that a new row is added to the Users0 table in the database.
     // Finally, an integer representing the relevant ID in the Users0 table is returned.
-    public static int createUser() throws SQLException
+    public static int createUser()
     {
-        Queries newQuery = new Queries();
-        String firstName = checkAlphabet("Enter first name: ");
-        String lastName = checkAlphabet("Enter last name: ");
-        int birthDay = checkIntegerRange("Enter birth day: ", 1, 31);
-        int birthMonth = checkIntegerRange("Enter birth month: ", 1, 12);
-        int birthYear = checkIntegerRange("Enter birth year: ", 1900, 2007);
+        Queries queries = new Queries();
+        String firstName = checkAlphabet("\nEnter first name: ");
+        String lastName = checkAlphabet("\nEnter last name: ");
+        int birthDay = checkIntegerRange("\nEnter birth day: ", 1, 31);
+        int birthMonth = checkIntegerRange("\nEnter birth month: ", 1, 12);
+        int birthYear = checkIntegerRange("\nEnter birth year: ", Variables.earliestBirthYear, Variables.latestBirthYear);
         String dateOfBirth = (birthYear + "-" + String.format("%02d", birthMonth) + "-" + String.format("%02d", birthDay));
-        return newQuery.createUser(firstName, lastName, dateOfBirth);
+        return queries.createUser(firstName, lastName, dateOfBirth);
     }
 
     // Method checkTwoOptions() takes a String menuString (the sentence to be printed to the console) as an argument and returns a boolean.
@@ -369,8 +394,7 @@ public class Program
     // Method exitProgram() terminates the program running to end the session when called.
     public static void exitProgram()
     {
-        System.out.println("Successfully logged out.");
+        System.out.println("\nSuccessfully logged out.");
         System.exit(0);
     }
-
 }
