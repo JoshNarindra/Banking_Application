@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Variables
+public class Variables
 {
     public static float personalAccountMinimumOpeningBalance = 1f;
     public static float personalAccountMaximumOpeningBalance = 20000f;
@@ -47,22 +47,21 @@ public abstract class Variables
     public static ArrayList<String> usersColumns = new ArrayList<>(List.of("ID", "FirstName", "LastName", "DateOfBirth"));
     public static ArrayList<String> businessesColumns = new ArrayList<>(List.of("ID", "Name", "AccountNumber"));
 
-    private static String serverURL = "jdbc:sqlserver://SQL8002.site4now.net;database=db_a8cc79_Ewahes";
-    private static String serverUsername = "db_a8cc79_Ewahes_admin";
-    private static String serverPassword = "Fr43yX52kE71";
-
     public static String getServerURL()
     {
+        String serverURL = "jdbc:sqlserver://SQL8002.site4now.net;database=db_a8cc79_Ewahes";
         return serverURL;
     }
 
     public static String getServerUsername()
     {
+        String serverUsername = "db_a8cc79_Ewahes_admin";
         return serverUsername;
     }
 
     public static String getServerPassword()
     {
+        String serverPassword = "Fr43yX52kE71";
         return serverPassword;
     }
 }
