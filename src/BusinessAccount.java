@@ -1,21 +1,34 @@
+/*
+    Class BusinessAccount extends the abstract class Account and is used to model business accounts from the database as objects.
+    An additional method makeAnnualPayment is included and is unique to BusinessAccount, as other accounts are free to set up.
+
+    Two additional menu methods are included in addition to the accountMenu() method, to avoid cluttering the main menu:
+        requestsMenu(),
+        paymentsMenu().
+ */
+
 import java.sql.SQLException;
 
 public class BusinessAccount extends Account
 {
     private String name;
 
+    // Constructor method BusinessAccount().
     public BusinessAccount(String accountNumber, String sortCode, float balance, float overdraft, String name)
     {
         super(accountNumber, sortCode, balance, overdraft);
         this.name = name;
     }
 
+    // Method getName().
     public String getName()
     {
         return name;
     }
 
-    //Menu function for business account.
+    // Method accountMenu() implements the abstract accountMenu() method from the Account class.
+    // User is prompted to select a transaction, then the relevant method from Account or BusinessAccount is called.
+    // In some cases, the checkFloatRange() method from Program is passed as an argument, in order to get further user input.
     @Override
     public void accountMenu() throws SQLException
     {
@@ -37,6 +50,8 @@ public class BusinessAccount extends Account
         }
     }
 
+    // Method requestsMenu() prompts the user for an integer menu and carries out a function depending on the selection.
+    // In some cases, the checkFloatRange() method from Program is passed as an argument, in order to get further user input.
     public void requestsMenu()
     {
         int menu = Program.checkMultipleOptions("\nWhat would the customer like to do? \n1. Request chequebook. \n2. Request credit card. \n3. Request change to overdraft. \n4. Request a loan. \n8. Back. \n9. Exit", new int[] {1, 2, 3, 4, 8, 9});
@@ -57,6 +72,8 @@ public class BusinessAccount extends Account
         }
     }
 
+    // Method paymentsMenu() prompts the user for an integer menu and carries out a function depending on the selection.
+    // In some cases, the checkFloatRange() method from Program is passed as an argument, in order to get further user input.
     public void paymentsMenu() throws SQLException
     {
         while (true)
@@ -71,6 +88,7 @@ public class BusinessAccount extends Account
         }
     }
 
+    // Method makeAnnualPayment() calls the setBalance() method to reduce the account balance by 120, and calls updateDatabaseInformation() to alter the Balance in the database.
     public void makeAnnualPayment() throws SQLException
     {
         float newBalance = getBalance() - 120f;

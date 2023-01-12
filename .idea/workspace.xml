@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Added method and class comments on Account" />
+    <list default="true" id="ff4c1b09-c4a5-42c9-9134-c7e38c5d977e" name="Changes" comment="Updated method and class comments on Account" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -80,14 +80,7 @@
       <workItem from="1672583152802" duration="8536000" />
       <workItem from="1673371814510" duration="342000" />
       <workItem from="1673518705157" duration="51000" />
-      <workItem from="1673518766965" duration="6776000" />
-    </task>
-    <task id="LOCAL-00011" summary="File name change">
-      <created>1672268217286</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1672268217286</updated>
+      <workItem from="1673518766965" duration="7324000" />
     </task>
     <task id="LOCAL-00012" summary=".">
       <created>1672268239343</created>
@@ -425,7 +418,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673530565767</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Updated method and class comments on Account">
+      <created>1673530843388</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1673530843388</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -443,7 +443,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed connection bug." />
     <MESSAGE value="Database Connection update." />
     <MESSAGE value="getConnection can now run queries" />
     <MESSAGE value="Database Connection Class update." />
@@ -468,6 +467,7 @@
     <MESSAGE value="Tidied AccountNumberGeneration class" />
     <MESSAGE value="Added method and class comments on AccountNumberGeneration" />
     <MESSAGE value="Added method and class comments on Account" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added method and class comments on Account" />
+    <MESSAGE value="Updated method and class comments on Account" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated method and class comments on Account" />
   </component>
 </project>
