@@ -1,5 +1,5 @@
 /*
-    Class AccountNumberGeneration is responsible for creating account numbers for new accounts registered.
+    Class AccountNumberGeneration is responsible for generating account numbers for new accounts registered.
 
     The class has two methods:
         generateAccountNumber(),
