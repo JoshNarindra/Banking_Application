@@ -1,10 +1,15 @@
+/*
+    Method DatabaseConnection simply implements a connection to the database using the getConnection() method.
+ */
+
 import java.sql.*;
 
 public class DatabaseConnection
 {
     public static Connection connection;
 
-    // Method returns variable of type connection, which is SQL connection to server.
+    // Method getConnection() connects to the database using the details stored in the Variables class.
+    // The connection is then returned as an object.
     public static Connection getConnection()
     {
         try
