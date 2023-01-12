@@ -39,9 +39,9 @@ public class BusinessAccount extends Account
             switch (menu)
             {
                 case 1 -> displayBalance();
-                case 2 -> deposit(Program.checkFloatRange("\nEnter deposit amount: ", 0.01f, 20000.00f));
-                case 3 -> withdraw(Program.checkFloatRange("\nEnter withdrawal amount: ", 0.01f, 20000.00f));
-                case 4 -> payAccount(Program.checkFloatRange("\nEnter payment amount:", 0, 20000), retrieveRecipientAccountNumber());
+                case 2 -> deposit(Program.checkFloatRange("\nEnter deposit amount: ", Variables.businessAccountMinimumDeposit, Variables.businessAccountMaximumDeposit));
+                case 3 -> withdraw(Program.checkFloatRange("\nEnter withdrawal amount: ", Variables.businessAccountMinimumWithdrawal, Variables.businessAccountMaximumWithdrawal));
+                case 4 -> payAccount(Program.checkFloatRange("\nEnter payment amount:", Variables.businessAccountMinimumPayment, Variables.businessAccountMaximumPayment), retrieveRecipientAccountNumber());
                 case 5 -> requestsMenu();
                 case 6 -> paymentsMenu();
                 case 7 -> makeAnnualPayment();
@@ -61,11 +61,11 @@ public class BusinessAccount extends Account
             case 1 -> System.out.println("Chequebook request logged.");
             case 2 -> System.out.println("Credit card request logged.");
             case 3 -> {
-                        Program.checkFloatRange("\nEnter proposed overdraft amount: ", 0f, 10000.00f);
+                        Program.checkFloatRange("\nEnter proposed overdraft amount: ", Variables.businessAccountMinimumOverdraft, Variables.businessAccountMaximumOverdraft);
                         System.out.println("Change to overdraft request logged.");
                       }
             case 4 -> {
-                        Program.checkFloatRange("\nEnter desired loan amount: ", 0f, 10000.00f);
+                        Program.checkFloatRange("\nEnter desired loan amount: ", Variables.businessAccountMinimumLoanRequest, Variables.businessAccountMaximumLoanRequest);
                         System.out.println("Loan request logged.");
                       }
             case 9 -> Program.exitProgram();
@@ -91,7 +91,7 @@ public class BusinessAccount extends Account
     // Method makeAnnualPayment() calls the setBalance() method to reduce the account balance by 120, and calls updateDatabaseInformation() to alter the Balance in the database.
     public void makeAnnualPayment()
     {
-        float newBalance = getBalance() - 120f;
+        float newBalance = getBalance() - Variables.businessAccountAnnualPaymentAmount;
         setBalance(newBalance);
         updateDatabaseInformation();
     }
